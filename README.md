@@ -32,7 +32,7 @@ I am currently a Master of Urban Spatial Analytics (MUSA) candidate at the **Uni
 ### 📬 Let's Connect
 I'm always open to discussing spatial analytics, job opportunities, or exciting opportunities!
 
-- 💻 **Portfolio:** [ChristineCui12](https://ChristineCui12)
-- 📄 **Resume:** [Read my CV](https://ChristineCui12.github.io/assets/resume.pdf)
+- 💻 **Portfolio:** [ChristineCui12](https://christinecui12.github.io/ChristineCui12)
+- 📄 **Resume:** [Read my CV](https://christinecui12.github.io/ChristineCui12/CV%200327%20job.pdf)
 - ✉️ **Email:** [christinexc325@gmail.com]
 - 🔗 **LinkedIn:** [https://www.linkedin.com/in/christine-cuixinyuan/]
