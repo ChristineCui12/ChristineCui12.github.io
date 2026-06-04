@@ -18,8 +18,16 @@ I am currently a Master of Urban Spatial Analytics (MUSA) candidate at the **Uni
 - **Design & Visualization:** `AutoCAD`, `Photoshop`, `SketchUp`, `Adobe Illustrator`, `Enscape`, `Ecotect`, `Mars`
 
 ### 🌱 Currently Working On
-- 🚦 Analyzing **Off-Peak Roadway Safety** in collaboration with the Philadelphia Office of Transportation and Infrastructure Systems (OTIS), utilizing spatial regression to identify high-risk urban corridors.
-- 🌐 Exploring the **Aging Digital Divide** across Philadelphia neighborhoods through interactive bivariate mapping and ACS census data.
+- 🚦 Analyzing **Off-Peak Roadway Safety** as a capstone with the Philadelphia Office of 
+  Transportation and Infrastructure Systems (OTIS), applying Random Forest regression (R² = 0.892) 
+  to quantify the off-peak fatality paradox and build an interactive dashboard for 
+  data-driven corridor prioritization.
+- 🏙️ Building a **Philadelphia Property Appraisal (CAMA) Pipeline** on Google Cloud Platform — 
+  orchestrating 9 serverless Cloud Functions to ingest ~580K property records into BigQuery, 
+  and developing an ML valuation model + dual-user dashboard serving 350,000+ properties.
+- 🛰️ Benchmarking **Generative Models for Cloud Removal** in satellite imagery — evaluating 
+  GANs and Diffusion models on 2,000 Sentinel-2 scenes using PSNR, SSIM, and NDVI to quantify 
+  hallucination thresholds for urban planning applications.
 
 ### 📊 GitHub Stats
 
