@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>城垣杯 · 基于居民情绪价值-住宅用地效率的社区环境优化模型</title>
+  <title>Community Environment Optimization · Christine Cui / 城垣杯展示 · 崔馨元</title>
   <style>
     /* ============ 基础 ============ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -20,6 +20,8 @@
       --border: #e2e8f0;
       --radius: 12px;
     }
+    html:not(.lang-zh-active) .lang-zh { display: none; }
+    html.lang-zh-active .lang-en { display: none; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
@@ -444,69 +446,82 @@
       .hero-stats { gap: 1.5rem; }
       .section { padding: 3rem 1.25rem; }
     }
+    .lang-btn { font-size: 11px; padding: 5px 13px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; border-radius: 6px; transition: all .18s; letter-spacing: .05em; }
+    .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .lang-btn.active-zh { border-color: var(--accent); color: var(--accent); background: rgba(37,99,235,.08); }
   </style>
+  <script>(function(){document.documentElement.classList.add('lang-'+(localStorage.getItem('cc-lang')||'en')+'-active');})();</script>
 </head>
 <body>
 
 <!-- ==================== NAV ==================== -->
 <nav>
-  <div class="nav-brand">城垣杯 · I1534</div>
-  <div class="nav-links">
-    <a href="#background">背景</a>
-    <a href="#methodology">方法</a>
-    <a href="#indicators">指标</a>
-    <a href="#results">结果</a>
-    <a href="#maps">地图</a>
-    <a href="#innovation">创新</a>
-    <a href="#team">团队</a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="index.html" style="font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">← <span class="lang-en">Portfolio</span><span class="lang-zh">作品集</span></a>
+    <div class="nav-brand">
+      <span class="lang-en">Chengyu Cup · I1534</span>
+      <span class="lang-zh">城垣杯 · I1534</span>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:1.5rem;">
+    <div class="nav-links">
+      <a href="#background"><span class="lang-en">Background</span><span class="lang-zh">背景</span></a>
+      <a href="#methodology"><span class="lang-en">Methods</span><span class="lang-zh">方法</span></a>
+      <a href="#indicators"><span class="lang-en">Indicators</span><span class="lang-zh">指标</span></a>
+      <a href="#results"><span class="lang-en">Results</span><span class="lang-zh">结果</span></a>
+      <a href="#maps"><span class="lang-en">Maps</span><span class="lang-zh">地图</span></a>
+      <a href="#innovation"><span class="lang-en">Innovation</span><span class="lang-zh">创新</span></a>
+      <a href="#team"><span class="lang-en">Team</span><span class="lang-zh">团队</span></a>
+    </div>
+    <button class="lang-btn" id="langToggle" onclick="toggleLang()">中文</button>
   </div>
 </nav>
 
 <!-- ==================== HERO ==================== -->
 <section class="hero">
-  <div class="hero-badge">城垣杯 · 城市行为空间与生活圈优化 · 报名编号 I1534</div>
-  <h1>基于<span>居民情绪价值</span>—<span>住宅用地效率</span>的<br/>社区环境优化模型</h1>
+  <div class="hero-badge"><span class="lang-en">Chengyu Cup · Urban Behavioral Space &amp; Living Circle Optimization · Entry I1534</span><span class="lang-zh">城垣杯 · 城市行为空间与生活圈优化 · 报名编号 I1534</span></div>
+  <h1><span class="lang-en">Community Environment Optimization Model<br/>Based on <span>Residents' Emotional Value</span> — <span>Residential Land Efficiency</span></span><span class="lang-zh">基于<span>居民情绪价值</span>—<span>住宅用地效率</span>的<br/>社区环境优化模型</span></h1>
   <p class="hero-sub">
-    Community Environment Optimization Model<br/>
-    Based on "Residents' Emotional Value – Residential Land Efficiency"
+    <span class="lang-en">Community Environment Optimization Model<br/>Based on "Residents' Emotional Value – Residential Land Efficiency"</span>
+    <span class="lang-zh">基于"居民情绪价值 – 住宅用地效率"的社区环境优化模型</span>
   </p>
   <div class="hero-meta">
-    <div class="hero-meta-item"><strong>参赛单位</strong> 天津大学建筑学院 · 智能与计算学部</div>
-    <div class="hero-meta-item"><strong>研究城市</strong> 上海市 · 北京市</div>
-    <div class="hero-meta-item"><strong>投稿方向</strong> 城市行为空间与生活圈优化</div>
+    <div class="hero-meta-item"><strong><span class="lang-en">Institution</span><span class="lang-zh">参赛单位</span></strong> <span class="lang-en">School of Architecture · School of Intelligence and Computing, Tianjin University</span><span class="lang-zh">天津大学建筑学院 · 智能与计算学部</span></div>
+    <div class="hero-meta-item"><strong><span class="lang-en">Study Cities</span><span class="lang-zh">研究城市</span></strong> <span class="lang-en">Shanghai · Beijing</span><span class="lang-zh">上海市 · 北京市</span></div>
+    <div class="hero-meta-item"><strong><span class="lang-en">Track</span><span class="lang-zh">投稿方向</span></strong> <span class="lang-en">Urban Behavioral Space &amp; Living Circle Optimization</span><span class="lang-zh">城市行为空间与生活圈优化</span></div>
   </div>
   <div class="hero-stats">
-    <div class="hero-stat"><span class="num">9</span><span class="label">参赛成员</span></div>
-    <div class="hero-stat"><span class="num">17</span><span class="label">指标维度</span></div>
-    <div class="hero-stat"><span class="num">86,445</span><span class="label">情绪文本数据</span></div>
-    <div class="hero-stat"><span class="num">2</span><span class="label">对比城市</span></div>
+    <div class="hero-stat"><span class="num">9</span><span class="label"><span class="lang-en">Team Members</span><span class="lang-zh">参赛成员</span></span></div>
+    <div class="hero-stat"><span class="num">17</span><span class="label"><span class="lang-en">Indicator Dimensions</span><span class="lang-zh">指标维度</span></span></div>
+    <div class="hero-stat"><span class="num">86,445</span><span class="label"><span class="lang-en">Sentiment Text Records</span><span class="lang-zh">情绪文本数据</span></span></div>
+    <div class="hero-stat"><span class="num">2</span><span class="label"><span class="lang-en">Comparison Cities</span><span class="lang-zh">对比城市</span></span></div>
   </div>
-  <div class="scroll-hint">向下滚动</div>
+  <div class="scroll-hint"><span class="lang-en">Scroll down</span><span class="lang-zh">向下滚动</span></div>
 </section>
 
 <!-- ==================== BACKGROUND ==================== -->
 <div id="background">
 <section class="section">
   <div class="section-title">01 · Research Background</div>
-  <h2 class="section-heading">研究背景与意义</h2>
-  <p class="section-desc">当前我国城市发展由增量扩张转向存量挖潜，老旧小区改造、居民幸福感提升成为城市规划的核心议题。</p>
+  <h2 class="section-heading"><span class="lang-en">Research Background &amp; Significance</span><span class="lang-zh">研究背景与意义</span></h2>
+  <p class="section-desc"><span class="lang-en">China's urban development is shifting from incremental expansion to stock-based renewal. Renovation of aging neighborhoods and improvement of residents' happiness have become central issues in urban planning.</span><span class="lang-zh">当前我国城市发展由增量扩张转向存量挖潜，老旧小区改造、居民幸福感提升成为城市规划的核心议题。</span></p>
 
   <div class="bg-grid">
     <div class="bg-card">
-      <h3>城市空间进入存量规划时代</h3>
-      <p>中国主要城市驱动城市规划下一个30年的主要动力，将会是旧城更新、再开发、重新利用和工业等存量用地改造，上海、北京等大城市正加快存量用地盘活步伐。</p>
+      <h3><span class="lang-en">Urban Space Enters the Stock Planning Era</span><span class="lang-zh">城市空间进入存量规划时代</span></h3>
+      <p><span class="lang-en">The main driver of urban planning for China's major cities over the next 30 years will be urban renewal, redevelopment, reuse, and transformation of industrial stock land. Cities like Shanghai and Beijing are accelerating the revitalization of existing land.</span><span class="lang-zh">中国主要城市驱动城市规划下一个30年的主要动力，将会是旧城更新、再开发、重新利用和工业等存量用地改造，上海、北京等大城市正加快存量用地盘活步伐。</span></p>
     </div>
     <div class="bg-card green">
-      <h3>老旧小区亟待改造升级</h3>
-      <p>老旧小区由于设计年限存在诸多安全隐患，设计理念跟不上时代。上海政府提出以小区、街区、社区为更新单元，统筹做好区域规划、空间优化、功能转化。</p>
+      <h3><span class="lang-en">Aging Neighborhoods Urgently Need Renovation</span><span class="lang-zh">老旧小区亟待改造升级</span></h3>
+      <p><span class="lang-en">Aging residential communities face safety hazards due to outdated design standards. The Shanghai government has proposed using communities, blocks, and neighborhoods as renewal units to coordinate regional planning, spatial optimization, and functional transformation.</span><span class="lang-zh">老旧小区由于设计年限存在诸多安全隐患，设计理念跟不上时代。上海政府提出以小区、街区、社区为更新单元，统筹做好区域规划、空间优化、功能转化。</span></p>
     </div>
     <div class="bg-card amber">
-      <h3>过度城市化影响居民幸福感</h3>
-      <p>城市化发展导致内部发展不平衡、人口密度增加、房价增高等问题。北京、上海等大城市幸福感低于拉萨、合肥等城市，居民"美好生活"期待尚待满足。</p>
+      <h3><span class="lang-en">Over-urbanization Affects Residents' Happiness</span><span class="lang-zh">过度城市化影响居民幸福感</span></h3>
+      <p><span class="lang-en">Urbanization has led to uneven development, increased population density, and rising housing prices. Major cities like Beijing and Shanghai rank lower in happiness than Lhasa and Hefei, leaving residents' aspirations for a "better life" unmet.</span><span class="lang-zh">城市化发展导致内部发展不平衡、人口密度增加、房价增高等问题。北京、上海等大城市幸福感低于拉萨、合肥等城市，居民"美好生活"期待尚待满足。</span></p>
     </div>
     <div class="bg-card red">
-      <h3>国家政策导向人本主义</h3>
-      <p>习近平总书记在党的二十大报告中指出"不断实现人民对美好生活的向往"，要求城市规划将居民幸福感作为核心评价标准，全面提升居住条件与精神文化生活。</p>
+      <h3><span class="lang-en">National Policy Oriented Toward People-Centered Humanism</span><span class="lang-zh">国家政策导向人本主义</span></h3>
+      <p><span class="lang-en">President Xi Jinping's report to the 20th National Congress emphasized "continuously realizing the people's aspirations for a better life," requiring urban planning to treat residents' happiness as a core evaluation standard and comprehensively improve living conditions and cultural life.</span><span class="lang-zh">习近平总书记在党的二十大报告中指出"不断实现人民对美好生活的向往"，要求城市规划将居民幸福感作为核心评价标准，全面提升居住条件与精神文化生活。</span></p>
     </div>
   </div>
 </section>
@@ -517,29 +532,29 @@
 <!-- ==================== OBJECTIVES ==================== -->
 <section class="section">
   <div class="section-title">02 · Research Objectives</div>
-  <h2 class="section-heading">研究目标与拟解决问题</h2>
-  <p class="section-desc">提出基于多源数据支持的住宅用地效率与居民幸福感评价体系，深入研究二者相关性，推动住宅用地渐进式优化。</p>
+  <h2 class="section-heading"><span class="lang-en">Research Objectives &amp; Problems to Solve</span><span class="lang-zh">研究目标与拟解决问题</span></h2>
+  <p class="section-desc"><span class="lang-en">Propose a multi-source data-supported evaluation system for residential land efficiency and residents' happiness, deeply study their correlation, and promote progressive optimization of residential land use.</span><span class="lang-zh">提出基于多源数据支持的住宅用地效率与居民幸福感评价体系，深入研究二者相关性，推动住宅用地渐进式优化。</span></p>
 
   <div class="objectives-grid">
     <div class="obj-card">
       <div class="obj-num">01</div>
-      <h3>科学评价低效住宅用地</h3>
-      <p>解决已有评价体系指标散乱、针对性弱的问题，构建社会、经济、生态三维指标体系</p>
+      <h3><span class="lang-en">Scientifically Evaluate Inefficient Residential Land</span><span class="lang-zh">科学评价低效住宅用地</span></h3>
+      <p><span class="lang-en">Address scattered and weakly targeted existing evaluation indicators; construct a three-dimensional indicator system covering social, economic, and ecological dimensions.</span><span class="lang-zh">解决已有评价体系指标散乱、针对性弱的问题，构建社会、经济、生态三维指标体系</span></p>
     </div>
     <div class="obj-card green">
       <div class="obj-num">02</div>
-      <h3>精准测度居民幸福感</h3>
-      <p>解决传统情绪测度方式粗放、可研究范围小的难题，采用海量社交媒体文本数据</p>
+      <h3><span class="lang-en">Precisely Measure Residents' Happiness</span><span class="lang-zh">精准测度居民幸福感</span></h3>
+      <p><span class="lang-en">Overcome the limitations of coarse traditional sentiment measurement with limited coverage by using massive social media text data.</span><span class="lang-zh">解决传统情绪测度方式粗放、可研究范围小的难题，采用海量社交媒体文本数据</span></p>
     </div>
     <div class="obj-card amber">
       <div class="obj-num">03</div>
-      <h3>揭示效率与幸福感相关性</h3>
-      <p>运用先进机器学习模型，深入分析住宅用地效率指标对居民幸福感的影响机制</p>
+      <h3><span class="lang-en">Reveal Correlation Between Efficiency and Happiness</span><span class="lang-zh">揭示效率与幸福感相关性</span></h3>
+      <p><span class="lang-en">Use advanced machine learning models to deeply analyze the mechanism by which residential land efficiency indicators affect residents' happiness.</span><span class="lang-zh">运用先进机器学习模型，深入分析住宅用地效率指标对居民幸福感的影响机制</span></p>
     </div>
     <div class="obj-card purple">
       <div class="obj-num">04</div>
-      <h3>推动住宅用地渐进式更新</h3>
-      <p>利用模型算法，基于幸福感视角为住宅用地改造优先级提供依据，实现人本主义规划</p>
+      <h3><span class="lang-en">Drive Progressive Renewal of Residential Land</span><span class="lang-zh">推动住宅用地渐进式更新</span></h3>
+      <p><span class="lang-en">Use model algorithms to provide a basis for renovation priorities of residential land from a happiness perspective, achieving people-centered planning.</span><span class="lang-zh">利用模型算法，基于幸福感视角为住宅用地改造优先级提供依据，实现人本主义规划</span></p>
     </div>
   </div>
 </section>
@@ -549,45 +564,45 @@
 <!-- ==================== STUDY AREA ==================== -->
 <section class="section area-section" id="area">
   <div class="section-title">03 · Study Area</div>
-  <h2 class="section-heading">研究区域</h2>
-  <p class="section-desc">选取上海市作为主要研究城市，北京市作为对比验证，覆盖超大城市核心住区场景。</p>
+  <h2 class="section-heading"><span class="lang-en">Study Area</span><span class="lang-zh">研究区域</span></h2>
+  <p class="section-desc"><span class="lang-en">Shanghai was selected as the primary study city and Beijing as the comparative validation city, covering core residential neighborhood scenarios in megacities.</span><span class="lang-zh">选取上海市作为主要研究城市，北京市作为对比验证，覆盖超大城市核心住区场景。</span></p>
 
   <div class="city-cards">
     <div class="city-card">
-      <div class="city-label">主要研究城市</div>
-      <div class="city-name">上海市</div>
-      <div class="city-detail">研究范围：黄浦区、徐汇区、长宁区、静安区、普陀区、虹口区、杨浦区及浦东新区外环内</div>
-      <div class="city-detail" style="margin-top:0.3rem">基本研究单元：居住小区</div>
+      <div class="city-label"><span class="lang-en">Primary Study City</span><span class="lang-zh">主要研究城市</span></div>
+      <div class="city-name"><span class="lang-en">Shanghai</span><span class="lang-zh">上海市</span></div>
+      <div class="city-detail"><span class="lang-en">Study scope: Huangpu, Xuhui, Changning, Jing'an, Putuo, Hongkou, Yangpu districts and Pudong New Area within the Outer Ring Road</span><span class="lang-zh">研究范围：黄浦区、徐汇区、长宁区、静安区、普陀区、虹口区、杨浦区及浦东新区外环内</span></div>
+      <div class="city-detail" style="margin-top:0.3rem"><span class="lang-en">Basic study unit: residential community</span><span class="lang-zh">基本研究单元：居住小区</span></div>
       <div class="city-stat-row">
-        <div class="city-stat"><div class="v">6340.5</div><div class="l">总面积 km²</div></div>
-        <div class="city-stat"><div class="v">2487万</div><div class="l">常住人口</div></div>
-        <div class="city-stat"><div class="v">16个</div><div class="l">下辖区</div></div>
+        <div class="city-stat"><div class="v">6340.5</div><div class="l"><span class="lang-en">Total Area km²</span><span class="lang-zh">总面积 km²</span></div></div>
+        <div class="city-stat"><div class="v">24.87M</div><div class="l"><span class="lang-en">Resident Population</span><span class="lang-zh">常住人口</span></div></div>
+        <div class="city-stat"><div class="v">16</div><div class="l"><span class="lang-en">Districts</span><span class="lang-zh">下辖区</span></div></div>
       </div>
     </div>
     <div class="city-card">
-      <div class="city-label">对比验证城市</div>
-      <div class="city-name">北京市</div>
-      <div class="city-detail">研究范围：市内六区（东城区、西城区、朝阳区、海淀区、丰台区、石景山区）</div>
-      <div class="city-detail" style="margin-top:0.3rem">最终确定 871 个研究单元</div>
+      <div class="city-label"><span class="lang-en">Comparative Validation City</span><span class="lang-zh">对比验证城市</span></div>
+      <div class="city-name"><span class="lang-en">Beijing</span><span class="lang-zh">北京市</span></div>
+      <div class="city-detail"><span class="lang-en">Study scope: Six inner districts (Dongcheng, Xicheng, Chaoyang, Haidian, Fengtai, Shijingshan)</span><span class="lang-zh">研究范围：市内六区（东城区、西城区、朝阳区、海淀区、丰台区、石景山区）</span></div>
+      <div class="city-detail" style="margin-top:0.3rem"><span class="lang-en">Final count: 871 study units</span><span class="lang-zh">最终确定 871 个研究单元</span></div>
       <div class="city-stat-row">
-        <div class="city-stat"><div class="v">16410</div><div class="l">总面积 km²</div></div>
-        <div class="city-stat"><div class="v">2184万</div><div class="l">常住人口</div></div>
-        <div class="city-stat"><div class="v">871</div><div class="l">研究单元</div></div>
+        <div class="city-stat"><div class="v">16410</div><div class="l"><span class="lang-en">Total Area km²</span><span class="lang-zh">总面积 km²</span></div></div>
+        <div class="city-stat"><div class="v">21.84M</div><div class="l"><span class="lang-en">Resident Population</span><span class="lang-zh">常住人口</span></div></div>
+        <div class="city-stat"><div class="v">871</div><div class="l"><span class="lang-en">Study Units</span><span class="lang-zh">研究单元</span></div></div>
       </div>
     </div>
     <div class="city-card" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-color:#bbf7d0">
-      <div class="city-label">情绪文本数据</div>
-      <div class="city-name" style="font-size:1.1rem">86,445条</div>
-      <div class="city-detail">北京市</div>
+      <div class="city-label"><span class="lang-en">Sentiment Text Data</span><span class="lang-zh">情绪文本数据</span></div>
+      <div class="city-name" style="font-size:1.1rem">86,445<span class="lang-en"> records</span><span class="lang-zh">条</span></div>
+      <div class="city-detail"><span class="lang-en">Beijing</span><span class="lang-zh">北京市</span></div>
       <div style="margin-top:1rem">
         <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:0.4rem">
-          <span>微博文本</span><span style="font-weight:700;color:#059669">10,765 条</span>
+          <span><span class="lang-en">Weibo texts</span><span class="lang-zh">微博文本</span></span><span style="font-weight:700;color:#059669">10,765</span>
         </div>
         <div style="background:#d1fae5;border-radius:4px;height:8px;margin-bottom:0.8rem">
           <div style="background:#10b981;width:12%;height:100%;border-radius:4px"></div>
         </div>
         <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:0.4rem">
-          <span>抖音文本</span><span style="font-weight:700;color:#059669">75,680 条</span>
+          <span><span class="lang-en">Douyin texts</span><span class="lang-zh">抖音文本</span></span><span style="font-weight:700;color:#059669">75,680</span>
         </div>
         <div style="background:#d1fae5;border-radius:4px;height:8px">
           <div style="background:#10b981;width:88%;height:100%;border-radius:4px"></div>
@@ -603,49 +618,49 @@
 <section class="data-section section-full">
   <div class="section" style="padding:5rem 2rem">
     <div class="section-title">04 · Data Sources</div>
-    <h2 class="section-heading">多源数据体系</h2>
-    <p class="section-desc" style="color:#64748b">整合地理空间数据、社交媒体数据、环境监测数据等多类型数据，构建全面的分析基础。</p>
+    <h2 class="section-heading"><span class="lang-en">Multi-Source Data System</span><span class="lang-zh">多源数据体系</span></h2>
+    <p class="section-desc" style="color:#64748b"><span class="lang-en">Integrates geospatial data, social media data, environmental monitoring data, and other data types to build a comprehensive analytical foundation.</span><span class="lang-zh">整合地理空间数据、社交媒体数据、环境监测数据等多类型数据，构建全面的分析基础。</span></p>
 
     <div class="data-grid">
       <div class="data-card">
         <div class="data-icon">🗺️</div>
-        <h4>SHP 地理数据</h4>
-        <p>来源：百度 API<br/>采集：2023年6月<br/>用途：底图与空间分析</p>
+        <h4>SHP <span class="lang-en">Geographic Data</span><span class="lang-zh">地理数据</span></h4>
+        <p><span class="lang-en">Source: Baidu API<br/>Collected: June 2023<br/>Use: Basemap &amp; spatial analysis</span><span class="lang-zh">来源：百度 API<br/>采集：2023年6月<br/>用途：底图与空间分析</span></p>
       </div>
       <div class="data-card">
         <div class="data-icon">📍</div>
-        <h4>POI 兴趣点数据</h4>
-        <p>来源：高德 API<br/>采集：2023年<br/>用途：设施可达性计算</p>
+        <h4>POI <span class="lang-en">Point of Interest Data</span><span class="lang-zh">兴趣点数据</span></h4>
+        <p><span class="lang-en">Source: Gaode API<br/>Collected: 2023<br/>Use: Facility accessibility calculation</span><span class="lang-zh">来源：高德 API<br/>采集：2023年<br/>用途：设施可达性计算</span></p>
       </div>
       <div class="data-card">
         <div class="data-icon">🏔️</div>
-        <h4>DEM 地形数据</h4>
-        <p>来源：地理空间数据云<br/>采集：2022年8月<br/>用途：空间分析辅助</p>
+        <h4>DEM <span class="lang-en">Terrain Data</span><span class="lang-zh">地形数据</span></h4>
+        <p><span class="lang-en">Source: Geospatial Data Cloud<br/>Collected: August 2022<br/>Use: Spatial analysis support</span><span class="lang-zh">来源：地理空间数据云<br/>采集：2022年8月<br/>用途：空间分析辅助</span></p>
       </div>
       <div class="data-card">
         <div class="data-icon">📱</div>
-        <h4>手机信令数据</h4>
-        <p>来源：手机运营商<br/>精度：Geohash 7位（154m×154m）<br/>用途：邻里活力度测算</p>
+        <h4><span class="lang-en">Mobile Signaling Data</span><span class="lang-zh">手机信令数据</span></h4>
+        <p><span class="lang-en">Source: Mobile carriers<br/>Precision: Geohash 7-digit (154m×154m)<br/>Use: Neighborhood vitality measurement</span><span class="lang-zh">来源：手机运营商<br/>精度：Geohash 7位（154m×154m）<br/>用途：邻里活力度测算</span></p>
       </div>
       <div class="data-card">
         <div class="data-icon">🌤️</div>
-        <h4>气象监测数据</h4>
-        <p>来源：中央气象台<br/>采集：2023.01–10<br/>用途：PM2.5、SO₂评估</p>
+        <h4><span class="lang-en">Meteorological Monitoring Data</span><span class="lang-zh">气象监测数据</span></h4>
+        <p><span class="lang-en">Source: China Meteorological Administration<br/>Collected: Jan–Oct 2023<br/>Use: PM2.5, SO₂ assessment</span><span class="lang-zh">来源：中央气象台<br/>采集：2023.01–10<br/>用途：PM2.5、SO₂评估</span></p>
       </div>
       <div class="data-card">
         <div class="data-icon">💬</div>
-        <h4>微博文本数据</h4>
-        <p>来源：weibo.com<br/>采集：2021–2023年<br/>用途：居民情绪分析</p>
+        <h4><span class="lang-en">Weibo Text Data</span><span class="lang-zh">微博文本数据</span></h4>
+        <p><span class="lang-en">Source: weibo.com<br/>Collected: 2021–2023<br/>Use: Resident sentiment analysis</span><span class="lang-zh">来源：weibo.com<br/>采集：2021–2023年<br/>用途：居民情绪分析</span></p>
       </div>
       <div class="data-card">
         <div class="data-icon">🎵</div>
-        <h4>抖音文本数据</h4>
-        <p>来源：douyin.com<br/>采集：2021–2023年<br/>用途：居民情绪分析</p>
+        <h4><span class="lang-en">Douyin Text Data</span><span class="lang-zh">抖音文本数据</span></h4>
+        <p><span class="lang-en">Source: douyin.com<br/>Collected: 2021–2023<br/>Use: Resident sentiment analysis</span><span class="lang-zh">来源：douyin.com<br/>采集：2021–2023年<br/>用途：居民情绪分析</span></p>
       </div>
       <div class="data-card">
         <div class="data-icon">🏠</div>
-        <h4>房地产数据</h4>
-        <p>来源：房地产平台<br/>指标：房价、容积率、建成年代<br/>用途：经济效益评价</p>
+        <h4><span class="lang-en">Real Estate Data</span><span class="lang-zh">房地产数据</span></h4>
+        <p><span class="lang-en">Source: Real estate platforms<br/>Indicators: housing price, FAR, construction year<br/>Use: Economic efficiency evaluation</span><span class="lang-zh">来源：房地产平台<br/>指标：房价、容积率、建成年代<br/>用途：经济效益评价</span></p>
       </div>
     </div>
   </div>
@@ -655,58 +670,58 @@
 <section class="method-section section-full" id="methodology">
   <div class="section" style="padding:5rem 2rem">
     <div class="section-title">05 · Methodology</div>
-    <h2 class="section-heading">技术路线与研究方法</h2>
-    <p class="section-desc">从指标构建到机器学习解释，形成完整的"数据—评价—分析—解释"方法链。</p>
+    <h2 class="section-heading"><span class="lang-en">Technical Workflow &amp; Research Methods</span><span class="lang-zh">技术路线与研究方法</span></h2>
+    <p class="section-desc"><span class="lang-en">From indicator construction to machine learning interpretation, forming a complete "Data — Evaluation — Analysis — Interpretation" methodology chain.</span><span class="lang-zh">从指标构建到机器学习解释，形成完整的"数据—评价—分析—解释"方法链。</span></p>
 
     <div class="method-flow">
       <div class="method-step">
         <div class="step-num">1</div>
         <div class="step-content">
-          <h3>住宅用地效率指标体系构建</h3>
-          <p>基于文献研究、区域特点及《社区生活圈规划技术指南》《城市居住区规划设计标准》等国家规范，筛选并细化17个效率评价指标，涵盖社会、经济、生态三大效益维度。</p>
+          <h3><span class="lang-en">Construction of Residential Land Efficiency Indicator System</span><span class="lang-zh">住宅用地效率指标体系构建</span></h3>
+          <p><span class="lang-en">Based on literature review, regional characteristics, and national standards (Community Living Circle Planning Technical Guidelines, Urban Residential Area Planning and Design Standards), 17 efficiency evaluation indicators were selected and refined, covering social, economic, and ecological benefit dimensions.</span><span class="lang-zh">基于文献研究、区域特点及《社区生活圈规划技术指南》《城市居住区规划设计标准》等国家规范，筛选并细化17个效率评价指标，涵盖社会、经济、生态三大效益维度。</span></p>
           <div class="step-tags">
-            <span class="tag">文献综述</span>
-            <span class="tag">可得性筛选</span>
-            <span class="tag">国家标准校验</span>
-            <span class="tag">17个指标</span>
+            <span class="tag"><span class="lang-en">Literature Review</span><span class="lang-zh">文献综述</span></span>
+            <span class="tag"><span class="lang-en">Availability Screening</span><span class="lang-zh">可得性筛选</span></span>
+            <span class="tag"><span class="lang-en">National Standards Validation</span><span class="lang-zh">国家标准校验</span></span>
+            <span class="tag">17 <span class="lang-en">Indicators</span><span class="lang-zh">个指标</span></span>
           </div>
         </div>
       </div>
       <div class="method-step">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3>熵权 TOPSIS 法评价用地综合效率</h3>
-          <p>对多类型数据进行空间预处理后，运用熵权法客观确定各指标权重，再通过 TOPSIS 优劣解距离法计算每个住区与理想解的相对贴近度，得出住区综合效率得分，并采用自然断点法分组。</p>
+          <h3><span class="lang-en">Entropy-Weight TOPSIS Method for Comprehensive Land Efficiency Evaluation</span><span class="lang-zh">熵权 TOPSIS 法评价用地综合效率</span></h3>
+          <p><span class="lang-en">After spatial preprocessing of multi-type data, the entropy-weight method objectively determines each indicator's weight. The TOPSIS method then calculates each residential community's relative closeness to the ideal solution to produce a comprehensive efficiency score, grouped by natural breaks.</span><span class="lang-zh">对多类型数据进行空间预处理后，运用熵权法客观确定各指标权重，再通过 TOPSIS 优劣解距离法计算每个住区与理想解的相对贴近度，得出住区综合效率得分，并采用自然断点法分组。</span></p>
           <div class="step-tags">
-            <span class="tag">ArcGIS 空间分析</span>
-            <span class="tag">熵权法</span>
-            <span class="tag">TOPSIS 模型</span>
-            <span class="tag">自然断点分组</span>
+            <span class="tag">ArcGIS <span class="lang-en">Spatial Analysis</span><span class="lang-zh">空间分析</span></span>
+            <span class="tag"><span class="lang-en">Entropy-Weight Method</span><span class="lang-zh">熵权法</span></span>
+            <span class="tag">TOPSIS <span class="lang-en">Model</span><span class="lang-zh">模型</span></span>
+            <span class="tag"><span class="lang-en">Natural Breaks Classification</span><span class="lang-zh">自然断点分组</span></span>
           </div>
         </div>
       </div>
       <div class="method-step">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h3>百度 NLP 计算居民幸福感得分</h3>
-          <p>爬取微博、抖音签到文本，使用百度 PaddlePaddleNLP 深度学习平台进行情感倾向分类，获得每条文本的正向概率与负向概率，最终以"文本得分 = 正向得分 − 负向得分"汇总计算住区幸福感均值。</p>
+          <h3><span class="lang-en">Baidu NLP to Compute Residents' Happiness Scores</span><span class="lang-zh">百度 NLP 计算居民幸福感得分</span></h3>
+          <p><span class="lang-en">Check-in texts from Weibo and Douyin were crawled, then classified using Baidu's PaddlePaddleNLP deep learning platform for sentiment polarity. Each text's positive and negative probability scores were obtained, and happiness scores were aggregated as "text score = positive score − negative score."</span><span class="lang-zh">爬取微博、抖音签到文本，使用百度 PaddlePaddleNLP 深度学习平台进行情感倾向分类，获得每条文本的正向概率与负向概率，最终以"文本得分 = 正向得分 − 负向得分"汇总计算住区幸福感均值。</span></p>
           <div class="step-tags">
-            <span class="tag">文本爬取</span>
-            <span class="tag">百度 NLP API</span>
+            <span class="tag"><span class="lang-en">Text Crawling</span><span class="lang-zh">文本爬取</span></span>
+            <span class="tag">Baidu NLP API</span>
             <span class="tag">PaddlePaddleNLP</span>
-            <span class="tag">空间插值</span>
+            <span class="tag"><span class="lang-en">Spatial Interpolation</span><span class="lang-zh">空间插值</span></span>
           </div>
         </div>
       </div>
       <div class="method-step">
         <div class="step-num">4</div>
         <div class="step-content">
-          <h3>XGBoost 机器学习回归分析</h3>
-          <p>以住宅用地效率指标为特征、幸福感得分为目标，训练 XGBoost 梯度提升树模型，评估 MAE、RMSE 和 R² 指标，按高/低效率住区分段训练，深入探究效率对幸福感的非线性影响。</p>
+          <h3><span class="lang-en">XGBoost Machine Learning Regression Analysis</span><span class="lang-zh">XGBoost 机器学习回归分析</span></h3>
+          <p><span class="lang-en">Using residential land efficiency indicators as features and happiness scores as the target, XGBoost gradient boosting tree models were trained, evaluating MAE, RMSE, and R² metrics. Models were trained separately for high/low efficiency communities to explore non-linear effects of efficiency on happiness.</span><span class="lang-zh">以住宅用地效率指标为特征、幸福感得分为目标，训练 XGBoost 梯度提升树模型，评估 MAE、RMSE 和 R² 指标，按高/低效率住区分段训练，深入探究效率对幸福感的非线性影响。</span></p>
           <div class="step-tags">
             <span class="tag">XGBoost</span>
-            <span class="tag">梯度提升</span>
-            <span class="tag">高/低效率分段</span>
+            <span class="tag"><span class="lang-en">Gradient Boosting</span><span class="lang-zh">梯度提升</span></span>
+            <span class="tag"><span class="lang-en">High/Low Efficiency Segmentation</span><span class="lang-zh">高/低效率分段</span></span>
             <span class="tag">MAE · RMSE · R²</span>
           </div>
         </div>
@@ -714,12 +729,12 @@
       <div class="method-step">
         <div class="step-num">5</div>
         <div class="step-content">
-          <h3>TreeSHAP 可解释性机器学习分析</h3>
-          <p>引入 TreeSHAP（基于博弈论的 SHAP 变体）对 XGBoost 模型进行解释，通过 SHAP 绝对均值排序识别重要指标，通过 SHAP 分布图观察各指标的正负向影响，通过瀑布图（Waterfall Plot）解释单一样本的预测路径。</p>
+          <h3><span class="lang-en">TreeSHAP Interpretable Machine Learning Analysis</span><span class="lang-zh">TreeSHAP 可解释性机器学习分析</span></h3>
+          <p><span class="lang-en">TreeSHAP (a game-theory-based SHAP variant) was introduced to interpret the XGBoost model. Key indicators were identified by ranking mean absolute SHAP values; positive/negative effects of each indicator were observed via SHAP distribution plots; and individual sample prediction paths were explained using Waterfall Plots.</span><span class="lang-zh">引入 TreeSHAP（基于博弈论的 SHAP 变体）对 XGBoost 模型进行解释，通过 SHAP 绝对均值排序识别重要指标，通过 SHAP 分布图观察各指标的正负向影响，通过瀑布图（Waterfall Plot）解释单一样本的预测路径。</span></p>
           <div class="step-tags">
             <span class="tag">SHAP</span>
             <span class="tag">TreeSHAP</span>
-            <span class="tag">指标重要性排序</span>
+            <span class="tag"><span class="lang-en">Indicator Importance Ranking</span><span class="lang-zh">指标重要性排序</span></span>
             <span class="tag">Waterfall Plot</span>
           </div>
         </div>
@@ -731,72 +746,72 @@
 <!-- ==================== INDICATOR SYSTEM ==================== -->
 <section class="section indicators-section" id="indicators">
   <div class="section-title">06 · Indicator System</div>
-  <h2 class="section-heading">住宅用地效率评价指标体系</h2>
-  <p class="section-desc">从社会、经济、生态三大效益维度构建 17 个要素层指标，覆盖建成环境、服务设施、经济价值与生态质量。</p>
+  <h2 class="section-heading"><span class="lang-en">Residential Land Efficiency Evaluation Indicator System</span><span class="lang-zh">住宅用地效率评价指标体系</span></h2>
+  <p class="section-desc"><span class="lang-en">17 factor-level indicators are constructed across three benefit dimensions — social, economic, and ecological — covering built environment, service facilities, economic value, and ecological quality.</span><span class="lang-zh">从社会、经济、生态三大效益维度构建 17 个要素层指标，覆盖建成环境、服务设施、经济价值与生态质量。</span></p>
 
-  <!-- 社会效益 -->
+  <!-- Social Benefit -->
   <div class="benefit-group mt-8">
     <div class="benefit-header">
       <div class="benefit-dot"></div>
-      <h3>社会效益 Social Benefit（11项）</h3>
+      <h3><span class="lang-en">Social Benefit</span><span class="lang-zh">社会效益</span> Social Benefit（11<span class="lang-en"> items</span><span class="lang-zh">项</span>）</h3>
     </div>
     <table class="indicator-table">
       <thead>
         <tr>
-          <th>代码</th>
-          <th>指标名称</th>
-          <th>数据来源</th>
-          <th>计算方法</th>
+          <th><span class="lang-en">Code</span><span class="lang-zh">代码</span></th>
+          <th><span class="lang-en">Indicator Name</span><span class="lang-zh">指标名称</span></th>
+          <th><span class="lang-en">Data Source</span><span class="lang-zh">数据来源</span></th>
+          <th><span class="lang-en">Calculation Method</span><span class="lang-zh">计算方法</span></th>
         </tr>
       </thead>
       <tbody>
-        <tr><td><span class="indicator-code">A1</span></td><td>建成年代</td><td>房地产网站</td><td>建成年份</td></tr>
-        <tr><td><span class="indicator-code">A2</span></td><td>人均建筑面积</td><td>房地产网站</td><td>总建筑面积 / 总户数 × 平均人数</td></tr>
-        <tr><td><span class="indicator-code">A3</span></td><td>邻里活力度</td><td>手机信令数据</td><td>工作日内累计手机用户总数，反映内部人流活动强度</td></tr>
-        <tr><td><span class="indicator-code">A4</span></td><td>交通场站可达性</td><td>OSM 路网 + POI</td><td>地铁站 1000m 覆盖 + 公交站 1000m 覆盖（二值加和）</td></tr>
-        <tr><td><span class="indicator-code">A5</span></td><td>公园广场可达性</td><td>POI 数据</td><td>ArcGIS 服务区分析，1000m 覆盖范围</td></tr>
-        <tr><td><span class="indicator-code">A6</span></td><td>教育设施可达性</td><td>POI 数据</td><td>幼儿园 500m + 小学 1000m + 初中 1500m（三值加和）</td></tr>
-        <tr><td><span class="indicator-code">A7</span></td><td>医疗设施可达性</td><td>POI 数据</td><td>诊所 500m + 专科医院 1000m + 综合医院 1500m</td></tr>
-        <tr><td><span class="indicator-code">A8</span></td><td>养老设施可达性</td><td>POI 数据</td><td>养老院 1500m 覆盖范围</td></tr>
-        <tr><td><span class="indicator-code">A9</span></td><td>购物设施可达性</td><td>POI 数据</td><td>商场 / 菜市场 / 生鲜超市 1000m 覆盖</td></tr>
-        <tr><td><span class="indicator-code">A10</span></td><td>文化设施可达性</td><td>POI 数据</td><td>文化设施 1500m 覆盖</td></tr>
-        <tr><td><span class="indicator-code">A11</span></td><td>餐饮设施可达性</td><td>POI 数据</td><td>生活服务设施 1000m 覆盖</td></tr>
+        <tr><td><span class="indicator-code">A1</span></td><td><span class="lang-en">Construction Year</span><span class="lang-zh">建成年代</span></td><td><span class="lang-en">Real estate websites</span><span class="lang-zh">房地产网站</span></td><td><span class="lang-en">Year built</span><span class="lang-zh">建成年份</span></td></tr>
+        <tr><td><span class="indicator-code">A2</span></td><td><span class="lang-en">Per Capita Floor Area</span><span class="lang-zh">人均建筑面积</span></td><td><span class="lang-en">Real estate websites</span><span class="lang-zh">房地产网站</span></td><td><span class="lang-en">Total floor area / total households × avg. persons</span><span class="lang-zh">总建筑面积 / 总户数 × 平均人数</span></td></tr>
+        <tr><td><span class="indicator-code">A3</span></td><td><span class="lang-en">Neighborhood Vitality</span><span class="lang-zh">邻里活力度</span></td><td><span class="lang-en">Mobile signaling data</span><span class="lang-zh">手机信令数据</span></td><td><span class="lang-en">Cumulative mobile users on weekdays, reflecting internal pedestrian activity intensity</span><span class="lang-zh">工作日内累计手机用户总数，反映内部人流活动强度</span></td></tr>
+        <tr><td><span class="indicator-code">A4</span></td><td><span class="lang-en">Transit Accessibility</span><span class="lang-zh">交通场站可达性</span></td><td>OSM + POI</td><td><span class="lang-en">Metro station 1000m coverage + bus stop 1000m coverage (binary sum)</span><span class="lang-zh">地铁站 1000m 覆盖 + 公交站 1000m 覆盖（二值加和）</span></td></tr>
+        <tr><td><span class="indicator-code">A5</span></td><td><span class="lang-en">Park &amp; Plaza Accessibility</span><span class="lang-zh">公园广场可达性</span></td><td>POI</td><td><span class="lang-en">ArcGIS service area analysis, 1000m coverage</span><span class="lang-zh">ArcGIS 服务区分析，1000m 覆盖范围</span></td></tr>
+        <tr><td><span class="indicator-code">A6</span></td><td><span class="lang-en">Education Facility Accessibility</span><span class="lang-zh">教育设施可达性</span></td><td>POI</td><td><span class="lang-en">Kindergarten 500m + primary school 1000m + middle school 1500m (triple sum)</span><span class="lang-zh">幼儿园 500m + 小学 1000m + 初中 1500m（三值加和）</span></td></tr>
+        <tr><td><span class="indicator-code">A7</span></td><td><span class="lang-en">Medical Facility Accessibility</span><span class="lang-zh">医疗设施可达性</span></td><td>POI</td><td><span class="lang-en">Clinic 500m + specialist hospital 1000m + general hospital 1500m</span><span class="lang-zh">诊所 500m + 专科医院 1000m + 综合医院 1500m</span></td></tr>
+        <tr><td><span class="indicator-code">A8</span></td><td><span class="lang-en">Elder Care Facility Accessibility</span><span class="lang-zh">养老设施可达性</span></td><td>POI</td><td><span class="lang-en">Nursing home 1500m coverage</span><span class="lang-zh">养老院 1500m 覆盖范围</span></td></tr>
+        <tr><td><span class="indicator-code">A9</span></td><td><span class="lang-en">Shopping Facility Accessibility</span><span class="lang-zh">购物设施可达性</span></td><td>POI</td><td><span class="lang-en">Mall / wet market / fresh supermarket 1000m coverage</span><span class="lang-zh">商场 / 菜市场 / 生鲜超市 1000m 覆盖</span></td></tr>
+        <tr><td><span class="indicator-code">A10</span></td><td><span class="lang-en">Cultural Facility Accessibility</span><span class="lang-zh">文化设施可达性</span></td><td>POI</td><td><span class="lang-en">Cultural facilities 1500m coverage</span><span class="lang-zh">文化设施 1500m 覆盖</span></td></tr>
+        <tr><td><span class="indicator-code">A11</span></td><td><span class="lang-en">Dining Facility Accessibility</span><span class="lang-zh">餐饮设施可达性</span></td><td>POI</td><td><span class="lang-en">Life service facilities 1000m coverage</span><span class="lang-zh">生活服务设施 1000m 覆盖</span></td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- 经济效益 -->
+  <!-- Economic Benefit -->
   <div class="benefit-group mt-8">
     <div class="benefit-header">
       <div class="benefit-dot amber"></div>
-      <h3>经济效益 Economic Benefit（4项）</h3>
+      <h3><span class="lang-en">Economic Benefit</span><span class="lang-zh">经济效益</span> Economic Benefit（4<span class="lang-en"> items</span><span class="lang-zh">项</span>）</h3>
     </div>
     <table class="indicator-table">
       <thead>
-        <tr><th>代码</th><th>指标名称</th><th>数据来源</th><th>计算方法</th></tr>
+        <tr><th><span class="lang-en">Code</span><span class="lang-zh">代码</span></th><th><span class="lang-en">Indicator Name</span><span class="lang-zh">指标名称</span></th><th><span class="lang-en">Data Source</span><span class="lang-zh">数据来源</span></th><th><span class="lang-en">Calculation Method</span><span class="lang-zh">计算方法</span></th></tr>
       </thead>
       <tbody>
-        <tr><td><span class="indicator-code">B1</span></td><td>容积率</td><td>房地产网站</td><td>总建筑面积 / 总用地面积</td></tr>
-        <tr><td><span class="indicator-code">B2</span></td><td>房价</td><td>房地产平台</td><td>当前房价（元/m²）</td></tr>
-        <tr><td><span class="indicator-code">B3</span></td><td>物业费</td><td>房地产平台</td><td>当前物业费（元/m²/月）</td></tr>
-        <tr><td><span class="indicator-code">B4</span></td><td>房屋闲置率</td><td>房地产平台</td><td>在售房屋数量 / 房屋总数量</td></tr>
+        <tr><td><span class="indicator-code">B1</span></td><td><span class="lang-en">Floor Area Ratio (FAR)</span><span class="lang-zh">容积率</span></td><td><span class="lang-en">Real estate websites</span><span class="lang-zh">房地产网站</span></td><td><span class="lang-en">Total floor area / total land area</span><span class="lang-zh">总建筑面积 / 总用地面积</span></td></tr>
+        <tr><td><span class="indicator-code">B2</span></td><td><span class="lang-en">Housing Price</span><span class="lang-zh">房价</span></td><td><span class="lang-en">Real estate platforms</span><span class="lang-zh">房地产平台</span></td><td><span class="lang-en">Current price (CNY/m²)</span><span class="lang-zh">当前房价（元/m²）</span></td></tr>
+        <tr><td><span class="indicator-code">B3</span></td><td><span class="lang-en">Property Management Fee</span><span class="lang-zh">物业费</span></td><td><span class="lang-en">Real estate platforms</span><span class="lang-zh">房地产平台</span></td><td><span class="lang-en">Current fee (CNY/m²/month)</span><span class="lang-zh">当前物业费（元/m²/月）</span></td></tr>
+        <tr><td><span class="indicator-code">B4</span></td><td><span class="lang-en">Housing Vacancy Rate</span><span class="lang-zh">房屋闲置率</span></td><td><span class="lang-en">Real estate platforms</span><span class="lang-zh">房地产平台</span></td><td><span class="lang-en">Units for sale / total units</span><span class="lang-zh">在售房屋数量 / 房屋总数量</span></td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- 生态效益 -->
+  <!-- Ecological Benefit -->
   <div class="benefit-group mt-8">
     <div class="benefit-header">
       <div class="benefit-dot green"></div>
-      <h3>生态效益 Ecological Benefit（2项）</h3>
+      <h3><span class="lang-en">Ecological Benefit</span><span class="lang-zh">生态效益</span> Ecological Benefit（2<span class="lang-en"> items</span><span class="lang-zh">项</span>）</h3>
     </div>
     <table class="indicator-table">
       <thead>
-        <tr><th>代码</th><th>指标名称</th><th>数据来源</th><th>计算方法</th></tr>
+        <tr><th><span class="lang-en">Code</span><span class="lang-zh">代码</span></th><th><span class="lang-en">Indicator Name</span><span class="lang-zh">指标名称</span></th><th><span class="lang-en">Data Source</span><span class="lang-zh">数据来源</span></th><th><span class="lang-en">Calculation Method</span><span class="lang-zh">计算方法</span></th></tr>
       </thead>
       <tbody>
-        <tr><td><span class="indicator-code">C1</span></td><td>绿化覆盖率</td><td>绿地 SHP 数据</td><td>内部绿地面积 / 用地总面积</td></tr>
-        <tr><td><span class="indicator-code">C2</span></td><td>空气污染度</td><td>环境监测站数据</td><td>ArcGIS 泰森多边形分析，计算最近监测站的空气污染评分</td></tr>
+        <tr><td><span class="indicator-code">C1</span></td><td><span class="lang-en">Green Coverage Rate</span><span class="lang-zh">绿化覆盖率</span></td><td><span class="lang-en">Green space SHP data</span><span class="lang-zh">绿地 SHP 数据</span></td><td><span class="lang-en">Internal green area / total land area</span><span class="lang-zh">内部绿地面积 / 用地总面积</span></td></tr>
+        <tr><td><span class="indicator-code">C2</span></td><td><span class="lang-en">Air Pollution Index</span><span class="lang-zh">空气污染度</span></td><td><span class="lang-en">Environmental monitoring stations</span><span class="lang-zh">环境监测站数据</span></td><td><span class="lang-en">ArcGIS Thiessen polygon analysis, computing air pollution score from nearest monitoring station</span><span class="lang-zh">ArcGIS 泰森多边形分析，计算最近监测站的空气污染评分</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -807,152 +822,152 @@
 <!-- ==================== RESULTS ==================== -->
 <section class="section results-section" id="results">
   <div class="section-title">07 · Results</div>
-  <h2 class="section-heading">研究结果</h2>
-  <p class="section-desc">从住宅用地效率空间分布、居民幸福感分布到二者相关性机器学习分析，全面呈现研究发现。</p>
+  <h2 class="section-heading"><span class="lang-en">Research Results</span><span class="lang-zh">研究结果</span></h2>
+  <p class="section-desc"><span class="lang-en">From spatial distribution of residential land efficiency and residents' happiness to machine learning correlation analysis, presenting comprehensive research findings.</span><span class="lang-zh">从住宅用地效率空间分布、居民幸福感分布到二者相关性机器学习分析，全面呈现研究发现。</span></p>
 
   <div class="results-tabs">
-    <button class="tab-btn active" onclick="showTab('sh-eff')">上海·用地效率</button>
-    <button class="tab-btn" onclick="showTab('sh-happy')">上海·幸福感</button>
-    <button class="tab-btn" onclick="showTab('sh-high')">上海·高效住区分析</button>
-    <button class="tab-btn" onclick="showTab('sh-low')">上海·低效住区分析</button>
-    <button class="tab-btn" onclick="showTab('bj')">北京·对比分析</button>
+    <button class="tab-btn active" onclick="showTab('sh-eff')"><span class="lang-en">Shanghai · Land Efficiency</span><span class="lang-zh">上海·用地效率</span></button>
+    <button class="tab-btn" onclick="showTab('sh-happy')"><span class="lang-en">Shanghai · Happiness</span><span class="lang-zh">上海·幸福感</span></button>
+    <button class="tab-btn" onclick="showTab('sh-high')"><span class="lang-en">Shanghai · High-Efficiency Analysis</span><span class="lang-zh">上海·高效住区分析</span></button>
+    <button class="tab-btn" onclick="showTab('sh-low')"><span class="lang-en">Shanghai · Low-Efficiency Analysis</span><span class="lang-zh">上海·低效住区分析</span></button>
+    <button class="tab-btn" onclick="showTab('bj')"><span class="lang-en">Beijing · Comparative Analysis</span><span class="lang-zh">北京·对比分析</span></button>
   </div>
 
-  <!-- 上海 用地效率 -->
+  <!-- Shanghai Land Efficiency -->
   <div class="tab-panel active" id="sh-eff">
     <div class="result-grid">
       <div class="result-card">
-        <h4>社会效益分布</h4>
-        <p>建成年代以 1992–2008 年为主，西侧小区整体较新；人均建筑面积整体偏低，东部和北部相对充裕；活力度偏低的小区占多数，距中心越远活力度相对越高。</p>
+        <h4><span class="lang-en">Social Benefit Distribution</span><span class="lang-zh">社会效益分布</span></h4>
+        <p><span class="lang-en">Construction years are mainly 1992–2008, with newer communities on the west side; per capita floor area is generally low, with eastern and northern areas relatively more spacious; most communities have low vitality, with higher vitality farther from the center.</span><span class="lang-zh">建成年代以 1992–2008 年为主，西侧小区整体较新；人均建筑面积整体偏低，东部和北部相对充裕；活力度偏低的小区占多数，距中心越远活力度相对越高。</span></p>
       </div>
       <div class="result-card">
-        <h4>设施可达性分布</h4>
-        <p>交通场站可达性自市中心向外围递减；教育、医疗设施基本符合"中心高、四周低"规律，东南侧存在低值集聚；养老设施可达性整体较好，高值集中在西侧和南侧。</p>
+        <h4><span class="lang-en">Facility Accessibility Distribution</span><span class="lang-zh">设施可达性分布</span></h4>
+        <p><span class="lang-en">Transit accessibility decreases from the city center outward; education and medical facilities broadly follow the "high center, low periphery" pattern with low-value clustering in the southeast; elder care accessibility is generally good, with high values concentrated in the west and south.</span><span class="lang-zh">交通场站可达性自市中心向外围递减；教育、医疗设施基本符合"中心高、四周低"规律，东南侧存在低值集聚；养老设施可达性整体较好，高值集中在西侧和南侧。</span></p>
       </div>
       <div class="result-card">
-        <h4>经济效益分布</h4>
-        <p>中心区容积率大，向四周递减；房价呈明显梯度，自中心向外递减；西部和南部房屋闲置率高；市中心和交通便利地段闲置率较低。</p>
+        <h4><span class="lang-en">Economic Benefit Distribution</span><span class="lang-zh">经济效益分布</span></h4>
+        <p><span class="lang-en">Floor area ratio is higher in the center and decreases outward; housing prices show a clear gradient decreasing from the center; western and southern areas have higher vacancy rates; the city center and transport-convenient areas have lower vacancy rates.</span><span class="lang-zh">中心区容积率大，向四周递减；房价呈明显梯度，自中心向外递减；西部和南部房屋闲置率高；市中心和交通便利地段闲置率较低。</span></p>
       </div>
       <div class="result-card">
-        <h4>生态效益分布</h4>
-        <p>绿化率东侧优于西侧，高值主要分布在东南方，中心区及西侧绿化率较低；空气污染东侧低于西侧，中心商业区和交通繁忙区域污染度较高。</p>
+        <h4><span class="lang-en">Ecological Benefit Distribution</span><span class="lang-zh">生态效益分布</span></h4>
+        <p><span class="lang-en">Green coverage is better on the east than west, with high values mainly in the southeast; the center and west have lower green rates. Air pollution is lower in the east than west, with higher pollution in the central commercial and busy traffic areas.</span><span class="lang-zh">绿化率东侧优于西侧，高值主要分布在东南方，中心区及西侧绿化率较低；空气污染东侧低于西侧，中心商业区和交通繁忙区域污染度较高。</span></p>
       </div>
     </div>
     <div class="corr-box mt-4">
-      <h4>TOPSIS 综合效率评价结论</h4>
-      <p>基于熵权 TOPSIS 法耦合17个指标，以自然断点法分组，住区效率分布较为均匀，<strong>高效率住区分布在西侧多于东侧</strong>，低效率住区在中部偏北、偏西部较为集中。</p>
+      <h4><span class="lang-en">TOPSIS Comprehensive Efficiency Evaluation Conclusion</span><span class="lang-zh">TOPSIS 综合效率评价结论</span></h4>
+      <p><span class="lang-en">Based on the entropy-weight TOPSIS method coupling 17 indicators and grouped by natural breaks, community efficiency is relatively evenly distributed. <strong>High-efficiency communities are more concentrated on the west side than the east</strong>, while low-efficiency communities cluster in the north-central and northwest areas.</span><span class="lang-zh">基于熵权 TOPSIS 法耦合17个指标，以自然断点法分组，住区效率分布较为均匀，<strong>高效率住区分布在西侧多于东侧</strong>，低效率住区在中部偏北、偏西部较为集中。</span></p>
     </div>
   </div>
 
-  <!-- 上海 幸福感 -->
+  <!-- Shanghai Happiness -->
   <div class="tab-panel" id="sh-happy">
     <div class="result-grid">
       <div class="result-card">
-        <h4>整体分布特征</h4>
-        <p>幸福感评价得分区间较为集中，整体差异不大。<br/>核心城区幸福感普遍较低，离核心区越远，住区幸福感逐步升高，高值零散分布在核心区外围。</p>
+        <h4><span class="lang-en">Overall Distribution Pattern</span><span class="lang-zh">整体分布特征</span></h4>
+        <p><span class="lang-en">Happiness score ranges are relatively concentrated with little overall variation.<br/>Core urban areas generally show lower happiness; the farther from the core area, the higher the happiness level, with high values scattered around the periphery.</span><span class="lang-zh">幸福感评价得分区间较为集中，整体差异不大。<br/>核心城区幸福感普遍较低，离核心区越远，住区幸福感逐步升高，高值零散分布在核心区外围。</span></p>
       </div>
       <div class="result-card">
-        <h4>空间规律</h4>
-        <p>幸福感与空间距离核心区的远近呈现明显的梯度规律，内城高密度、高压力环境对居民情绪有负面影响，郊区环境相对宜居。</p>
+        <h4><span class="lang-en">Spatial Pattern</span><span class="lang-zh">空间规律</span></h4>
+        <p><span class="lang-en">Happiness shows a clear gradient pattern relative to distance from the core area. The high-density, high-stress inner-city environment negatively affects residents' emotions, while suburban environments are relatively more livable.</span><span class="lang-zh">幸福感与空间距离核心区的远近呈现明显的梯度规律，内城高密度、高压力环境对居民情绪有负面影响，郊区环境相对宜居。</span></p>
       </div>
     </div>
     <div class="corr-box mt-4" style="background:#fef9c3;border-color:#fde68a">
-      <h4 style="color:#92400e">相关性检验（斯皮尔曼相关）</h4>
-      <p style="color:#78350f">上海数据 p 值 = 0.8 > 0.05，效率得分与幸福感相关性<strong>不显著</strong>，相关系数极低。推测数据关系较为复杂，需引入机器学习模型进一步探究。</p>
+      <h4 style="color:#92400e"><span class="lang-en">Correlation Test (Spearman Correlation)</span><span class="lang-zh">相关性检验（斯皮尔曼相关）</span></h4>
+      <p style="color:#78350f"><span class="lang-en">Shanghai data p = 0.8 &gt; 0.05; the correlation between efficiency scores and happiness is <strong>not significant</strong>, with an extremely low correlation coefficient. The data relationship is suspected to be complex, requiring machine learning models for further investigation.</span><span class="lang-zh">上海数据 p 值 = 0.8 > 0.05，效率得分与幸福感相关性<strong>不显著</strong>，相关系数极低。推测数据关系较为复杂，需引入机器学习模型进一步探究。</span></p>
     </div>
   </div>
 
-  <!-- 上海 高效住区 -->
+  <!-- Shanghai High-Efficiency -->
   <div class="tab-panel" id="sh-high">
-    <p class="text-sm text-muted" style="margin-bottom:1rem">基于 TreeSHAP 模型对上海高效率住区居民幸福感影响因素的解析</p>
-    <p style="font-size:0.85rem;color:var(--ink);margin-bottom:1rem"><strong>重要指标（TOP 5）：</strong>绿化覆盖率、房价、容积率、邻里活力度、人均建筑面积</p>
+    <p class="text-sm text-muted" style="margin-bottom:1rem"><span class="lang-en">TreeSHAP model analysis of factors influencing residents' happiness in Shanghai's high-efficiency communities</span><span class="lang-zh">基于 TreeSHAP 模型对上海高效率住区居民幸福感影响因素的解析</span></p>
+    <p style="font-size:0.85rem;color:var(--ink);margin-bottom:1rem"><strong><span class="lang-en">Key Indicators (TOP 5):</span><span class="lang-zh">重要指标（TOP 5）：</span></strong> <span class="lang-en">Green coverage rate, housing price, FAR, neighborhood vitality, per capita floor area</span><span class="lang-zh">绿化覆盖率、房价、容积率、邻里活力度、人均建筑面积</span></p>
     <div>
       <div class="finding-item">
         <div class="finding-dot pos"></div>
-        <p><strong>绿化覆盖率</strong>：与幸福感正相关，高绿化带来更多开放空间，推动邻里关系和谐密切</p>
+        <p><strong><span class="lang-en">Green Coverage Rate</span><span class="lang-zh">绿化覆盖率</span></strong><span class="lang-en">: Positively correlated with happiness; high greenery provides more open spaces, fostering harmonious neighborhood relationships.</span><span class="lang-zh">：与幸福感正相关，高绿化带来更多开放空间，推动邻里关系和谐密切</span></p>
       </div>
       <div class="finding-item">
         <div class="finding-dot pos"></div>
-        <p><strong>房价</strong>：高效住区中房价越高，居民情绪价值升高；体现居民愿以金钱置换幸福感</p>
+        <p><strong><span class="lang-en">Housing Price</span><span class="lang-zh">房价</span></strong><span class="lang-en">: In high-efficiency communities, higher housing prices correlate with higher emotional value; residents are willing to pay for happiness.</span><span class="lang-zh">：高效住区中房价越高，居民情绪价值升高；体现居民愿以金钱置换幸福感</span></p>
       </div>
       <div class="finding-item">
         <div class="finding-dot pos"></div>
-        <p><strong>容积率</strong>：与幸福感正相关，容积率越高，幸福感越高</p>
+        <p><strong><span class="lang-en">Floor Area Ratio</span><span class="lang-zh">容积率</span></strong><span class="lang-en">: Positively correlated with happiness; higher FAR corresponds to higher happiness.</span><span class="lang-zh">：与幸福感正相关，容积率越高，幸福感越高</span></p>
       </div>
       <div class="finding-item">
         <div class="finding-dot pos"></div>
-        <p><strong>邻里活力度</strong>：正相关，活力度增加提升居民归属感和安全感</p>
+        <p><strong><span class="lang-en">Neighborhood Vitality</span><span class="lang-zh">邻里活力度</span></strong><span class="lang-en">: Positive correlation; increased vitality enhances residents' sense of belonging and security.</span><span class="lang-zh">：正相关，活力度增加提升居民归属感和安全感</span></p>
       </div>
       <div class="finding-item">
         <div class="finding-dot neg"></div>
-        <p><strong>人均建筑面积</strong>：负相关，人均建筑面积越大，幸福感反而越低</p>
+        <p><strong><span class="lang-en">Per Capita Floor Area</span><span class="lang-zh">人均建筑面积</span></strong><span class="lang-en">: Negative correlation; larger per capita floor area paradoxically corresponds to lower happiness.</span><span class="lang-zh">：负相关，人均建筑面积越大，幸福感反而越低</span></p>
       </div>
       <div class="finding-item">
         <div class="finding-dot neg"></div>
-        <p><strong>建成年代</strong>：负相关，建成时间越久，设施老化，幸福感越低</p>
+        <p><strong><span class="lang-en">Construction Year</span><span class="lang-zh">建成年代</span></strong><span class="lang-en">: Negative correlation; older construction leads to aging facilities and lower happiness.</span><span class="lang-zh">：负相关，建成时间越久，设施老化，幸福感越低</span></p>
       </div>
       <div class="finding-item">
         <div class="finding-dot neg"></div>
-        <p><strong>房屋闲置率</strong>：负相关，闲置率越高代表社区资源浪费与邻里关系疏远</p>
+        <p><strong><span class="lang-en">Housing Vacancy Rate</span><span class="lang-zh">房屋闲置率</span></strong><span class="lang-en">: Negative correlation; higher vacancy rate represents resource waste and weakened neighborhood relationships.</span><span class="lang-zh">：负相关，闲置率越高代表社区资源浪费与邻里关系疏远</span></p>
       </div>
     </div>
   </div>
 
-  <!-- 上海 低效住区 -->
+  <!-- Shanghai Low-Efficiency -->
   <div class="tab-panel" id="sh-low">
-    <p class="text-sm text-muted" style="margin-bottom:1rem">基于 TreeSHAP 模型对上海低效率住区居民幸福感影响因素的解析</p>
-    <p style="font-size:0.85rem;color:var(--ink);margin-bottom:1rem"><strong>重要指标（TOP 5）：</strong>建成年代、人均建筑面积、房价、物业费、房屋闲置率</p>
+    <p class="text-sm text-muted" style="margin-bottom:1rem"><span class="lang-en">TreeSHAP model analysis of factors influencing residents' happiness in Shanghai's low-efficiency communities</span><span class="lang-zh">基于 TreeSHAP 模型对上海低效率住区居民幸福感影响因素的解析</span></p>
+    <p style="font-size:0.85rem;color:var(--ink);margin-bottom:1rem"><strong><span class="lang-en">Key Indicators (TOP 5):</span><span class="lang-zh">重要指标（TOP 5）：</span></strong> <span class="lang-en">Construction year, per capita floor area, housing price, property management fee, vacancy rate</span><span class="lang-zh">建成年代、人均建筑面积、房价、物业费、房屋闲置率</span></p>
     <div>
       <div class="finding-item">
         <div class="finding-dot neg"></div>
-        <p><strong>建成年代</strong>：负相关，建成时间旧带来设施老化等问题，降低居民幸福感</p>
+        <p><strong><span class="lang-en">Construction Year</span><span class="lang-zh">建成年代</span></strong><span class="lang-en">: Negative correlation; older construction brings aging facilities, lowering residents' happiness.</span><span class="lang-zh">：负相关，建成时间旧带来设施老化等问题，降低居民幸福感</span></p>
       </div>
       <div class="finding-item">
         <div class="finding-dot neg"></div>
-        <p><strong>房屋闲置率</strong>：负相关，闲置率提高意味着邻里联系越不紧密，孤独感影响幸福感</p>
+        <p><strong><span class="lang-en">Housing Vacancy Rate</span><span class="lang-zh">房屋闲置率</span></strong><span class="lang-en">: Negative correlation; higher vacancy rate implies weaker neighborhood connections; loneliness affects happiness.</span><span class="lang-zh">：负相关，闲置率提高意味着邻里联系越不紧密，孤独感影响幸福感</span></p>
       </div>
       <div class="finding-item">
         <div class="finding-dot pos"></div>
-        <p><strong>物业费</strong>：正相关，合理物业费带来有保障的服务与管理</p>
+        <p><strong><span class="lang-en">Property Management Fee</span><span class="lang-zh">物业费</span></strong><span class="lang-en">: Positive correlation; reasonable management fees bring reliable service and management.</span><span class="lang-zh">：正相关，合理物业费带来有保障的服务与管理</span></p>
       </div>
       <div class="finding-item">
         <div class="finding-dot pos"></div>
-        <p><strong>房价</strong>：正相关，合理房价水平是居民幸福感的重要保障</p>
+        <p><strong><span class="lang-en">Housing Price</span><span class="lang-zh">房价</span></strong><span class="lang-en">: Positive correlation; a reasonable housing price level is an important guarantee for residents' happiness.</span><span class="lang-zh">：正相关，合理房价水平是居民幸福感的重要保障</span></p>
       </div>
       <div class="finding-item">
         <div class="finding-dot pos"></div>
-        <p><strong>人均建筑面积</strong>：正相关，在低效住区中，适当的居住空间有助于提升幸福感</p>
+        <p><strong><span class="lang-en">Per Capita Floor Area</span><span class="lang-zh">人均建筑面积</span></strong><span class="lang-en">: Positive correlation; in low-efficiency communities, adequate living space helps improve happiness.</span><span class="lang-zh">：正相关，在低效住区中，适当的居住空间有助于提升幸福感</span></p>
       </div>
     </div>
     <div class="corr-box mt-4" style="background:#f0fdf4;border-color:#bbf7d0">
-      <h4 style="color:#065f46">规划建议</h4>
-      <p style="color:#047857">住区建设不需要一味追求价格上的优胜，合理的房价、物业费带来有保障的服务与管理才是居民幸福感的重要保障。</p>
+      <h4 style="color:#065f46"><span class="lang-en">Planning Recommendations</span><span class="lang-zh">规划建议</span></h4>
+      <p style="color:#047857"><span class="lang-en">Residential development does not need to blindly pursue price superiority. Reasonable housing prices and property management fees that provide reliable service and management are the truly important guarantee for residents' happiness.</span><span class="lang-zh">住区建设不需要一味追求价格上的优胜，合理的房价、物业费带来有保障的服务与管理才是居民幸福感的重要保障。</span></p>
     </div>
   </div>
 
-  <!-- 北京 -->
+  <!-- Beijing -->
   <div class="tab-panel" id="bj">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem">
       <div class="result-card">
-        <h4>住区效率分布</h4>
-        <p>高效住区集中分布在中环外环周边，呈圈状集中分布。特点：房价较低，但周边医疗、交通设施完善，公园广场等开放空间丰富。</p>
+        <h4><span class="lang-en">Community Efficiency Distribution</span><span class="lang-zh">住区效率分布</span></h4>
+        <p><span class="lang-en">High-efficiency communities cluster in ring-shaped distributions around the middle and outer ring roads. Characteristics: lower housing prices, but well-equipped medical and transit facilities and abundant open spaces like parks and plazas.</span><span class="lang-zh">高效住区集中分布在中环外环周边，呈圈状集中分布。特点：房价较低，但周边医疗、交通设施完善，公园广场等开放空间丰富。</span></p>
       </div>
       <div class="result-card">
-        <h4>居民幸福感分布</h4>
-        <p>二环三环之间小区幸福感最高，西北侧表现尤为显著。西南侧四环与五环之间有明显幸福感集中偏低区域（推测因城中村分布密集）。</p>
+        <h4><span class="lang-en">Residents' Happiness Distribution</span><span class="lang-zh">居民幸福感分布</span></h4>
+        <p><span class="lang-en">Communities between the 2nd and 3rd ring roads have the highest happiness, especially in the northwest. A notable low-happiness cluster exists between the 4th and 5th ring roads in the southwest (likely due to dense urban village areas).</span><span class="lang-zh">二环三环之间小区幸福感最高，西北侧表现尤为显著。西南侧四环与五环之间有明显幸福感集中偏低区域（推测因城中村分布密集）。</span></p>
       </div>
       <div class="result-card">
-        <h4>相关性验证</h4>
-        <p>北京数据 p = 0.03 &lt; 0.05，住区效率与幸福感相关性<strong>显著</strong>，相关系数 r = 0.074，显示具有统计学意义的正相关。</p>
+        <h4><span class="lang-en">Correlation Validation</span><span class="lang-zh">相关性验证</span></h4>
+        <p><span class="lang-en">Beijing data p = 0.03 &lt; 0.05; the correlation between community efficiency and happiness is <strong>significant</strong>, with correlation coefficient r = 0.074, showing a statistically significant positive correlation.</span><span class="lang-zh">北京数据 p = 0.03 &lt; 0.05，住区效率与幸福感相关性<strong>显著</strong>，相关系数 r = 0.074，显示具有统计学意义的正相关。</span></p>
       </div>
       <div class="result-card">
-        <h4>低效住区关键指标</h4>
-        <p>邻里活力度、房价、建成年代、医疗设施可达性、房屋空置率为影响最大的5项指标。<br/><strong>特殊发现：</strong>邻里活力度与幸福感呈负相关——北京低效住区居民更倾向安静私密环境。</p>
+        <h4><span class="lang-en">Key Indicators for Low-Efficiency Communities</span><span class="lang-zh">低效住区关键指标</span></h4>
+        <p><span class="lang-en">Neighborhood vitality, housing price, construction year, medical accessibility, and housing vacancy rate are the 5 most influential indicators.<br/><strong>Special finding:</strong> Neighborhood vitality is negatively correlated with happiness — Beijing's low-efficiency residents prefer quiet and private environments.</span><span class="lang-zh">邻里活力度、房价、建成年代、医疗设施可达性、房屋空置率为影响最大的5项指标。<br/><strong>特殊发现：</strong>邻里活力度与幸福感呈负相关——北京低效住区居民更倾向安静私密环境。</span></p>
       </div>
     </div>
     <div class="corr-box mt-4" style="background:#faf5ff;border-color:#e9d5ff">
-      <h4 style="color:#6d28d9">高效住区关键发现</h4>
-      <p style="color:#5b21b6">高效住区中，邻里活力度对预测影响程度最高，且与幸福感呈<strong>负相关</strong>。推测原因：特大城市社会原子化较为严重，居民更倾向于较为安静私密的场所，过高的邻里活力度可能干扰正常生活。规划建议：注重<strong>动静分区</strong>和公共性与私密性的划分。</p>
+      <h4 style="color:#6d28d9"><span class="lang-en">Key Finding for High-Efficiency Communities</span><span class="lang-zh">高效住区关键发现</span></h4>
+      <p style="color:#5b21b6"><span class="lang-en">In high-efficiency communities, neighborhood vitality has the highest predictive impact and is <strong>negatively correlated</strong> with happiness. Likely explanation: social atomization is pronounced in megacities; residents prefer quieter and more private settings, and excessive neighborhood vitality may interfere with daily life. Planning recommendation: emphasize <strong>activity/quiet zoning</strong> and careful delineation of public vs. private spaces.</span><span class="lang-zh">高效住区中，邻里活力度对预测影响程度最高，且与幸福感呈<strong>负相关</strong>。推测原因：特大城市社会原子化较为严重，居民更倾向于较为安静私密的场所，过高的邻里活力度可能干扰正常生活。规划建议：注重<strong>动静分区</strong>和公共性与私密性的划分。</span></p>
     </div>
   </div>
 </section>
@@ -961,25 +976,25 @@
 
 <!-- ==================== SPATIAL MAPS ==================== -->
 <section class="section" id="maps">
-  <div class="section-title">空间分布 · Spatial Distribution</div>
-  <h2 class="section-heading">空间分布图</h2>
-  <p class="section-desc">按研究逻辑顺序展示各项效益指标、综合效率与居民幸福感的 GIS 空间分布，上海为主研究城市，北京为对比验证城市。</p>
+  <div class="section-title"><span class="lang-en">Spatial Distribution</span><span class="lang-zh">空间分布</span> · Spatial Distribution</div>
+  <h2 class="section-heading"><span class="lang-en">Spatial Distribution Maps</span><span class="lang-zh">空间分布图</span></h2>
+  <p class="section-desc"><span class="lang-en">GIS spatial distributions of all benefit indicators, comprehensive efficiency, and residents' happiness are presented in research logical order. Shanghai is the primary study city; Beijing is the comparative validation city.</span><span class="lang-zh">按研究逻辑顺序展示各项效益指标、综合效率与居民幸福感的 GIS 空间分布，上海为主研究城市，北京为对比验证城市。</span></p>
 
   <div class="results-tabs" style="margin-top:2rem">
-    <button class="tab-btn active" onclick="showTab('maps-sh')">上海市</button>
-    <button class="tab-btn" onclick="showTab('maps-bj')">北京市</button>
+    <button class="tab-btn active" onclick="showTab('maps-sh')"><span class="lang-en">Shanghai</span><span class="lang-zh">上海市</span></button>
+    <button class="tab-btn" onclick="showTab('maps-bj')"><span class="lang-en">Beijing</span><span class="lang-zh">北京市</span></button>
   </div>
 
   <!-- ── 上海 ── -->
   <div class="tab-panel active" id="maps-sh">
 
-    <!-- 社会效益 A1-A3 -->
+    <!-- Social Benefit A1-A3 -->
     <div class="map-group">
       <div class="map-group-header">
-        <span class="map-group-tag">社会效益</span>
-        <span class="map-group-title">A1 建成年代 · A2 人均建筑面积 · A3 邻里活力度</span>
+        <span class="map-group-tag"><span class="lang-en">Social Benefit</span><span class="lang-zh">社会效益</span></span>
+        <span class="map-group-title">A1 <span class="lang-en">Construction Year</span><span class="lang-zh">建成年代</span> · A2 <span class="lang-en">Per Capita Floor Area</span><span class="lang-zh">人均建筑面积</span> · A3 <span class="lang-en">Neighborhood Vitality</span><span class="lang-zh">邻里活力度</span></span>
       </div>
-      <p class="map-caption">建成年代以 1992–2008 年为主，西侧更新，南北侧边缘久远；人均建筑面积整体偏低；活力度偏低小区占多数，离中心越远活力度相对越高</p>
+      <p class="map-caption"><span class="lang-en">Construction years are mainly 1992–2008, with newer communities in the west and older ones at the north/south edges; per capita floor area is generally low; most communities have low vitality, with higher vitality farther from the center.</span><span class="lang-zh">建成年代以 1992–2008 年为主，西侧更新，南北侧边缘久远；人均建筑面积整体偏低；活力度偏低小区占多数，离中心越远活力度相对越高</span></p>
       <div class="map-grid-3">
         <div class="map-cell">
           <img src="map_imgs/crops/sh_A1_建成年代.png" class="map-img" alt="A1建成年代"/>
@@ -993,13 +1008,13 @@
       </div>
     </div>
 
-    <!-- 设施可达性 A4-A11 -->
+    <!-- Facility Accessibility A4-A11 -->
     <div class="map-group">
       <div class="map-group-header">
-        <span class="map-group-tag">社会效益</span>
-        <span class="map-group-title">A4–A11 各类设施可达性</span>
+        <span class="map-group-tag"><span class="lang-en">Social Benefit</span><span class="lang-zh">社会效益</span></span>
+        <span class="map-group-title">A4–A11 <span class="lang-en">Facility Accessibility (Various Types)</span><span class="lang-zh">各类设施可达性</span></span>
       </div>
-      <p class="map-caption">中心区域设施更加齐全；交通场站可达性自市中心向外递减；教育、医疗基本符合中心高四周低规律，东南侧低值集聚</p>
+      <p class="map-caption"><span class="lang-en">Central areas have more complete facilities; transit accessibility decreases from city center outward; education and medical follow the high-center, low-periphery pattern, with low-value clustering in the southeast.</span><span class="lang-zh">中心区域设施更加齐全；交通场站可达性自市中心向外递减；教育、医疗基本符合中心高四周低规律，东南侧低值集聚</span></p>
       <div class="map-grid-3">
         <div class="map-cell"><img src="map_imgs/crops/sh_A4_交通场站.png" class="map-img" alt="A4交通场站"/></div>
         <div class="map-cell"><img src="map_imgs/crops/sh_A5_公园广场.png" class="map-img" alt="A5公园广场"/></div>
@@ -1010,13 +1025,13 @@
       </div>
     </div>
 
-    <!-- 经济效益 B1-B4 -->
+    <!-- Economic Benefit B1-B4 -->
     <div class="map-group">
       <div class="map-group-header">
-        <span class="map-group-tag amber">经济效益</span>
-        <span class="map-group-title">B1 容积率 · B2 房价 · B3 物业费 · B4 房屋闲置率</span>
+        <span class="map-group-tag amber"><span class="lang-en">Economic Benefit</span><span class="lang-zh">经济效益</span></span>
+        <span class="map-group-title">B1 <span class="lang-en">FAR</span><span class="lang-zh">容积率</span> · B2 <span class="lang-en">Housing Price</span><span class="lang-zh">房价</span> · B3 <span class="lang-en">Management Fee</span><span class="lang-zh">物业费</span> · B4 <span class="lang-en">Vacancy Rate</span><span class="lang-zh">房屋闲置率</span></span>
       </div>
-      <p class="map-caption">中心区容积率大，向四周递减；房价呈明显梯度；西部和南部闲置率高；市中心和交通便利地段闲置率较低</p>
+      <p class="map-caption"><span class="lang-en">FAR is higher in the center and decreases outward; housing prices show a clear gradient; western and southern areas have higher vacancy rates; city center and convenient transit areas have lower vacancy rates.</span><span class="lang-zh">中心区容积率大，向四周递减；房价呈明显梯度；西部和南部闲置率高；市中心和交通便利地段闲置率较低</span></p>
       <div class="map-grid-2">
         <div class="map-cell"><img src="map_imgs/crops/sh_B1_容积率.png" class="map-img" alt="B1容积率"/></div>
         <div class="map-cell"><img src="map_imgs/crops/sh_B2_房价.png" class="map-img" alt="B2房价"/></div>
@@ -1025,37 +1040,37 @@
       </div>
     </div>
 
-    <!-- 生态效益 C1-C2 -->
+    <!-- Ecological Benefit C1-C2 -->
     <div class="map-group">
       <div class="map-group-header">
-        <span class="map-group-tag green">生态效益</span>
-        <span class="map-group-title">C1 绿化覆盖率 · C2 空气污染度</span>
+        <span class="map-group-tag green"><span class="lang-en">Ecological Benefit</span><span class="lang-zh">生态效益</span></span>
+        <span class="map-group-title">C1 <span class="lang-en">Green Coverage Rate</span><span class="lang-zh">绿化覆盖率</span> · C2 <span class="lang-en">Air Pollution Index</span><span class="lang-zh">空气污染度</span></span>
       </div>
-      <p class="map-caption">绿化率东侧优于西侧，高值主要在东南方；空气污染整体东侧低于西侧，中心商业区和交通繁忙区域污染较高</p>
+      <p class="map-caption"><span class="lang-en">Green coverage is better on the east than west, with high values mainly in the southeast; air pollution is generally lower in the east than west, with higher pollution in central commercial and busy traffic areas.</span><span class="lang-zh">绿化率东侧优于西侧，高值主要在东南方；空气污染整体东侧低于西侧，中心商业区和交通繁忙区域污染较高</span></p>
       <div class="map-grid-2">
         <div class="map-cell"><img src="map_imgs/crops/sh_C1_绿化覆盖率.png" class="map-img" alt="C1绿化覆盖率"/></div>
         <div class="map-cell"><img src="map_imgs/crops/sh_C2_空气污染度.png" class="map-img" alt="C2空气污染度"/></div>
       </div>
     </div>
 
-    <!-- TOPSIS综合效率 -->
+    <!-- TOPSIS Comprehensive Efficiency -->
     <div class="map-group">
       <div class="map-group-header">
-        <span class="map-group-tag purple">综合效率</span>
-        <span class="map-group-title">熵权 TOPSIS 住宅用地综合效率评价结果</span>
+        <span class="map-group-tag purple"><span class="lang-en">Comprehensive Efficiency</span><span class="lang-zh">综合效率</span></span>
+        <span class="map-group-title"><span class="lang-en">Entropy-Weight TOPSIS Residential Land Comprehensive Efficiency Evaluation Results</span><span class="lang-zh">熵权 TOPSIS 住宅用地综合效率评价结果</span></span>
       </div>
-      <p class="map-caption">基于 17 个指标耦合计算，自然断点法分组。<strong>高效率住区分布在西侧多于东侧；低效率住区在中部偏北、偏西集中</strong></p>
-      <img src="map_imgs/crops/sh_topsis_map.png" class="map-img map-img-large" alt="上海TOPSIS综合效率"/>
+      <p class="map-caption"><span class="lang-en">Coupled calculation based on 17 indicators, grouped by natural breaks. <strong>High-efficiency communities are more concentrated on the west side; low-efficiency communities cluster in the north-central and northwest areas.</strong></span><span class="lang-zh">基于 17 个指标耦合计算，自然断点法分组。<strong>高效率住区分布在西侧多于东侧；低效率住区在中部偏北、偏西集中</strong></span></p>
+      <img src="map_imgs/crops/sh_topsis_map.png" class="map-img map-img-large" alt="Shanghai TOPSIS Comprehensive Efficiency / 上海TOPSIS综合效率"/>
     </div>
 
-    <!-- 居民幸福感 -->
+    <!-- Residents' Happiness -->
     <div class="map-group">
       <div class="map-group-header">
-        <span class="map-group-tag red">幸福感</span>
-        <span class="map-group-title">居民幸福感 GIS 空间分布</span>
+        <span class="map-group-tag red"><span class="lang-en">Happiness</span><span class="lang-zh">幸福感</span></span>
+        <span class="map-group-title"><span class="lang-en">Residents' Happiness GIS Spatial Distribution</span><span class="lang-zh">居民幸福感 GIS 空间分布</span></span>
       </div>
-      <p class="map-caption">百度 NLP 情感分析结合 GIS 空间插值。<strong>核心区域幸福感普遍较低；离核心区越远，住区幸福感逐步升高</strong></p>
-      <img src="map_imgs/crops/sh_happiness_map.png" class="map-img map-img-large" alt="上海居民幸福感"/>
+      <p class="map-caption"><span class="lang-en">Baidu NLP sentiment analysis combined with GIS spatial interpolation. <strong>Core areas generally show lower happiness; the farther from the core, the higher the community happiness level.</strong></span><span class="lang-zh">百度 NLP 情感分析结合 GIS 空间插值。<strong>核心区域幸福感普遍较低；离核心区越远，住区幸福感逐步升高</strong></span></p>
+      <img src="map_imgs/crops/sh_happiness_map.png" class="map-img map-img-large" alt="Shanghai Residents' Happiness / 上海居民幸福感"/>
     </div>
 
   </div>
@@ -1063,13 +1078,13 @@
   <!-- ── 北京 ── -->
   <div class="tab-panel" id="maps-bj">
 
-    <!-- 社会效益 A1-A8 -->
+    <!-- Social Benefit A1-A8 -->
     <div class="map-group">
       <div class="map-group-header">
-        <span class="map-group-tag">社会效益</span>
-        <span class="map-group-title">A1–A8 社会效益指标（建成年代 / 人均面积 / 活力度 / 交通 / 公园 / 教育 / 医疗 / 养老）</span>
+        <span class="map-group-tag"><span class="lang-en">Social Benefit</span><span class="lang-zh">社会效益</span></span>
+        <span class="map-group-title">A1–A8 <span class="lang-en">Social Benefit Indicators (Construction Year / Per Capita Area / Vitality / Transit / Parks / Education / Medical / Elder Care)</span><span class="lang-zh">社会效益指标（建成年代 / 人均面积 / 活力度 / 交通 / 公园 / 教育 / 医疗 / 养老）</span></span>
       </div>
-      <p class="map-caption">交通场站可达性自市中心向外围递减，以四环为分水岭；教育、医疗基本符合中心高规律；养老设施可达性整体较好</p>
+      <p class="map-caption"><span class="lang-en">Transit accessibility decreases from city center outward, with the 4th ring road as the dividing line; education and medical follow the high-center pattern; elder care accessibility is generally good.</span><span class="lang-zh">交通场站可达性自市中心向外围递减，以四环为分水岭；教育、医疗基本符合中心高规律；养老设施可达性整体较好</span></p>
       <div class="map-grid-4">
         <div class="map-cell"><img src="map_imgs/crops/bj_A1_建成年代.png" class="map-img" alt="A1建成年代"/></div>
         <div class="map-cell"><img src="map_imgs/crops/bj_A2_人均建筑面积.png" class="map-img" alt="A2人均建筑面积"/></div>
@@ -1082,13 +1097,13 @@
       </div>
     </div>
 
-    <!-- 经济+生态 A9-C1 -->
+    <!-- Economic + Ecological A9-C1 -->
     <div class="map-group">
       <div class="map-group-header">
-        <span class="map-group-tag amber">经济效益 & 生态效益</span>
-        <span class="map-group-title">A9–C1（购物 / 文化 / 餐饮 / 容积率 / 房价 / 物业费 / 闲置率 / 绿化）</span>
+        <span class="map-group-tag amber"><span class="lang-en">Economic &amp; Ecological Benefit</span><span class="lang-zh">经济效益 &amp; 生态效益</span></span>
+        <span class="map-group-title">A9–C1 <span class="lang-en">(Shopping / Culture / Dining / FAR / Housing Price / Management Fee / Vacancy Rate / Green Coverage)</span><span class="lang-zh">（购物 / 文化 / 餐饮 / 容积率 / 房价 / 物业费 / 闲置率 / 绿化）</span></span>
       </div>
-      <p class="map-caption">南部容积率高，西北闲置率高，房价自中心向外递减；绿化率北侧优于南侧</p>
+      <p class="map-caption"><span class="lang-en">Southern areas have higher FAR; northwest has higher vacancy rates; housing prices decrease from center outward; green coverage is better in the north than south.</span><span class="lang-zh">南部容积率高，西北闲置率高，房价自中心向外递减；绿化率北侧优于南侧</span></p>
       <div class="map-grid-4">
         <div class="map-cell"><img src="map_imgs/crops/bj_A9_购物设施.png" class="map-img" alt="A9购物设施"/></div>
         <div class="map-cell"><img src="map_imgs/crops/bj_A10_文化设施.png" class="map-img" alt="A10文化设施"/></div>
@@ -1101,24 +1116,24 @@
       </div>
     </div>
 
-    <!-- TOPSIS综合效率 -->
+    <!-- TOPSIS Comprehensive Efficiency -->
     <div class="map-group">
       <div class="map-group-header">
-        <span class="map-group-tag purple">综合效率</span>
-        <span class="map-group-title">TOPSIS 住宅用地综合效率评价结果</span>
+        <span class="map-group-tag purple"><span class="lang-en">Comprehensive Efficiency</span><span class="lang-zh">综合效率</span></span>
+        <span class="map-group-title"><span class="lang-en">TOPSIS Residential Land Comprehensive Efficiency Evaluation Results</span><span class="lang-zh">TOPSIS 住宅用地综合效率评价结果</span></span>
       </div>
-      <p class="map-caption"><strong>高效住区呈圈状集中分布在中环外环周边</strong>，具有房价较低、医疗交通设施完善、公园广场等开放空间丰富的特点</p>
-      <img src="map_imgs/crops/bj_topsis_map.png" class="map-img map-img-large" alt="北京TOPSIS综合效率"/>
+      <p class="map-caption"><span class="lang-en"><strong>High-efficiency communities cluster in ring-shaped distributions around the middle and outer ring roads</strong>, with lower housing prices, well-equipped medical and transit facilities, and abundant open spaces like parks and plazas.</span><span class="lang-zh"><strong>高效住区呈圈状集中分布在中环外环周边</strong>，具有房价较低、医疗交通设施完善、公园广场等开放空间丰富的特点</span></p>
+      <img src="map_imgs/crops/bj_topsis_map.png" class="map-img map-img-large" alt="Beijing TOPSIS Comprehensive Efficiency / 北京TOPSIS综合效率"/>
     </div>
 
-    <!-- 居民幸福感 -->
+    <!-- Residents' Happiness -->
     <div class="map-group">
       <div class="map-group-header">
-        <span class="map-group-tag red">幸福感</span>
-        <span class="map-group-title">居民幸福感 GIS 空间分布</span>
+        <span class="map-group-tag red"><span class="lang-en">Happiness</span><span class="lang-zh">幸福感</span></span>
+        <span class="map-group-title"><span class="lang-en">Residents' Happiness GIS Spatial Distribution</span><span class="lang-zh">居民幸福感 GIS 空间分布</span></span>
       </div>
-      <p class="map-caption"><strong>二环和三环之间幸福感最高，西北侧尤为显著</strong>；西南侧四环与五环之间出现明显低值集聚区域（城中村密集带）</p>
-      <img src="map_imgs/crops/bj_happiness_map.png" class="map-img map-img-large" alt="北京居民幸福感"/>
+      <p class="map-caption"><span class="lang-en"><strong>Happiness is highest between the 2nd and 3rd ring roads, especially in the northwest</strong>; a notable low-value cluster appears between the 4th and 5th ring roads in the southwest (dense urban village belt).</span><span class="lang-zh"><strong>二环和三环之间幸福感最高，西北侧尤为显著</strong>；西南侧四环与五环之间出现明显低值集聚区域（城中村密集带）</span></p>
+      <img src="map_imgs/crops/bj_happiness_map.png" class="map-img map-img-large" alt="Beijing Residents' Happiness / 北京居民幸福感"/>
     </div>
 
   </div>
@@ -1129,47 +1144,47 @@
 <!-- ==================== MODEL PERFORMANCE ==================== -->
 <section class="section model-section">
   <div class="section-title">08 · Model Performance</div>
-  <h2 class="section-heading">模型效果评估</h2>
-  <p class="section-desc">XGBoost 模型在北京市数据集上表现出更佳的拟合效果，模型收敛验证了研究方法的有效性。</p>
+  <h2 class="section-heading"><span class="lang-en">Model Performance Evaluation</span><span class="lang-zh">模型效果评估</span></h2>
+  <p class="section-desc"><span class="lang-en">The XGBoost model shows better fitting performance on the Beijing dataset; model convergence validates the effectiveness of the research methodology.</span><span class="lang-zh">XGBoost 模型在北京市数据集上表现出更佳的拟合效果，模型收敛验证了研究方法的有效性。</span></p>
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem" class="model-compare">
     <div>
-      <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:1rem;color:var(--muted)">上海市（整体）</h3>
+      <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:1rem;color:var(--muted)"><span class="lang-en">Shanghai (Overall)</span><span class="lang-zh">上海市（整体）</span></h3>
       <div class="metric-cards">
         <div class="metric-card">
           <div class="metric-value">0.25</div>
-          <div class="metric-label">MAE（测试集）</div>
-          <div class="metric-context">平均绝对误差</div>
+          <div class="metric-label">MAE <span class="lang-en">(Test Set)</span><span class="lang-zh">（测试集）</span></div>
+          <div class="metric-context"><span class="lang-en">Mean Absolute Error</span><span class="lang-zh">平均绝对误差</span></div>
         </div>
         <div class="metric-card">
           <div class="metric-value">0.33</div>
-          <div class="metric-label">RMSE（测试集）</div>
-          <div class="metric-context">均方根误差</div>
+          <div class="metric-label">RMSE <span class="lang-en">(Test Set)</span><span class="lang-zh">（测试集）</span></div>
+          <div class="metric-context"><span class="lang-en">Root Mean Squared Error</span><span class="lang-zh">均方根误差</span></div>
         </div>
         <div class="metric-card">
           <div class="metric-value">0.38</div>
-          <div class="metric-label">R²（训练集）</div>
-          <div class="metric-context">决定系数</div>
+          <div class="metric-label">R² <span class="lang-en">(Train Set)</span><span class="lang-zh">（训练集）</span></div>
+          <div class="metric-context"><span class="lang-en">Coefficient of Determination</span><span class="lang-zh">决定系数</span></div>
         </div>
       </div>
     </div>
     <div>
-      <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:1rem;color:var(--muted)">北京市（高效率住区）</h3>
+      <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:1rem;color:var(--muted)"><span class="lang-en">Beijing (High-Efficiency Communities)</span><span class="lang-zh">北京市（高效率住区）</span></h3>
       <div class="metric-cards">
         <div class="metric-card">
           <div class="metric-value">0.26</div>
-          <div class="metric-label">MAE（测试集）</div>
-          <div class="metric-context">平均绝对误差</div>
+          <div class="metric-label">MAE <span class="lang-en">(Test Set)</span><span class="lang-zh">（测试集）</span></div>
+          <div class="metric-context"><span class="lang-en">Mean Absolute Error</span><span class="lang-zh">平均绝对误差</span></div>
         </div>
         <div class="metric-card">
           <div class="metric-value">0.34</div>
-          <div class="metric-label">RMSE（测试集）</div>
-          <div class="metric-context">均方根误差</div>
+          <div class="metric-label">RMSE <span class="lang-en">(Test Set)</span><span class="lang-zh">（测试集）</span></div>
+          <div class="metric-context"><span class="lang-en">Root Mean Squared Error</span><span class="lang-zh">均方根误差</span></div>
         </div>
         <div class="metric-card">
           <div class="metric-value">0.23</div>
-          <div class="metric-label">R²（测试集）</div>
-          <div class="metric-context">决定系数</div>
+          <div class="metric-label">R² <span class="lang-en">(Test Set)</span><span class="lang-zh">（测试集）</span></div>
+          <div class="metric-context"><span class="lang-en">Coefficient of Determination</span><span class="lang-zh">决定系数</span></div>
         </div>
       </div>
     </div>
@@ -1187,49 +1202,49 @@
 <!-- ==================== INNOVATION ==================== -->
 <section class="section innovation-section" id="innovation">
   <div class="section-title">09 · Innovation Points</div>
-  <h2 class="section-heading">创新点与应用前景</h2>
-  <p class="section-desc">在评价指标、情绪测度方法和相关性分析方法三个维度实现创新突破，具有广泛的实践应用价值。</p>
+  <h2 class="section-heading"><span class="lang-en">Innovation Points &amp; Application Prospects</span><span class="lang-zh">创新点与应用前景</span></h2>
+  <p class="section-desc"><span class="lang-en">Breakthrough innovations across three dimensions — evaluation indicators, sentiment measurement methods, and correlation analysis methods — with broad practical application value.</span><span class="lang-zh">在评价指标、情绪测度方法和相关性分析方法三个维度实现创新突破，具有广泛的实践应用价值。</span></p>
 
   <div class="innovation-grid">
     <div class="innov-card">
-      <div class="innov-num">创新点 01</div>
-      <h3>针对性住宅用地效率评价指标</h3>
-      <p>针对北京市人口流动频繁、居民更关注各类公共服务配套设施的特点定制指标体系，引入手机信令、环境监测站数据等高精度新型大数据进行测度，相比传统研究更具针对性。</p>
+      <div class="innov-num"><span class="lang-en">Innovation 01</span><span class="lang-zh">创新点 01</span></div>
+      <h3><span class="lang-en">Targeted Residential Land Efficiency Evaluation Indicators</span><span class="lang-zh">针对性住宅用地效率评价指标</span></h3>
+      <p><span class="lang-en">A customized indicator system was tailored to Beijing's characteristics of frequent population mobility and residents' focus on public service facilities. High-precision new big data sources such as mobile signaling and environmental monitoring station data were introduced for measurement, making the research more targeted than traditional studies.</span><span class="lang-zh">针对北京市人口流动频繁、居民更关注各类公共服务配套设施的特点定制指标体系，引入手机信令、环境监测站数据等高精度新型大数据进行测度，相比传统研究更具针对性。</span></p>
     </div>
     <div class="innov-card">
-      <div class="innov-num">创新点 02</div>
-      <h3>广覆盖的居民情绪测度方法</h3>
-      <p>采用可覆盖范围广的海量网络社交文本数据（微博 + 抖音），突破传统问卷调查样本量小、覆盖范围有限的瓶颈，并使用对中文文本语义分析支持良好的百度 PaddlePaddleNLP 模型进行情感判别。</p>
+      <div class="innov-num"><span class="lang-en">Innovation 02</span><span class="lang-zh">创新点 02</span></div>
+      <h3><span class="lang-en">Wide-Coverage Resident Sentiment Measurement Method</span><span class="lang-zh">广覆盖的居民情绪测度方法</span></h3>
+      <p><span class="lang-en">Massive online social text data (Weibo + Douyin) with wide coverage was adopted, breaking through the bottleneck of small sample sizes and limited coverage of traditional questionnaire surveys. The Baidu PaddlePaddleNLP model, which provides strong support for Chinese text semantic analysis, was used for sentiment classification.</span><span class="lang-zh">采用可覆盖范围广的海量网络社交文本数据（微博 + 抖音），突破传统问卷调查样本量小、覆盖范围有限的瓶颈，并使用对中文文本语义分析支持良好的百度 PaddlePaddleNLP 模型进行情感判别。</span></p>
     </div>
     <div class="innov-card">
-      <div class="innov-num">创新点 03</div>
-      <h3>先进的相关性分析方法</h3>
-      <p>摒弃简单的多元线性回归，采用能有效处理中低维数据和回归问题且准确度更高的 XGBoost 模型，并引入 TreeSHAP 模型对其进行可解释性分析，使研究结论更具说服力。</p>
+      <div class="innov-num"><span class="lang-en">Innovation 03</span><span class="lang-zh">创新点 03</span></div>
+      <h3><span class="lang-en">Advanced Correlation Analysis Methods</span><span class="lang-zh">先进的相关性分析方法</span></h3>
+      <p><span class="lang-en">Simple multiple linear regression was abandoned in favor of the XGBoost model, which handles medium-to-low dimensional data and regression problems with higher accuracy. The TreeSHAP model was introduced for interpretability analysis, making the research conclusions more persuasive.</span><span class="lang-zh">摒弃简单的多元线性回归，采用能有效处理中低维数据和回归问题且准确度更高的 XGBoost 模型，并引入 TreeSHAP 模型对其进行可解释性分析，使研究结论更具说服力。</span></p>
     </div>
   </div>
 
-  <!-- Application Prospect -->
-  <h3 style="font-size:1.05rem;font-weight:700;margin:2.5rem 0 1.25rem">应用前景</h3>
+  <!-- Application Prospects -->
+  <h3 style="font-size:1.05rem;font-weight:700;margin:2.5rem 0 1.25rem"><span class="lang-en">Application Prospects</span><span class="lang-zh">应用前景</span></h3>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
     <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:var(--radius);padding:1.5rem">
       <div style="font-size:1.5rem;margin-bottom:0.5rem">🏗️</div>
-      <h4 style="font-size:0.88rem;font-weight:700;margin-bottom:0.4rem">宏观·住区幸福感预测</h4>
-      <p style="font-size:0.8rem;color:var(--muted)">用于计划新建住区的选址评估，观测各住区建成后可能给居民带来的幸福感影响，从而选取最佳区位</p>
+      <h4 style="font-size:0.88rem;font-weight:700;margin-bottom:0.4rem"><span class="lang-en">Macro · Residential Happiness Prediction</span><span class="lang-zh">宏观·住区幸福感预测</span></h4>
+      <p style="font-size:0.8rem;color:var(--muted)"><span class="lang-en">Used for site selection evaluation of planned new residential communities, observing the likely happiness impact on residents after construction, to select the optimal location.</span><span class="lang-zh">用于计划新建住区的选址评估，观测各住区建成后可能给居民带来的幸福感影响，从而选取最佳区位</span></p>
     </div>
     <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--radius);padding:1.5rem">
       <div style="font-size:1.5rem;margin-bottom:0.5rem">🔄</div>
-      <h4 style="font-size:0.88rem;font-weight:700;margin-bottom:0.4rem">中观·老旧住区更新优先级</h4>
-      <p style="font-size:0.8rem;color:var(--muted)">评估已有住区的幸福感情况，从人本主义视角划分老旧住区更新的优先程度，推动渐进式更新</p>
+      <h4 style="font-size:0.88rem;font-weight:700;margin-bottom:0.4rem"><span class="lang-en">Meso · Aging Neighborhood Renewal Priority</span><span class="lang-zh">中观·老旧住区更新优先级</span></h4>
+      <p style="font-size:0.8rem;color:var(--muted)"><span class="lang-en">Evaluate the happiness status of existing communities and rank aging neighborhood renewal priorities from a humanistic perspective, driving progressive renewal.</span><span class="lang-zh">评估已有住区的幸福感情况，从人本主义视角划分老旧住区更新的优先程度，推动渐进式更新</span></p>
     </div>
     <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:var(--radius);padding:1.5rem">
       <div style="font-size:1.5rem;margin-bottom:0.5rem">🎯</div>
-      <h4 style="font-size:0.88rem;font-weight:700;margin-bottom:0.4rem">微观·针对性更新策略</h4>
-      <p style="font-size:0.8rem;color:var(--muted)">明确目标城市住区更新时应重点关注的环境或社会要素，打造更具针对性的更新策略</p>
+      <h4 style="font-size:0.88rem;font-weight:700;margin-bottom:0.4rem"><span class="lang-en">Micro · Targeted Renewal Strategies</span><span class="lang-zh">微观·针对性更新策略</span></h4>
+      <p style="font-size:0.8rem;color:var(--muted)"><span class="lang-en">Identify the environmental or social elements that should be prioritized when renewing communities in the target city, creating more targeted renewal strategies.</span><span class="lang-zh">明确目标城市住区更新时应重点关注的环境或社会要素，打造更具针对性的更新策略</span></p>
     </div>
     <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:var(--radius);padding:1.5rem">
       <div style="font-size:1.5rem;margin-bottom:0.5rem">📐</div>
-      <h4 style="font-size:0.88rem;font-weight:700;margin-bottom:0.4rem">规划·新建住区设计方向</h4>
-      <p style="font-size:0.8rem;color:var(--muted)">明确目标城市新建住区时最需关注的社会或环境要素，为居住区规划设计提供数据驱动的方向</p>
+      <h4 style="font-size:0.88rem;font-weight:700;margin-bottom:0.4rem"><span class="lang-en">Planning · New Residential Design Directions</span><span class="lang-zh">规划·新建住区设计方向</span></h4>
+      <p style="font-size:0.8rem;color:var(--muted)"><span class="lang-en">Identify the most important social or environmental elements for new communities in the target city, providing data-driven directions for residential area planning and design.</span><span class="lang-zh">明确目标城市新建住区时最需关注的社会或环境要素，为居住区规划设计提供数据驱动的方向</span></p>
     </div>
   </div>
 </section>
@@ -1240,58 +1255,58 @@
 <section class="team-section section-full" id="team">
   <div class="section" style="padding:5rem 2rem">
     <div class="section-title">10 · Research Team</div>
-    <h2 class="section-heading">研究团队</h2>
+    <h2 class="section-heading"><span class="lang-en">Research Team</span><span class="lang-zh">研究团队</span></h2>
 
     <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin:1rem 0 2rem">
-      <div class="institution-badge">天津大学建筑学院</div>
-      <div class="institution-badge">天津大学智能与计算学部</div>
+      <div class="institution-badge"><span class="lang-en">School of Architecture, Tianjin University</span><span class="lang-zh">天津大学建筑学院</span></div>
+      <div class="institution-badge"><span class="lang-en">School of Intelligence and Computing, Tianjin University</span><span class="lang-zh">天津大学智能与计算学部</span></div>
     </div>
 
     <div class="team-grid">
       <div class="team-member">
         <div class="member-avatar">郭</div>
         <div class="member-name">郭雅洁</div>
-        <div class="member-dept">建筑学院</div>
+        <div class="member-dept"><span class="lang-en">Architecture</span><span class="lang-zh">建筑学院</span></div>
       </div>
       <div class="team-member">
         <div class="member-avatar">郭</div>
         <div class="member-name">郭函祎</div>
-        <div class="member-dept">建筑学院</div>
+        <div class="member-dept"><span class="lang-en">Architecture</span><span class="lang-zh">建筑学院</span></div>
       </div>
       <div class="team-member">
         <div class="member-avatar">林</div>
         <div class="member-name">林昂</div>
-        <div class="member-dept">建筑学院</div>
+        <div class="member-dept"><span class="lang-en">Architecture</span><span class="lang-zh">建筑学院</span></div>
       </div>
       <div class="team-member">
         <div class="member-avatar">孙</div>
         <div class="member-name">孙浩楠</div>
-        <div class="member-dept">建筑学院</div>
+        <div class="member-dept"><span class="lang-en">Architecture</span><span class="lang-zh">建筑学院</span></div>
       </div>
       <div class="team-member">
         <div class="member-avatar">罗</div>
         <div class="member-name">罗静宜</div>
-        <div class="member-dept">建筑学院</div>
+        <div class="member-dept"><span class="lang-en">Architecture</span><span class="lang-zh">建筑学院</span></div>
       </div>
       <div class="team-member">
         <div class="member-avatar">苏</div>
         <div class="member-name">苏琪</div>
-        <div class="member-dept">建筑学院</div>
+        <div class="member-dept"><span class="lang-en">Architecture</span><span class="lang-zh">建筑学院</span></div>
       </div>
       <div class="team-member">
         <div class="member-avatar" style="background:linear-gradient(135deg,#7c3aed,#ec4899)">崔</div>
         <div class="member-name">崔馨元</div>
-        <div class="member-dept">建筑学院</div>
+        <div class="member-dept"><span class="lang-en">Architecture</span><span class="lang-zh">建筑学院</span></div>
       </div>
       <div class="team-member">
         <div class="member-avatar">王</div>
         <div class="member-name">王若凡</div>
-        <div class="member-dept">建筑学院</div>
+        <div class="member-dept"><span class="lang-en">Architecture</span><span class="lang-zh">建筑学院</span></div>
       </div>
       <div class="team-member">
         <div class="member-avatar" style="background:linear-gradient(135deg,#7c3aed,#ec4899)">顾</div>
         <div class="member-name">顾凌峭</div>
-        <div class="member-dept">智能计算学部</div>
+        <div class="member-dept"><span class="lang-en">Intelligence &amp; Computing</span><span class="lang-zh">智能计算学部</span></div>
       </div>
     </div>
   </div>
@@ -1299,8 +1314,8 @@
 
 <!-- ==================== FOOTER ==================== -->
 <footer>
-  <p><strong>城垣杯参赛作品</strong> · 报名编号 I1534 · 投稿方向：城市行为空间与生活圈优化</p>
-  <p style="margin-top:0.4rem">天津大学建筑学院 · 天津大学智能与计算学部 · 2023</p>
+  <p><strong><span class="lang-en">Chengyu Cup Competition Entry</span><span class="lang-zh">城垣杯参赛作品</span></strong> · <span class="lang-en">Entry No.</span><span class="lang-zh">报名编号</span> I1534 · <span class="lang-en">Track: Urban Behavioral Space &amp; Living Circle Optimization</span><span class="lang-zh">投稿方向：城市行为空间与生活圈优化</span></p>
+  <p style="margin-top:0.4rem"><span class="lang-en">School of Architecture · School of Intelligence and Computing, Tianjin University · 2023</span><span class="lang-zh">天津大学建筑学院 · 天津大学智能与计算学部 · 2023</span></p>
 </footer>
 
 <script>
@@ -1310,6 +1325,20 @@
     document.getElementById(id).classList.add('active');
     event.target.classList.add('active');
   }
+</script>
+<script>
+let currentLang = localStorage.getItem('cc-lang') || 'en';
+function applyLang(lang) {
+  const html = document.documentElement;
+  html.classList.remove('lang-en-active','lang-zh-active');
+  html.classList.add('lang-'+lang+'-active');
+  html.lang = lang==='zh' ? 'zh-CN' : 'en';
+  const btn = document.getElementById('langToggle');
+  if(btn){ btn.textContent = lang==='en' ? '中文' : 'EN'; btn.classList.toggle('active-zh', lang==='zh'); }
+  localStorage.setItem('cc-lang', lang);
+}
+function toggleLang(){ currentLang = currentLang==='en' ? 'zh' : 'en'; applyLang(currentLang); }
+applyLang(currentLang);
 </script>
 
 

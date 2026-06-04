@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>(function(){document.documentElement.classList.add('lang-'+(localStorage.getItem('cc-lang')||'en')+'-active');})();</script>
 </head>
 <body>
 
@@ -16,12 +17,28 @@
 <nav>
   <a href="#" class="nav-logo">Christine Cui</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#awards">Awards</a></li>
-    <li><a href="CV 0327 job.pdf" download class="nav-cta">Download CV</a></li>
+    <li><a href="#about">
+      <span class="lang-en">About</span>
+      <span class="lang-zh">关于我</span>
+    </a></li>
+    <li><a href="#projects">
+      <span class="lang-en">Projects</span>
+      <span class="lang-zh">项目</span>
+    </a></li>
+    <li><a href="#skills">
+      <span class="lang-en">Skills</span>
+      <span class="lang-zh">技能</span>
+    </a></li>
+    <li><a href="#awards">
+      <span class="lang-en">Awards</span>
+      <span class="lang-zh">荣誉</span>
+    </a></li>
+    <li><a href="CV 0327 job.pdf" download class="nav-cta">
+      <span class="lang-en">Download CV</span>
+      <span class="lang-zh">下载简历</span>
+    </a></li>
   </ul>
+  <button class="lang-btn" id="langToggle" onclick="toggleLang()">中文</button>
 </nav>
 
 
@@ -33,12 +50,24 @@
 
   <!-- Left: text -->
   <div class="hero-left">
-    <div class="hero-eyebrow">Urban Spatial Analytics &nbsp;·&nbsp; Data-Driven Planning</div>
+    <div class="hero-eyebrow">
+      <span class="lang-en">Urban Spatial Analytics &nbsp;·&nbsp; Data-Driven Planning</span>
+      <span class="lang-zh">城市空间分析 &nbsp;·&nbsp; 数据驱动规划</span>
+    </div>
     <h1>Xinyuan<br><em>Christine</em><br><span class="gr">Cui</span></h1>
-    <p class="hero-desc">I use spatial data to understand how cities work — from how people move, to how neighborhoods are valued, to how we build more equitable urban environments.</p>
+    <p class="hero-desc">
+      <span class="lang-en">I use spatial data to understand how cities work — from how people move, to how neighborhoods are valued, to how we build more equitable urban environments.</span>
+      <span class="lang-zh">我用空间数据理解城市的运作方式——从人群流动，到街区价值，再到如何构建更公平的城市环境。</span>
+    </p>
     <div class="hero-ctas">
-      <a href="#projects" class="btn btn-rust">Browse Projects →</a>
-      <a href="CV 0327 job.pdf" download class="btn btn-sage">Download CV ↓</a>
+      <a href="#projects" class="btn btn-rust">
+        <span class="lang-en">Browse Projects →</span>
+        <span class="lang-zh">浏览项目 →</span>
+      </a>
+      <a href="CV 0327 job.pdf" download class="btn btn-sage">
+        <span class="lang-en">Download CV ↓</span>
+        <span class="lang-zh">下载简历 ↓</span>
+      </a>
     </div>
     <div class="hero-social">
       <a href="https://www.linkedin.com/in/christine-cuixinyuan/" target="_blank" class="hero-social-link">LinkedIn ↗</a>
@@ -53,15 +82,36 @@
   <div class="hero-photo">
     <div class="photo-bg"></div>
     <img src="photo.png" alt="Christine Cui" class="photo-img">
-    <div class="photo-badge">Philadelphia · 2026</div>
+    <div class="photo-badge">
+      <span class="lang-en">Philadelphia · 2026</span>
+      <span class="lang-zh">费城 · 2026</span>
+    </div>
   </div>
 </section>
 
 <div class="hero-stats-bar">
   <div class="hero-stats">
-    <div><div class="stat-val">4.0<sup>/4</sup></div><div class="stat-lbl">GPA at Penn</div></div>
-    <div><div class="stat-val">9<sup>+</sup></div><div class="stat-lbl">Projects</div></div>
-    <div><div class="stat-val">3<sup>×</sup></div><div class="stat-lbl">Natl. Awards</div></div>
+    <div>
+      <div class="stat-val">4.0<sup>/4</sup></div>
+      <div class="stat-lbl">
+        <span class="lang-en">GPA at Penn</span>
+        <span class="lang-zh">宾大绩点</span>
+      </div>
+    </div>
+    <div>
+      <div class="stat-val">9<sup>+</sup></div>
+      <div class="stat-lbl">
+        <span class="lang-en">Projects</span>
+        <span class="lang-zh">项目</span>
+      </div>
+    </div>
+    <div>
+      <div class="stat-val">3<sup>×</sup></div>
+      <div class="stat-lbl">
+        <span class="lang-en">Natl. Awards</span>
+        <span class="lang-zh">国家级奖项</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -71,35 +121,62 @@
   ============================================================ -->
 <section id="about">
   <div class="container">
-    <div class="sec-eyebrow">01 · About</div>
-    <h2>Cities are puzzles.<br><em>Data</em> helps us <span class="gr">solve</span> them.</h2>
+    <div class="sec-eyebrow">
+      <span class="lang-en">01 · About</span>
+      <span class="lang-zh">01 · 关于我</span>
+    </div>
+    <h2>
+      <span class="lang-en">Cities are puzzles.<br><em>Data</em> helps us <span class="gr">solve</span> them.</span>
+      <span class="lang-zh">城市是谜题，<br><em>数据</em>帮我们<span class="gr">解开</span>它。</span>
+    </h2>
 
     <div class="about-grid reveal">
 
       <!-- Left: bio text -->
       <div class="about-text">
-        <p>Hello — I'm Christine, an urban planner and spatial analyst who believes the best city interventions start with rigorous, honest data. I'm a graduate student in <strong>Urban Spatial Analytics at the University of Pennsylvania</strong><span class="badge">GPA 4.0</span>, working at the intersection of machine learning, GIS, and urban policy.</p>
-        <p>My work spans road safety prediction in Philadelphia, housing tax equity modeling, benchmarking generative AI for satellite imagery, and building cloud-based tools that help planners see what they couldn't see before. I approach every project with equal attention to technical precision and human impact.</p>
-        <p>Before Penn, I studied Urban and Rural Planning at <strong>Tianjin University</strong> and spent a semester at <strong>The University of Hong Kong</strong>. I've interned at two of China's leading planning institutes — Shenzhen Urban Planning &amp; Design Institute and Shanghai Tongji Urban Planning &amp; Design Institute.</p>
-        <p>Actively seeking <strong>full-time roles</strong> in urban data analytics and planning technology — available from May 2026.</p>
-        <p style="margin-top:1.5rem">
-          <a href="https://www.linkedin.com/in/christine-cuixinyuan/" target="_blank">LinkedIn ↗</a>&nbsp;·&nbsp;
-          <a href="https://github.com/ChristineCui12" target="_blank">GitHub ↗</a>&nbsp;·&nbsp;
-          <a href="mailto:cui12@upenn.edu">cui12@upenn.edu</a>
-        </p>
+        <!-- English bio -->
+        <div class="lang-en">
+          <p>Hello — I'm Christine, an urban planner and spatial analyst who believes the best city interventions start with rigorous, honest data. I'm a graduate student in <strong>Urban Spatial Analytics at the University of Pennsylvania</strong><span class="badge">GPA 4.0</span>, working at the intersection of machine learning, GIS, and urban policy.</p>
+          <p>My work spans road safety prediction in Philadelphia, housing tax equity modeling, benchmarking generative AI for satellite imagery, and building cloud-based tools that help planners see what they couldn't see before. I approach every project with equal attention to technical precision and human impact.</p>
+          <p>Before Penn, I studied Urban and Rural Planning at <strong>Tianjin University</strong> and spent a semester at <strong>The University of Hong Kong</strong>. I've interned at two of China's leading planning institutes — Shenzhen Urban Planning &amp; Design Institute and Shanghai Tongji Urban Planning &amp; Design Institute.</p>
+          <p>Actively seeking <strong>full-time roles</strong> in urban data analytics and planning technology — available from May 2026.</p>
+          <p style="margin-top:1.5rem">
+            <a href="https://www.linkedin.com/in/christine-cuixinyuan/" target="_blank">LinkedIn ↗</a>&nbsp;·&nbsp;
+            <a href="https://github.com/ChristineCui12" target="_blank">GitHub ↗</a>&nbsp;·&nbsp;
+            <a href="mailto:cui12@upenn.edu">cui12@upenn.edu</a>
+          </p>
+        </div>
+        <!-- Chinese bio -->
+        <div class="lang-zh">
+          <p>你好，我是崔馨元（Christine），一名城市规划师与空间分析师，相信最好的城市干预措施始于严谨诚实的数据。我目前就读于<strong>宾夕法尼亚大学城市空间分析</strong>专业<span class="badge">GPA 4.0</span>，在机器学习、GIS与城市政策的交叉领域开展研究。</p>
+          <p>我的研究涵盖费城道路安全预测、住房税收公平建模、生成式AI卫星影像云去除，以及构建帮助规划师洞察城市问题的云端工具。每个项目中，我都以同等的技术精准度和人文关怀参与其中。</p>
+          <p>加入宾大之前，我在<strong>天津大学</strong>学习城乡规划，并在<strong>香港大学</strong>完成了一学期的交换学习。曾在国内两家顶尖规划机构实习——深圳市城市规划设计研究院和上海同济城市规划设计研究院。</p>
+          <p>目前正积极寻求城市数据分析与规划科技方向的<strong>全职职位</strong>，2026年5月起可入职。</p>
+          <p style="margin-top:1.5rem">
+            <a href="https://www.linkedin.com/in/christine-cuixinyuan/" target="_blank">LinkedIn ↗</a>&nbsp;·&nbsp;
+            <a href="https://github.com/ChristineCui12" target="_blank">GitHub ↗</a>&nbsp;·&nbsp;
+            <a href="mailto:cui12@upenn.edu">cui12@upenn.edu</a>
+          </p>
+        </div>
       </div>
 
       <!-- Right: education + experience timeline -->
       <div>
         <div style="margin-bottom:2rem">
-          <div class="tl-heading">Education</div>
+          <div class="tl-heading">
+            <span class="lang-en">Education</span>
+            <span class="lang-zh">教育背景</span>
+          </div>
 
           <div class="tl-item">
             <div class="tl-dot"></div>
             <div>
               <div class="tl-yr">2025 – 2026</div>
               <div class="tl-school">University of Pennsylvania</div>
-              <div class="tl-prog">Master of Urban Spatial Analytics · Philadelphia</div>
+              <div class="tl-prog">
+                <span class="lang-en">Master of Urban Spatial Analytics · Philadelphia</span>
+                <span class="lang-zh">城市空间分析理学硕士 · 费城</span>
+              </div>
               <span class="tl-gpa">GPA 4.0 / 4.0</span>
             </div>
           </div>
@@ -109,7 +186,10 @@
             <div>
               <div class="tl-yr">Jan – May 2024</div>
               <div class="tl-school">The University of Hong Kong</div>
-              <div class="tl-prog">Exchange Program · Urban Studies</div>
+              <div class="tl-prog">
+                <span class="lang-en">Exchange Program · Urban Studies</span>
+                <span class="lang-zh">交换生项目 · 城市研究</span>
+              </div>
             </div>
           </div>
 
@@ -118,20 +198,29 @@
             <div>
               <div class="tl-yr">2019 – 2025</div>
               <div class="tl-school">Tianjin University</div>
-              <div class="tl-prog">Bachelor of Engineering · Urban and Rural Planning</div>
+              <div class="tl-prog">
+                <span class="lang-en">Bachelor of Engineering · Urban and Rural Planning</span>
+                <span class="lang-zh">工学学士 · 城乡规划</span>
+              </div>
             </div>
           </div>
         </div>
 
         <div>
-          <div class="tl-heading">Experience</div>
+          <div class="tl-heading">
+            <span class="lang-en">Experience</span>
+            <span class="lang-zh">工作经历</span>
+          </div>
 
           <div class="tl-item">
             <div class="tl-dot gr"></div>
             <div>
               <div class="tl-yr gr">Sep – Oct 2024</div>
               <div class="tl-school">Shenzhen Urban Planning &amp; Design Institute</div>
-              <div class="tl-prog">Urban Design Intern · Housing planning, policy analysis, urban renewal finance</div>
+              <div class="tl-prog">
+                <span class="lang-en">Urban Design Intern · Housing planning, policy analysis, urban renewal finance</span>
+                <span class="lang-zh">城市设计实习生 · 住房规划、政策分析、城市更新融资</span>
+              </div>
             </div>
           </div>
 
@@ -140,7 +229,10 @@
             <div>
               <div class="tl-yr gr">Jul – Aug 2023</div>
               <div class="tl-school">Shanghai Tongji Urban Planning &amp; Design Institute</div>
-              <div class="tl-prog">Planning Intern · Land use analysis, economic metrics, bio-industry zoning</div>
+              <div class="tl-prog">
+                <span class="lang-en">Planning Intern · Land use analysis, economic metrics, bio-industry zoning</span>
+                <span class="lang-zh">规划实习生 · 土地利用分析、经济指标测算、生物产业用地规划</span>
+              </div>
             </div>
           </div>
         </div>
@@ -153,49 +245,73 @@
 
 <!-- ============================================================
   PROJECTS  (02)
-  To add a new project:
-    1. Copy a .proj-card block below
-    2. Change the card number (card-num), visual class (v1–v9), tags, title
-    3. Fill in .ov-title, .ov-desc, .ov-tech chips, .ov-link href
-    4. Update .cf-yr and .cf-type in card-foot
-    5. Add a new .vN style in style.css if you need a new visual
   ============================================================ -->
 <section id="projects">
   <div class="container">
     <div class="proj-header">
       <div>
-        <div class="sec-eyebrow">02 · Projects</div>
-        <h2>Selected <em>Work</em></h2>
-        <p class="proj-intro">Hover to preview · Click to explore each project.</p>
+        <div class="sec-eyebrow">
+          <span class="lang-en">02 · Projects</span>
+          <span class="lang-zh">02 · 项目</span>
+        </div>
+        <h2>
+          <span class="lang-en">Selected <em>Work</em></span>
+          <span class="lang-zh">精选<em>作品</em></span>
+        </h2>
+        <p class="proj-intro">
+          <span class="lang-en">Hover to preview · Click to explore each project.</span>
+          <span class="lang-zh">悬停预览 · 点击查看项目详情。</span>
+        </p>
       </div>
     </div>
 
     <div class="proj-grid reveal">
 
       <!-- PROJECT 01 ─────────────────────────────── -->
-      <div class="proj-card rd1" onclick="window.open('#', '_self')">
+      <div class="proj-card rd1" onclick="window.open('../otis_off_peak_roadway_safety/PROJECT_WRITEUP.html', '_blank')">
         <div class="card-vis v1">
           <div class="card-num">01</div>
           <div class="ctags">
-            <span class="ct ct-r">Capstone</span>
-            <span class="ct ct-g">Ongoing</span>
+            <span class="ct ct-r">
+              <span class="lang-en">Capstone</span>
+              <span class="lang-zh">毕业设计</span>
+            </span>
+            <span class="ct ct-g">
+              <span class="lang-en">Ongoing</span>
+              <span class="lang-zh">进行中</span>
+            </span>
           </div>
-          <div class="card-title">Off-Peak Roadway Safety</div>
+          <div class="card-title">
+            <span class="lang-en">Off-Peak Roadway Safety</span>
+            <span class="lang-zh">非高峰期道路安全</span>
+          </div>
           <div class="card-overlay">
-            <div class="ov-title">Understanding Off-Peak Roadway Safety</div>
-            <div class="ov-desc">Predictive model + spatial analytics tool identifying high-speed driving risks in Philadelphia. Dashboard to help city planners mitigate off-peak fatalities by modeling road design relationships.</div>
+            <div class="ov-title">
+              <span class="lang-en">Understanding Off-Peak Roadway Safety</span>
+              <span class="lang-zh">理解非高峰期道路安全</span>
+            </div>
+            <div class="ov-desc">
+              <span class="lang-en">Predictive model + spatial analytics tool identifying high-speed driving risks in Philadelphia. Dashboard to help city planners mitigate off-peak fatalities by modeling road design relationships.</span>
+              <span class="lang-zh">识别费城高速驾驶风险的预测模型与空间分析工具，通过建模道路设计关系，为城市规划师提供非高峰期事故防控辅助决策支持。</span>
+            </div>
             <div class="ov-tech">
               <span class="ov-chip">R</span>
               <span class="ov-chip">Spatial Modeling</span>
               <span class="ov-chip">Dashboard</span>
               <span class="ov-chip">Road Safety</span>
             </div>
-            <a href="#" class="ov-link">In Progress ↗</a>
+            <a href="../otis_off_peak_roadway_safety/PROJECT_WRITEUP.html" class="ov-link" target="_blank">
+              <span class="lang-en">View Project ↗</span>
+              <span class="lang-zh">查看项目 ↗</span>
+            </a>
           </div>
         </div>
         <div class="card-foot">
           <span class="cf-yr">Jan 2026 — Ongoing</span>
-          <span class="cf-type">Capstone Research</span>
+          <span class="cf-type">
+            <span class="lang-en">Capstone Research</span>
+            <span class="lang-zh">毕业论文研究</span>
+          </span>
         </div>
       </div>
 
@@ -205,51 +321,87 @@
           <div class="card-num">02</div>
           <div class="ctags">
             <span class="ct ct-g">Cloud · ML</span>
-            <span class="ct ct-g">Ongoing</span>
+            <span class="ct ct-g">
+              <span class="lang-en">Ongoing</span>
+              <span class="lang-zh">进行中</span>
+            </span>
           </div>
-          <div class="card-title">Philadelphia CAMA System</div>
+          <div class="card-title">
+            <span class="lang-en">Philadelphia CAMA System</span>
+            <span class="lang-zh">费城房产税评估系统</span>
+          </div>
           <div class="card-overlay">
-            <div class="ov-title">Philadelphia CAMA Property Tax</div>
-            <div class="ov-desc">GCP pipeline (Cloud Storage, BigQuery, Cloud Functions, Cloud Run) for automated property valuation. ML models predict assessed values, deployed via interactive map dashboard.</div>
+            <div class="ov-title">
+              <span class="lang-en">Philadelphia CAMA Property Tax</span>
+              <span class="lang-zh">费城房产计算机辅助批量评估</span>
+            </div>
+            <div class="ov-desc">
+              <span class="lang-en">GCP pipeline (Cloud Storage, BigQuery, Cloud Functions, Cloud Run) for automated property valuation. ML models predict assessed values, deployed via interactive map dashboard.</span>
+              <span class="lang-zh">基于GCP管道（Cloud Storage、BigQuery、Cloud Functions、Cloud Run）的自动化房产估值系统，ML模型预测评估价值并通过交互式地图仪表板展示。</span>
+            </div>
             <div class="ov-tech">
               <span class="ov-chip">BigQuery</span>
               <span class="ov-chip">Cloud Run</span>
               <span class="ov-chip">Python</span>
               <span class="ov-chip">Mapbox</span>
             </div>
-            <a href="#" class="ov-link">In Progress ↗</a>
+            <a href="#" class="ov-link">
+              <span class="lang-en">In Progress ↗</span>
+              <span class="lang-zh">进行中 ↗</span>
+            </a>
           </div>
         </div>
         <div class="card-foot">
           <span class="cf-yr">Mar 2026 — Ongoing</span>
-          <span class="cf-type">Data Engineering</span>
+          <span class="cf-type">
+            <span class="lang-en">Data Engineering</span>
+            <span class="lang-zh">数据工程</span>
+          </span>
         </div>
       </div>
 
       <!-- PROJECT 03 ─────────────────────────────── -->
-      <div class="proj-card rd3" onclick="window.open('#', '_self')">
+      <div class="proj-card rd3" onclick="window.open('project-cloud-removal.html', '_blank')">
         <div class="card-vis v3">
           <div class="card-num">03</div>
           <div class="ctags">
             <span class="ct ct-g">AI / ML</span>
-            <span class="ct ct-g">Ongoing</span>
+            <span class="ct ct-m">
+              <span class="lang-en">Complete</span>
+              <span class="lang-zh">已完成</span>
+            </span>
           </div>
-          <div class="card-title">Generative AI for Cloud Removal</div>
+          <div class="card-title">
+            <span class="lang-en">Generative AI for Cloud Removal</span>
+            <span class="lang-zh">生成式AI卫星云去除</span>
+          </div>
           <div class="card-overlay">
-            <div class="ov-title">Generative AI for Satellite Cloud Removal</div>
-            <div class="ov-desc">Benchmarking GANs &amp; Diffusion models vs. multi-temporal methods on 2,000 Sentinel-2 images at 5–70% occlusion. Quantifies hallucination thresholds via PSNR, SSIM, NDVI.</div>
+            <div class="ov-title">
+              <span class="lang-en">Generative AI for Satellite Cloud Removal</span>
+              <span class="lang-zh">生成式AI用于卫星影像云去除</span>
+            </div>
+            <div class="ov-desc">
+              <span class="lang-en">Benchmarking GANs &amp; Diffusion models vs. multi-temporal methods on 15,000 Sentinel-2 patches at 5–70% occlusion. GAN achieves 32.76 dB PSNR vs. 15.09 dB temporal baseline at high coverage.</span>
+              <span class="lang-zh">在15,000张Sentinel-2卫星图像（5–70%云覆盖率）上对GAN、扩散模型与多时相合成方法进行基准测试。高覆盖率下GAN达到32.76 dB PSNR，远优于时序基准15.09 dB。</span>
+            </div>
             <div class="ov-tech">
               <span class="ov-chip">GAN / Diffusion</span>
               <span class="ov-chip">Remote Sensing</span>
-              <span class="ov-chip">Python</span>
+              <span class="ov-chip">PyTorch</span>
               <span class="ov-chip">Sentinel-2</span>
             </div>
-            <a href="#" class="ov-link">In Progress ↗</a>
+            <a href="project-cloud-removal.html" class="ov-link" target="_blank">
+              <span class="lang-en">View Project ↗</span>
+              <span class="lang-zh">查看项目 ↗</span>
+            </a>
           </div>
         </div>
         <div class="card-foot">
-          <span class="cf-yr">Mar 2026 — Ongoing</span>
-          <span class="cf-type">Machine Learning</span>
+          <span class="cf-yr">Mar – Apr 2026</span>
+          <span class="cf-type">
+            <span class="lang-en">Machine Learning</span>
+            <span class="lang-zh">机器学习</span>
+          </span>
         </div>
       </div>
 
@@ -259,24 +411,42 @@
           <img src="proj-safe-passage.png" alt="Safe Passage residuals map" class="card-preview-img">
           <div class="card-num">04</div>
           <div class="ctags">
-            <span class="ct ct-r">Spatial Econ</span>
+            <span class="ct ct-r">
+              <span class="lang-en">Spatial Econ</span>
+              <span class="lang-zh">空间计量</span>
+            </span>
           </div>
-          <div class="card-title">Safe Passage: Crime at SEPTA Stops</div>
+          <div class="card-title">
+            <span class="lang-en">Safe Passage: Crime at SEPTA Stops</span>
+            <span class="lang-zh">安全通道：SEPTA站点犯罪分析</span>
+          </div>
           <div class="card-overlay">
-            <div class="ov-title">Safe Passage: Crime Risk at SEPTA</div>
-            <div class="ov-desc">Negative Binomial spatial risk model across 5,884 stops. Pseudo-panel fixed effects isolate ridership's causal impact. 56% MAE reduction via 5-fold CV and Moran's I validation.</div>
+            <div class="ov-title">
+              <span class="lang-en">Safe Passage: Crime Risk at SEPTA</span>
+              <span class="lang-zh">安全通道：SEPTA站点犯罪风险</span>
+            </div>
+            <div class="ov-desc">
+              <span class="lang-en">Negative Binomial spatial risk model across 5,884 stops. Pseudo-panel fixed effects isolate ridership's causal impact. 56% MAE reduction via 5-fold CV and Moran's I validation.</span>
+              <span class="lang-zh">5,884个SEPTA站点的负二项空间风险模型，伪面板固定效应剥离客流量因果效应，通过5折交叉验证和Moran's I空间验证，MAE降低56%。</span>
+            </div>
             <div class="ov-tech">
               <span class="ov-chip">R</span>
               <span class="ov-chip">NegBin Model</span>
               <span class="ov-chip">Moran's I</span>
               <span class="ov-chip">Philadelphia</span>
             </div>
-            <a href="https://musa-5080-fall-2025.github.io/portfolio-setup-ChristineCui12/final/Appendix/Final_appendix.html" class="ov-link" target="_blank">View Project ↗</a>
+            <a href="https://musa-5080-fall-2025.github.io/portfolio-setup-ChristineCui12/final/Appendix/Final_appendix.html" class="ov-link" target="_blank">
+              <span class="lang-en">View Project ↗</span>
+              <span class="lang-zh">查看项目 ↗</span>
+            </a>
           </div>
         </div>
         <div class="card-foot">
           <span class="cf-yr">Sep – Dec 2025</span>
-          <span class="cf-type">Spatial Econometrics</span>
+          <span class="cf-type">
+            <span class="lang-en">Spatial Econometrics</span>
+            <span class="lang-zh">空间计量经济学</span>
+          </span>
         </div>
       </div>
 
@@ -286,24 +456,42 @@
           <img src="proj-path-parity.png" alt="Housing sales price quartile map" class="card-preview-img">
           <div class="card-num">05</div>
           <div class="ctags">
-            <span class="ct ct-r">Equity</span>
+            <span class="ct ct-r">
+              <span class="lang-en">Equity</span>
+              <span class="lang-zh">公平性</span>
+            </span>
           </div>
-          <div class="card-title">Path to Parity: Fair Housing Valuation</div>
+          <div class="card-title">
+            <span class="lang-en">Path to Parity: Fair Housing Valuation</span>
+            <span class="lang-zh">平等之路：公平住房估值</span>
+          </div>
           <div class="card-overlay">
-            <div class="ov-title">The Path to Parity</div>
-            <div class="ov-desc">Housing valuation in R: ZIP Code fixed effects + KNN spatial features. R² = 0.84 on 31,000+ properties. Residual maps reveal systematic bias in misvalued neighborhoods.</div>
+            <div class="ov-title">
+              <span class="lang-en">The Path to Parity</span>
+              <span class="lang-zh">平等之路</span>
+            </div>
+            <div class="ov-desc">
+              <span class="lang-en">Housing valuation in R: ZIP Code fixed effects + KNN spatial features. R² = 0.84 on 31,000+ properties. Residual maps reveal systematic bias in misvalued neighborhoods.</span>
+              <span class="lang-zh">R语言住房估值模型：邮编固定效应+KNN空间特征，在31,000+套房产上R²=0.84，残差地图揭示被低估社区的系统性价值偏差。</span>
+            </div>
             <div class="ov-tech">
               <span class="ov-chip">R</span>
               <span class="ov-chip">KNN Features</span>
               <span class="ov-chip">10-fold CV</span>
               <span class="ov-chip">Housing Equity</span>
             </div>
-            <a href="https://musa-5080-fall-2025.github.io/portfolio-setup-ChristineCui12/midterm/Appendix/CuiXinyuan_Appendix.html" class="ov-link" target="_blank">View Project ↗</a>
+            <a href="https://musa-5080-fall-2025.github.io/portfolio-setup-ChristineCui12/midterm/Appendix/CuiXinyuan_Appendix.html" class="ov-link" target="_blank">
+              <span class="lang-en">View Project ↗</span>
+              <span class="lang-zh">查看项目 ↗</span>
+            </a>
           </div>
         </div>
         <div class="card-foot">
           <span class="cf-yr">Sep – Oct 2025</span>
-          <span class="cf-type">Predictive Modeling</span>
+          <span class="cf-type">
+            <span class="lang-en">Predictive Modeling</span>
+            <span class="lang-zh">预测建模</span>
+          </span>
         </div>
       </div>
 
@@ -313,24 +501,42 @@
           <img src="proj-yunnan.png" alt="Yunnan Odyssey dashboard" class="card-preview-img">
           <div class="card-num">06</div>
           <div class="ctags">
-            <span class="ct ct-g">Live Site</span>
+            <span class="ct ct-g">
+              <span class="lang-en">Live Site</span>
+              <span class="lang-zh">在线演示</span>
+            </span>
           </div>
-          <div class="card-title">Yunnan Odyssey Travel Platform</div>
+          <div class="card-title">
+            <span class="lang-en">Yunnan Odyssey Travel Platform</span>
+            <span class="lang-zh">云南漫游旅行平台</span>
+          </div>
           <div class="card-overlay">
-            <div class="ov-title">Yunnan Odyssey: Plan Your Myth</div>
-            <div class="ov-desc">Web travel platform bridging emotional inspiration with rational logistics. Integrates social discovery, route optimization &amp; budget tracking via Leaflet, Firebase, and Mapbox.</div>
+            <div class="ov-title">
+              <span class="lang-en">Yunnan Odyssey: Plan Your Myth</span>
+              <span class="lang-zh">云南漫游：规划你的传奇</span>
+            </div>
+            <div class="ov-desc">
+              <span class="lang-en">Web travel platform bridging emotional inspiration with rational logistics. Integrates social discovery, route optimization &amp; budget tracking via Leaflet, Firebase, and Mapbox.</span>
+              <span class="lang-zh">连接情感灵感与理性规划的网页旅行平台，通过Leaflet、Firebase和Mapbox整合社交发现、路线优化与预算追踪功能。</span>
+            </div>
             <div class="ov-tech">
               <span class="ov-chip">JavaScript</span>
               <span class="ov-chip">Mapbox</span>
               <span class="ov-chip">Firebase</span>
               <span class="ov-chip">Leaflet</span>
             </div>
-            <a href="https://christinecui12.github.io/dashboard-project/" class="ov-link" target="_blank">View Live Site ↗</a>
+            <a href="https://christinecui12.github.io/dashboard-project/" class="ov-link" target="_blank">
+              <span class="lang-en">View Live Site ↗</span>
+              <span class="lang-zh">查看在线演示 ↗</span>
+            </a>
           </div>
         </div>
         <div class="card-foot">
           <span class="cf-yr">Oct – Dec 2025</span>
-          <span class="cf-type">Web Development</span>
+          <span class="cf-type">
+            <span class="lang-en">Web Development</span>
+            <span class="lang-zh">网页开发</span>
+          </span>
         </div>
       </div>
 
@@ -340,24 +546,42 @@
           <img src="assets/bike-sharing/crop_station_map.png" alt="Tianjin metro station classification map" class="card-preview-img">
           <div class="card-num">07</div>
           <div class="ctags">
-            <span class="ct ct-g">Mobility</span>
+            <span class="ct ct-g">
+              <span class="lang-en">Mobility</span>
+              <span class="lang-zh">城市交通</span>
+            </span>
           </div>
-          <div class="card-title">Bike-Sharing &amp; Rail Integration</div>
+          <div class="card-title">
+            <span class="lang-en">Bike-Sharing &amp; Rail Integration</span>
+            <span class="lang-zh">共享单车与轨道交通接驳</span>
+          </div>
           <div class="card-overlay">
-            <div class="ov-title">Bike-Sharing Integration with Rail Transit</div>
-            <div class="ov-desc">HDBSCAN clustering defines bike-metro service areas and station typologies. Quantitative modeling of built-environment factors driving first-/last-mile connectivity.</div>
+            <div class="ov-title">
+              <span class="lang-en">Bike-Sharing Integration with Rail Transit</span>
+              <span class="lang-zh">共享单车接驳轨道交通研究</span>
+            </div>
+            <div class="ov-desc">
+              <span class="lang-en">HDBSCAN clustering defines bike-metro service areas and station typologies. Quantitative modeling of built-environment factors driving first-/last-mile connectivity.</span>
+              <span class="lang-zh">HDBSCAN聚类识别单车-地铁服务范围与站点类型，对驱动首末公里接驳的建成环境影响因素进行定量建模研究。</span>
+            </div>
             <div class="ov-tech">
               <span class="ov-chip">Python</span>
               <span class="ov-chip">HDBSCAN</span>
               <span class="ov-chip">First-Mile</span>
               <span class="ov-chip">GIS</span>
             </div>
-            <a href="project-bike-sharing.html" target="_blank" class="ov-link">View Project ↗</a>
+            <a href="project-bike-sharing.html" target="_blank" class="ov-link">
+              <span class="lang-en">View Project ↗</span>
+              <span class="lang-zh">查看项目 ↗</span>
+            </a>
           </div>
         </div>
         <div class="card-foot">
           <span class="cf-yr">Oct – Dec 2024</span>
-          <span class="cf-type">Urban Mobility</span>
+          <span class="cf-type">
+            <span class="lang-en">Urban Mobility</span>
+            <span class="lang-zh">城市交通</span>
+          </span>
         </div>
       </div>
 
@@ -369,22 +593,37 @@
           <div class="ctags">
             <span class="ct ct-g">XGBoost</span>
           </div>
-          <div class="card-title">Community Environment Optimization</div>
+          <div class="card-title">
+            <span class="lang-en">Community Environment Optimization</span>
+            <span class="lang-zh">社区环境优化研究</span>
+          </div>
           <div class="card-overlay">
-            <div class="ov-title">Community Environment &amp; Resident Happiness</div>
-            <div class="ov-desc">XGBoost + TreeSHAP interpretability analyzing social, economic, and ecological indicators affecting residential happiness across high- and low-efficiency areas via TOPSIS.</div>
+            <div class="ov-title">
+              <span class="lang-en">Community Environment &amp; Resident Happiness</span>
+              <span class="lang-zh">社区环境与居民幸福感</span>
+            </div>
+            <div class="ov-desc">
+              <span class="lang-en">XGBoost + TreeSHAP interpretability analyzing social, economic, and ecological indicators affecting residential happiness across high- and low-efficiency areas via TOPSIS.</span>
+              <span class="lang-zh">XGBoost+TreeSHAP可解释性分析，研究影响居民幸福感的社会、经济与生态指标，通过TOPSIS方法识别高低效能社区并提出差异化优化策略。</span>
+            </div>
             <div class="ov-tech">
               <span class="ov-chip">Python</span>
               <span class="ov-chip">XGBoost</span>
               <span class="ov-chip">SHAP</span>
               <span class="ov-chip">TOPSIS</span>
             </div>
-            <a href="城垣杯展示.html" target="_blank" class="ov-link">View Project ↗</a>
+            <a href="城垣杯展示.html" target="_blank" class="ov-link">
+              <span class="lang-en">View Project ↗</span>
+              <span class="lang-zh">查看项目 ↗</span>
+            </a>
           </div>
         </div>
         <div class="card-foot">
           <span class="cf-yr">Apr – Jun 2024</span>
-          <span class="cf-type">ML Interpretability</span>
+          <span class="cf-type">
+            <span class="lang-en">ML Interpretability</span>
+            <span class="lang-zh">机器学习可解释性</span>
+          </span>
         </div>
       </div>
 
@@ -394,24 +633,42 @@
           <img src="assets/weibo-emotion/hero_title.png" alt="Urban emotion spatio-temporal analysis cover" class="card-preview-img">
           <div class="card-num">09</div>
           <div class="ctags">
-            <span class="ct ct-r">Time Series</span>
+            <span class="ct ct-r">
+              <span class="lang-en">Time Series</span>
+              <span class="lang-zh">时序分析</span>
+            </span>
           </div>
-          <div class="card-title">Spatio-temporal Urban Sentiment</div>
+          <div class="card-title">
+            <span class="lang-en">Spatio-temporal Urban Sentiment</span>
+            <span class="lang-zh">城市情感时空分析</span>
+          </div>
           <div class="card-overlay">
-            <div class="ov-title">Spatio-temporal Urban Sentiment Analysis</div>
-            <div class="ov-desc">Weibo check-in + Baidu Index time series for Beijing &amp; Shanghai. STL decomposition and stationarity testing reveal how urban events register in collective digital expression.</div>
+            <div class="ov-title">
+              <span class="lang-en">Spatio-temporal Urban Sentiment Analysis</span>
+              <span class="lang-zh">城市情感时空分析</span>
+            </div>
+            <div class="ov-desc">
+              <span class="lang-en">Weibo check-in + Baidu Index time series for Beijing &amp; Shanghai. STL decomposition and stationarity testing reveal how urban events register in collective digital expression.</span>
+              <span class="lang-zh">结合北京、上海的微博签到数据与百度指数构建时间序列，通过STL分解与平稳性检验揭示城市事件如何在集体数字情绪表达中留下印记。</span>
+            </div>
             <div class="ov-tech">
               <span class="ov-chip">Python / R</span>
               <span class="ov-chip">STL Decomp</span>
               <span class="ov-chip">Time Series</span>
               <span class="ov-chip">NLP</span>
             </div>
-            <a href="project-weibo-emotion.html" target="_blank" class="ov-link">View Project ↗</a>
+            <a href="project-weibo-emotion.html" target="_blank" class="ov-link">
+              <span class="lang-en">View Project ↗</span>
+              <span class="lang-zh">查看项目 ↗</span>
+            </a>
           </div>
         </div>
         <div class="card-foot">
           <span class="cf-yr">Oct – Dec 2023</span>
-          <span class="cf-type">Sentiment Analysis</span>
+          <span class="cf-type">
+            <span class="lang-en">Sentiment Analysis</span>
+            <span class="lang-zh">情感分析</span>
+          </span>
         </div>
       </div>
 
@@ -425,16 +682,28 @@
   ============================================================ -->
 <section id="skills">
   <div class="container">
-    <div class="sec-eyebrow">03 · Skills</div>
-    <h2>Tools of the <em>Trade</em></h2>
+    <div class="sec-eyebrow">
+      <span class="lang-en">03 · Skills</span>
+      <span class="lang-zh">03 · 技能</span>
+    </div>
+    <h2>
+      <span class="lang-en">Tools of the <em>Trade</em></span>
+      <span class="lang-zh">专业<em>工具</em>与技能</span>
+    </h2>
 
     <div class="skills-layout reveal">
 
       <!-- Left column: proficiency bars -->
       <div>
-        <div class="sk-heading">Programming &amp; Analysis</div>
+        <div class="sk-heading">
+          <span class="lang-en">Programming &amp; Analysis</span>
+          <span class="lang-zh">编程与分析</span>
+        </div>
 
-        <div class="sk-cat">Languages</div>
+        <div class="sk-cat">
+          <span class="lang-en">Languages</span>
+          <span class="lang-zh">编程语言</span>
+        </div>
         <div class="sk-row">
           <span class="sk-name">R — tidyverse, sf, tidycensus</span>
           <div class="sk-dots"><div class="d r"></div><div class="d r"></div><div class="d r"></div><div class="d r"></div><div class="d r"></div></div>
@@ -452,26 +721,44 @@
           <div class="sk-dots"><div class="d r"></div><div class="d r"></div><div class="d r"></div><div class="d"></div><div class="d"></div></div>
         </div>
 
-        <div class="sk-cat">Statistical Methods</div>
+        <div class="sk-cat">
+          <span class="lang-en">Statistical Methods</span>
+          <span class="lang-zh">统计方法</span>
+        </div>
         <div class="sk-row">
-          <span class="sk-name">Spatial Econometrics (SLM, SEM, NegBin)</span>
+          <span class="sk-name">
+            <span class="lang-en">Spatial Econometrics (SLM, SEM, NegBin)</span>
+            <span class="lang-zh">空间计量经济学（SLM, SEM, NegBin）</span>
+          </span>
           <div class="sk-dots"><div class="d r"></div><div class="d r"></div><div class="d r"></div><div class="d r"></div><div class="d"></div></div>
         </div>
         <div class="sk-row">
-          <span class="sk-name">Machine Learning &amp; Cross-Validation</span>
+          <span class="sk-name">
+            <span class="lang-en">Machine Learning &amp; Cross-Validation</span>
+            <span class="lang-zh">机器学习与交叉验证</span>
+          </span>
           <div class="sk-dots"><div class="d r"></div><div class="d r"></div><div class="d r"></div><div class="d r"></div><div class="d"></div></div>
         </div>
         <div class="sk-row">
-          <span class="sk-name">Time Series &amp; STL Decomposition</span>
+          <span class="sk-name">
+            <span class="lang-en">Time Series &amp; STL Decomposition</span>
+            <span class="lang-zh">时间序列与STL分解</span>
+          </span>
           <div class="sk-dots"><div class="d r"></div><div class="d r"></div><div class="d r"></div><div class="d"></div><div class="d"></div></div>
         </div>
       </div>
 
       <!-- Right column: GIS + chip tags -->
       <div>
-        <div class="sk-heading">Spatial &amp; Design Tools</div>
+        <div class="sk-heading">
+          <span class="lang-en">Spatial &amp; Design Tools</span>
+          <span class="lang-zh">空间与设计工具</span>
+        </div>
 
-        <div class="sk-cat">GIS &amp; Cloud</div>
+        <div class="sk-cat">
+          <span class="lang-en">GIS &amp; Cloud</span>
+          <span class="lang-zh">GIS与云平台</span>
+        </div>
         <div class="sk-row">
           <span class="sk-name">ArcGIS Pro</span>
           <div class="sk-dots"><div class="d g"></div><div class="d g"></div><div class="d g"></div><div class="d g"></div><div class="d g"></div></div>
@@ -481,11 +768,17 @@
           <div class="sk-dots"><div class="d g"></div><div class="d g"></div><div class="d g"></div><div class="d g"></div><div class="d"></div></div>
         </div>
         <div class="sk-row">
-          <span class="sk-name">Google Cloud Platform · BigQuery</span>
+          <span class="sk-name">
+            <span class="lang-en">Google Cloud Platform · BigQuery</span>
+            <span class="lang-zh">谷歌云平台 · BigQuery</span>
+          </span>
           <div class="sk-dots"><div class="d g"></div><div class="d g"></div><div class="d g"></div><div class="d g"></div><div class="d"></div></div>
         </div>
 
-        <div class="sk-cat">Visualization &amp; Design</div>
+        <div class="sk-cat">
+          <span class="lang-en">Visualization &amp; Design</span>
+          <span class="lang-zh">可视化与设计</span>
+        </div>
         <div class="chips">
           <span class="chip">Mapbox</span>
           <span class="chip">Leaflet</span>
@@ -498,13 +791,22 @@
           <span class="chip">Ecotect</span>
         </div>
 
-        <div class="sk-cat" style="margin-top:1.6rem">Languages</div>
+        <div class="sk-cat" style="margin-top:1.6rem">
+          <span class="lang-en">Languages</span>
+          <span class="lang-zh">语言能力</span>
+        </div>
         <div class="sk-row">
-          <span class="sk-name">Chinese (Native)</span>
+          <span class="sk-name">
+            <span class="lang-en">Chinese (Native)</span>
+            <span class="lang-zh">中文（母语）</span>
+          </span>
           <div class="sk-dots"><div class="d g"></div><div class="d g"></div><div class="d g"></div><div class="d g"></div><div class="d g"></div></div>
         </div>
         <div class="sk-row">
-          <span class="sk-name">English (Fluent)</span>
+          <span class="sk-name">
+            <span class="lang-en">English (Fluent)</span>
+            <span class="lang-zh">英语（流利）</span>
+          </span>
           <div class="sk-dots"><div class="d g"></div><div class="d g"></div><div class="d g"></div><div class="d g"></div><div class="d"></div></div>
         </div>
       </div>
@@ -519,27 +821,51 @@
   ============================================================ -->
 <section id="awards">
   <div class="container">
-    <div class="sec-eyebrow">04 · Recognition</div>
-    <h2>Honors &amp; <em>Awards</em></h2>
+    <div class="sec-eyebrow">
+      <span class="lang-en">04 · Recognition</span>
+      <span class="lang-zh">04 · 荣誉</span>
+    </div>
+    <h2>
+      <span class="lang-en">Honors &amp; <em>Awards</em></span>
+      <span class="lang-zh">荣誉与<em>奖项</em></span>
+    </h2>
 
     <div class="awards-grid reveal">
 
       <div class="aw-card rd1">
         <div class="aw-yr">2020 · 2023</div>
-        <div class="aw-name">Outstanding Student Leader</div>
-        <div class="aw-org">Tianjin University</div>
+        <div class="aw-name">
+          <span class="lang-en">Outstanding Student Leader</span>
+          <span class="lang-zh">优秀学生干部</span>
+        </div>
+        <div class="aw-org">
+          <span class="lang-en">Tianjin University</span>
+          <span class="lang-zh">天津大学</span>
+        </div>
       </div>
 
       <div class="aw-card rd2">
         <div class="aw-yr">Jul 2023</div>
-        <div class="aw-name">Yuanye Awards for Students — Third National Prize</div>
-        <div class="aw-org">National Level Competition</div>
+        <div class="aw-name">
+          <span class="lang-en">Yuanye Awards for Students — Third National Prize</span>
+          <span class="lang-zh">元野奖学生竞赛 · 全国三等奖</span>
+        </div>
+        <div class="aw-org">
+          <span class="lang-en">National Level Competition</span>
+          <span class="lang-zh">全国性竞赛</span>
+        </div>
       </div>
 
       <div class="aw-card rd3">
         <div class="aw-yr">Mar 2023</div>
-        <div class="aw-name">Milan Design Week China Collegiate — Second National Prize</div>
-        <div class="aw-org">International Competition</div>
+        <div class="aw-name">
+          <span class="lang-en">Milan Design Week China Collegiate — Second National Prize</span>
+          <span class="lang-zh">米兰设计周中国高校竞赛 · 全国二等奖</span>
+        </div>
+        <div class="aw-org">
+          <span class="lang-en">International Competition</span>
+          <span class="lang-zh">国际竞赛</span>
+        </div>
       </div>
 
     </div>
@@ -551,9 +877,18 @@
   CONTACT  (05)
   ============================================================ -->
 <section id="contact">
-  <div class="sec-eyebrow">05 · Contact</div>
-  <h2>Let's <em>connect</em> &amp; <span class="gr">build</span></h2>
-  <p class="ct-sub">Whether you're hiring, researching, or want to talk cities and data — I'd love to hear from you.</p>
+  <div class="sec-eyebrow">
+    <span class="lang-en">05 · Contact</span>
+    <span class="lang-zh">05 · 联系方式</span>
+  </div>
+  <h2>
+    <span class="lang-en">Let's <em>connect</em> &amp; <span class="gr">build</span></span>
+    <span class="lang-zh">期待与您<em>联系</em>与<span class="gr">合作</span></span>
+  </h2>
+  <p class="ct-sub">
+    <span class="lang-en">Whether you're hiring, researching, or want to talk cities and data — I'd love to hear from you.</span>
+    <span class="lang-zh">无论您是招聘、研究，还是想聊城市与数据——欢迎随时与我联系。</span>
+  </p>
   <div class="ct-links">
     <a href="mailto:cui12@upenn.edu" class="ct-link">✉ cui12@upenn.edu</a>
     <a href="tel:+12672506561" class="ct-link">✆ +1 (267) 250-6561</a>
@@ -567,8 +902,11 @@
   FOOTER
   ============================================================ -->
 <footer>
-  <span class="ft">© 2026 Xinyuan (Christine) Cui</span>
-  <span class="ft">Philadelphia, PA · Available May 2026</span>
+  <span class="ft">© 2026 Xinyuan (Christine) Cui · 崔馨元</span>
+  <span class="ft">
+    <span class="lang-en">Philadelphia, PA · Available May 2026</span>
+    <span class="lang-zh">费城，宾夕法尼亚州 · 2026年5月可入职</span>
+  </span>
 </footer>
 
 <script src="script.js"></script>

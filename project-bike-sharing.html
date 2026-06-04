@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>共享单车接驳轨道交通研究 · 崔馨元</title>
+  <title>Bike-Rail Integration · Christine Cui / 共享单车接驳研究 · 崔馨元</title>
   <style>
+    html:not(.lang-zh-active) .lang-zh { display: none; }
+    html.lang-zh-active .lang-en { display: none; }
+
     :root {
       --teal:    #0d5c5c;
       --teal-m:  #117a7a;
@@ -173,34 +176,59 @@
     footer { background:#0a3f3f; color:rgba(255,255,255,.6); text-align:center;
              padding:32px 24px; font-size:.8rem; margin-top:64px; }
     footer strong { color:#fff; }
+
+    .lang-btn { font-size: 12px; padding: 5px 13px; border: 1px solid rgba(255,255,255,.3); background: transparent; color: rgba(255,255,255,.75); cursor: pointer; border-radius: 3px; transition: all .18s; margin-left: 16px; letter-spacing: .05em; }
+    .lang-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .lang-btn.active-zh { border-color: var(--orange); color: var(--orange); background: rgba(217,114,42,.12); }
   </style>
+  <script>(function(){document.documentElement.classList.add('lang-'+(localStorage.getItem('cc-lang')||'en')+'-active');})();</script>
 </head>
 <body>
 
 <!-- ── NAV ── -->
 <nav>
-  <div class="logo">🚲 共享单车接驳研究</div>
-  <a href="#bg">研究背景</a>
-  <a href="#data">数据与方法</a>
-  <a href="#temporal">时空特征</a>
-  <a href="#range">服务范围</a>
-  <a href="#classify">站点分类</a>
-  <a href="#factor">影响因素</a>
-  <a href="#guide">优化导则</a>
-  <a href="#concl">结论</a>
+  <a href="index.html" style="color:rgba(255,255,255,.55);text-decoration:none;font-size:12px;margin-right:16px;flex-shrink:0;">← <span class="lang-en">Portfolio</span><span class="lang-zh">作品集</span></a>
+  <div class="logo">
+    <span class="lang-en">🚲 Bike-Rail Integration</span>
+    <span class="lang-zh">🚲 共享单车接驳研究</span>
+  </div>
+  <a href="#bg"><span class="lang-en">Background</span><span class="lang-zh">研究背景</span></a>
+  <a href="#data"><span class="lang-en">Data & Methods</span><span class="lang-zh">数据与方法</span></a>
+  <a href="#temporal"><span class="lang-en">Spatiotemporal</span><span class="lang-zh">时空特征</span></a>
+  <a href="#range"><span class="lang-en">Service Area</span><span class="lang-zh">服务范围</span></a>
+  <a href="#classify"><span class="lang-en">Classification</span><span class="lang-zh">站点分类</span></a>
+  <a href="#factor"><span class="lang-en">Factors</span><span class="lang-zh">影响因素</span></a>
+  <a href="#guide"><span class="lang-en">Guidelines</span><span class="lang-zh">优化导则</span></a>
+  <a href="#concl"><span class="lang-en">Conclusion</span><span class="lang-zh">结论</span></a>
+  <button class="lang-btn" id="langToggle" onclick="toggleLang()">中文</button>
 </nav>
 
 <!-- ── HERO ── -->
 <div class="hero">
   <img class="hero-bg" src="assets/bike-sharing/p04_img01.jpeg" alt="" />
   <div class="hero-body">
-    <span class="hero-kicker">设计课题研究 · 终期汇报</span>
-    <h1>共享单车接驳轨道交通的<br>时空特征与影响因素研究</h1>
-    <p class="hero-en">A Study on the Spatiotemporal Characteristics and Influencing Factors of Bike-Sharing Integration with Rail Transit — A Case Study of Tianjin</p>
+    <span class="hero-kicker">
+      <span class="lang-en">Urban Design Research · Final Report</span>
+      <span class="lang-zh">设计课题研究 · 终期汇报</span>
+    </span>
+    <h1>
+      <span class="lang-en">Spatiotemporal Characteristics and Influencing Factors of Bike-Sharing Integration with Rail Transit</span>
+      <span class="lang-zh">共享单车接驳轨道交通的<br>时空特征与影响因素研究</span>
+    </h1>
+    <p class="hero-en">
+      <span class="lang-en">A Study on the Spatiotemporal Characteristics and Influencing Factors of Bike-Sharing Integration with Rail Transit — A Case Study of Tianjin</span>
+      <span class="lang-zh">共享单车接驳轨道交通时空特征与影响因素——以天津市为例</span>
+    </p>
     <div class="hero-chips">
       <span class="hero-chip">苏琪 · 郭函祎 · 郭雅洁 · 崔馨元</span>
-      <span class="hero-chip">指导教师：任利剑</span>
-      <span class="hero-chip">天津大学建筑学院</span>
+      <span class="hero-chip">
+        <span class="lang-en">Advisor: Prof. Ren Lijian</span>
+        <span class="lang-zh">指导教师：任利剑</span>
+      </span>
+      <span class="hero-chip">
+        <span class="lang-en">School of Architecture, Tianjin University</span>
+        <span class="lang-zh">天津大学建筑学院</span>
+      </span>
     </div>
   </div>
 </div>
@@ -211,54 +239,103 @@
   <div id="bg">
     <div class="sec-head">
       <p class="sec-eyebrow">01 · Research Background</p>
-      <h2>研究背景</h2>
-      <p>共享单车与城市轨道交通融合成为城市绿色出行的关键议题，然而二者的协同发展面临诸多挑战。</p>
+      <h2>
+        <span class="lang-en">Research Background</span>
+        <span class="lang-zh">研究背景</span>
+      </h2>
+      <p>
+        <span class="lang-en">The integration of bike-sharing with urban rail transit has become a key topic in urban green mobility, yet their coordinated development faces many challenges.</span>
+        <span class="lang-zh">共享单车与城市轨道交通融合成为城市绿色出行的关键议题，然而二者的协同发展面临诸多挑战。</span>
+      </p>
       <div class="sec-rule"></div>
     </div>
 
     <div class="g3">
       <div class="photo-banner">
-        <img src="assets/bike-sharing/p04_img01.jpeg" alt="背景1" />
+        <img src="assets/bike-sharing/p04_img01.jpeg" alt="Background 1" />
         <div class="photo-banner-body">
-          <span class="photo-banner-tag">背景 01</span>
-          <h3>国家倡导绿色出行方式</h3>
-          <p>《绿色出行创建行动方案》明确引导公众优先选择公共交通、步行和自行车等绿色出行方式</p>
+          <span class="photo-banner-tag">
+            <span class="lang-en">Context 01</span>
+            <span class="lang-zh">背景 01</span>
+          </span>
+          <h3>
+            <span class="lang-en">National Green Mobility Policy</span>
+            <span class="lang-zh">国家倡导绿色出行方式</span>
+          </h3>
+          <p>
+            <span class="lang-en">The Green Commuting Action Plan explicitly guides the public to prioritize public transit, walking, and cycling as green travel modes.</span>
+            <span class="lang-zh">《绿色出行创建行动方案》明确引导公众优先选择公共交通、步行和自行车等绿色出行方式</span>
+          </p>
         </div>
       </div>
       <div class="photo-banner">
-        <img src="assets/bike-sharing/p05_img01.jpeg" alt="背景2" />
+        <img src="assets/bike-sharing/p05_img01.jpeg" alt="Background 2" />
         <div class="photo-banner-body">
-          <span class="photo-banner-tag">背景 02</span>
-          <h3>共享单车改变换乘格局</h3>
-          <p>填补地铁与目的地之间"走路不近、打车费钱"的尴尬距离，扩大地铁核心服务半径</p>
+          <span class="photo-banner-tag">
+            <span class="lang-en">Context 02</span>
+            <span class="lang-zh">背景 02</span>
+          </span>
+          <h3>
+            <span class="lang-en">Bike-Sharing Transforms Transfer Patterns</span>
+            <span class="lang-zh">共享单车改变换乘格局</span>
+          </h3>
+          <p>
+            <span class="lang-en">Fills the "too far to walk, too expensive to taxi" gap between metro and destinations, extending the metro's effective service radius.</span>
+            <span class="lang-zh">填补地铁与目的地之间"走路不近、打车费钱"的尴尬距离，扩大地铁核心服务半径</span>
+          </p>
         </div>
       </div>
       <div class="photo-banner">
-        <img src="assets/bike-sharing/p07_img01.jpeg" alt="背景3" />
+        <img src="assets/bike-sharing/p07_img01.jpeg" alt="Background 3" />
         <div class="photo-banner-body">
-          <span class="photo-banner-tag">背景 03</span>
-          <h3>接驳轨道交通面临挑战</h3>
-          <p>停车空间不足、潮汐现象、无序停放、企业恶性竞争、监管滞后等问题亟待解决</p>
+          <span class="photo-banner-tag">
+            <span class="lang-en">Context 03</span>
+            <span class="lang-zh">背景 03</span>
+          </span>
+          <h3>
+            <span class="lang-en">Rail Feeder Faces Challenges</span>
+            <span class="lang-zh">接驳轨道交通面临挑战</span>
+          </h3>
+          <p>
+            <span class="lang-en">Issues such as insufficient parking space, tidal flow, disorderly parking, fierce operator competition, and lagging regulation urgently need to be addressed.</span>
+            <span class="lang-zh">停车空间不足、潮汐现象、无序停放、企业恶性竞争、监管滞后等问题亟待解决</span>
+          </p>
         </div>
       </div>
     </div>
 
     <div class="callout" style="margin-top:20px;">
-      地铁站周边是共享单车最主要的活跃区域，占全市出行总量约 <strong>40%</strong>。天津市轨道周边骑行订单占比 <strong>31.1%</strong>，2021 年累计骑行 <strong>2.56 亿人次</strong>，总里程 <strong>3.83 亿 km</strong>。针对天津的专项研究仍较为缺乏。
+      <span class="lang-en">Metro station areas are the most active zones for bike-sharing, accounting for about <strong>40%</strong> of citywide trips. Cycling orders near Tianjin's rail network account for <strong>31.1%</strong> of all trips; in 2021, a cumulative <strong>256 million rides</strong> were recorded with a total distance of <strong>383 million km</strong>. Dedicated research on Tianjin remains scarce.</span>
+      <span class="lang-zh">地铁站周边是共享单车最主要的活跃区域，占全市出行总量约 <strong>40%</strong>。天津市轨道周边骑行订单占比 <strong>31.1%</strong>，2021 年累计骑行 <strong>2.56 亿人次</strong>，总里程 <strong>3.83 亿 km</strong>。针对天津的专项研究仍较为缺乏。</span>
     </div>
 
     <div class="g2" style="margin-top:18px;">
       <div class="card card-pad">
-        <h3>研究目的</h3>
-        <p>① 揭示共享单车接驳轨道交通的时空规律（接驳行为特征 + 接驳范围特征）</p>
-        <p style="margin-top:8px;">② 探究不同类型站点的差异，分类识别共享单车接驳影响因素</p>
-        <p style="margin-top:8px;">③ 分类提出优化导则，为政府制定政策、企业制定运营策略提供依据</p>
+        <h3>
+          <span class="lang-en">Research Objectives</span>
+          <span class="lang-zh">研究目的</span>
+        </h3>
+        <p>
+          <span class="lang-en">① Reveal the spatiotemporal patterns of bike-sharing as a rail transit feeder (behavioral characteristics + service-area characteristics)</span>
+          <span class="lang-zh">① 揭示共享单车接驳轨道交通的时空规律（接驳行为特征 + 接驳范围特征）</span>
+        </p>
+        <p style="margin-top:8px;">
+          <span class="lang-en">② Investigate differences across station types and identify influencing factors for each category</span>
+          <span class="lang-zh">② 探究不同类型站点的差异，分类识别共享单车接驳影响因素</span>
+        </p>
+        <p style="margin-top:8px;">
+          <span class="lang-en">③ Propose differentiated optimization guidelines to support government policy-making and operator strategy</span>
+          <span class="lang-zh">③ 分类提出优化导则，为政府制定政策、企业制定运营策略提供依据</span>
+        </p>
       </div>
       <div class="card card-pad">
-        <h3>三大创新点</h3>
-        <p>🔍 <strong>精细化服务范围：</strong>HDBSCAN + 核密度 + 等值线替代传统简单缓冲区，精准识别各站实际接驳服务范围</p>
-        <p style="margin-top:8px;">📊 <strong>综合接驳能力指标：</strong>引入 TOPSIS 法综合量化接驳量、分担率、服务范围</p>
-        <p style="margin-top:8px;">🗂️ <strong>分类站点探讨：</strong>居住 · 商业 · 混合三类站点差异化特征分析与优化策略</p>
+        <h3>
+          <span class="lang-en">Three Innovations</span>
+          <span class="lang-zh">三大创新点</span>
+        </h3>
+        <p>🔍 <strong><span class="lang-en">Refined Service Area:</span><span class="lang-zh">精细化服务范围：</span></strong> <span class="lang-en">HDBSCAN + kernel density + contour lines replace the traditional simple buffer, accurately identifying each station's actual feeder service area.</span><span class="lang-zh">HDBSCAN + 核密度 + 等值线替代传统简单缓冲区，精准识别各站实际接驳服务范围</span></p>
+        <p style="margin-top:8px;">📊 <strong><span class="lang-en">Composite Feeder Capability Index:</span><span class="lang-zh">综合接驳能力指标：</span></strong> <span class="lang-en">TOPSIS method introduced to quantify feeder volume, modal share, and service area comprehensively.</span><span class="lang-zh">引入 TOPSIS 法综合量化接驳量、分担率、服务范围</span></p>
+        <p style="margin-top:8px;">🗂️ <strong><span class="lang-en">Station Classification:</span><span class="lang-zh">分类站点探讨：</span></strong> <span class="lang-en">Differentiated characteristic analysis and optimization strategies for residential, commercial, and mixed-use station types.</span><span class="lang-zh">居住 · 商业 · 混合三类站点差异化特征分析与优化策略</span></p>
       </div>
     </div>
   </div>
@@ -267,49 +344,73 @@
   <div id="data">
     <div class="sec-head">
       <p class="sec-eyebrow">02 · Study Area & Data</p>
-      <h2>研究区域与数据</h2>
-      <p>天津市内六区 + 环城四区部分区域，取三家运营商覆盖范围交集，以 2022 年 11 月工作日及周末骑行 OD 数据为核心数据源。</p>
+      <h2>
+        <span class="lang-en">Study Area & Data</span>
+        <span class="lang-zh">研究区域与数据</span>
+      </h2>
+      <p>
+        <span class="lang-en">Six central districts of Tianjin plus parts of four surrounding districts, intersected with coverage of three operators, using November 2022 weekday and weekend cycling OD data as the core data source.</span>
+        <span class="lang-zh">天津市内六区 + 环城四区部分区域，取三家运营商覆盖范围交集，以 2022 年 11 月工作日及周末骑行 OD 数据为核心数据源。</span>
+      </p>
       <div class="sec-rule"></div>
     </div>
 
     <div class="g2" style="align-items:start;">
       <div style="display:flex; flex-direction:column; gap:14px;">
         <figure>
-          <img src="assets/bike-sharing/p17_img05.jpeg" alt="研究区域" />
-          <figcaption>图1 研究范围——天津市内六区（南开、和平、河东、河西、河北、红桥）+ 环城四区部分区域</figcaption>
+          <img src="assets/bike-sharing/p17_img05.jpeg" alt="Study Area" />
+          <figcaption>
+            <span class="lang-en">Fig. 1  Study area — six central districts of Tianjin (Nankai, Heping, Hedong, Hexi, Hebei, Hongqiao) plus parts of four surrounding districts</span>
+            <span class="lang-zh">图1 研究范围——天津市内六区（南开、和平、河东、河西、河北、红桥）+ 环城四区部分区域</span>
+          </figcaption>
         </figure>
         <figure>
-          <img src="assets/bike-sharing/p19_img08.jpeg" alt="轨道交通网络" />
-          <figcaption>图2 天津市地铁网络——研究范围内共 113 个站点、364 个出站口</figcaption>
+          <img src="assets/bike-sharing/p19_img08.jpeg" alt="Rail Transit Network" />
+          <figcaption>
+            <span class="lang-en">Fig. 2  Tianjin metro network — 113 stations and 364 exits within the study area</span>
+            <span class="lang-zh">图2 天津市地铁网络——研究范围内共 113 个站点、364 个出站口</span>
+          </figcaption>
         </figure>
       </div>
       <div style="display:flex; flex-direction:column; gap:14px;">
         <div class="stats">
-          <div class="stat"><div class="stat-v">113</div><div class="stat-l">地铁站点</div></div>
-          <div class="stat"><div class="stat-v">364</div><div class="stat-l">出站口</div></div>
-          <div class="stat"><div class="stat-v">138.8<span style="font-size:1rem">万</span></div><div class="stat-l">工作日骑行数据</div></div>
-          <div class="stat"><div class="stat-v">106.1<span style="font-size:1rem">万</span></div><div class="stat-l">周末骑行数据</div></div>
+          <div class="stat"><div class="stat-v">113</div><div class="stat-l"><span class="lang-en">Metro stations</span><span class="lang-zh">地铁站点</span></div></div>
+          <div class="stat"><div class="stat-v">364</div><div class="stat-l"><span class="lang-en">Station exits</span><span class="lang-zh">出站口</span></div></div>
+          <div class="stat"><div class="stat-v">138.8<span style="font-size:1rem"><span class="lang-en">k</span><span class="lang-zh">万</span></span></div><div class="stat-l"><span class="lang-en">Weekday rides</span><span class="lang-zh">工作日骑行数据</span></div></div>
+          <div class="stat"><div class="stat-v">106.1<span style="font-size:1rem"><span class="lang-en">k</span><span class="lang-zh">万</span></span></div><div class="stat-l"><span class="lang-en">Weekend rides</span><span class="lang-zh">周末骑行数据</span></div></div>
         </div>
         <div class="card card-pad">
-          <h3>数据类型</h3>
+          <h3>
+            <span class="lang-en">Data Types</span>
+            <span class="lang-zh">数据类型</span>
+          </h3>
           <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
-            <span class="badge">共享单车骑行 OD 数据</span>
-            <span class="badge">手机信令数据（职住）</span>
-            <span class="badge">地铁站点 POI</span>
-            <span class="badge">土地利用数据</span>
-            <span class="badge">OSM 路网</span>
-            <span class="badge">建筑轮廓 & 层数</span>
-            <span class="badge">地铁刷卡进出站数据</span>
-            <span class="badge o">美团 · 青桔 · 哈罗运营范围</span>
+            <span class="badge"><span class="lang-en">Bike-sharing OD data</span><span class="lang-zh">共享单车骑行 OD 数据</span></span>
+            <span class="badge"><span class="lang-en">Mobile signaling data (home/work)</span><span class="lang-zh">手机信令数据（职住）</span></span>
+            <span class="badge"><span class="lang-en">Metro station POI</span><span class="lang-zh">地铁站点 POI</span></span>
+            <span class="badge"><span class="lang-en">Land use data</span><span class="lang-zh">土地利用数据</span></span>
+            <span class="badge">OSM <span class="lang-en">road network</span><span class="lang-zh">路网</span></span>
+            <span class="badge"><span class="lang-en">Building footprints & floors</span><span class="lang-zh">建筑轮廓 & 层数</span></span>
+            <span class="badge"><span class="lang-en">Metro tap-in/tap-out data</span><span class="lang-zh">地铁刷卡进出站数据</span></span>
+            <span class="badge o"><span class="lang-en">Meituan · Qingju · Hellobike service areas</span><span class="lang-zh">美团 · 青桔 · 哈罗运营范围</span></span>
           </div>
         </div>
         <div class="card card-pad">
-          <h3>缓冲区划定</h3>
-          <p>对比多种文献方法后，以地铁出站口 <strong>100m 缓冲区</strong>作为有效接驳判定范围，生成 364 个缓冲面后合并，覆盖 113 个地铁站点。</p>
+          <h3>
+            <span class="lang-en">Buffer Zone Delineation</span>
+            <span class="lang-zh">缓冲区划定</span>
+          </h3>
+          <p>
+            <span class="lang-en">After comparing multiple methods from the literature, a <strong>100 m buffer</strong> around each metro exit is used as the valid feeder judgment area; 364 buffer polygons were merged to cover all 113 metro stations.</span>
+            <span class="lang-zh">对比多种文献方法后，以地铁出站口 <strong>100m 缓冲区</strong>作为有效接驳判定范围，生成 364 个缓冲面后合并，覆盖 113 个地铁站点。</span>
+          </p>
         </div>
         <figure>
-          <img src="assets/bike-sharing/p20_img18.jpeg" alt="研究范围地图" />
-          <figcaption>图3 研究范围与 100m 缓冲区叠合示意</figcaption>
+          <img src="assets/bike-sharing/p20_img18.jpeg" alt="Study Area Map" />
+          <figcaption>
+            <span class="lang-en">Fig. 3  Study area overlaid with 100 m buffer zones</span>
+            <span class="lang-zh">图3 研究范围与 100m 缓冲区叠合示意</span>
+          </figcaption>
         </figure>
       </div>
     </div>
@@ -319,67 +420,107 @@
   <div id="temporal">
     <div class="sec-head">
       <p class="sec-eyebrow">03 · Spatiotemporal Characteristics</p>
-      <h2>接驳时空特征分析</h2>
-      <p>从接驳频率、骑行时长、骑行距离三个维度分析工作日与周末的接驳行为差异，并可视化空间分布规律。</p>
+      <h2>
+        <span class="lang-en">Spatiotemporal Characteristics Analysis</span>
+        <span class="lang-zh">接驳时空特征分析</span>
+      </h2>
+      <p>
+        <span class="lang-en">Analyzing feeder behavioral differences between weekdays and weekends across three dimensions — feeder frequency, ride duration, and ride distance — with spatial distribution visualizations.</span>
+        <span class="lang-zh">从接驳频率、骑行时长、骑行距离三个维度分析工作日与周末的接驳行为差异，并可视化空间分布规律。</span>
+      </p>
       <div class="sec-rule"></div>
     </div>
 
-    <div class="sub-h">接驳量空间分布——工作日 vs 周末（起点 & 终点）</div>
+    <div class="sub-h">
+      <span class="lang-en">Spatial Distribution of Feeder Volume — Weekday vs Weekend (Origin & Destination)</span>
+      <span class="lang-zh">接驳量空间分布——工作日 vs 周末（起点 & 终点）</span>
+    </div>
     <div class="map-grid g4c">
       <div class="map-item">
-        <div class="map-label">工作日 · 起点（17o）</div>
-        <img src="assets/bike-sharing/p21_img08.jpeg" alt="工作日起点接驳量" />
+        <div class="map-label">
+          <span class="lang-en">Weekday · Origin (17o)</span>
+          <span class="lang-zh">工作日 · 起点（17o）</span>
+        </div>
+        <img src="assets/bike-sharing/p21_img08.jpeg" alt="Weekday origin feeder volume" />
       </div>
       <div class="map-item">
-        <div class="map-label">工作日 · 终点（17d）</div>
-        <img src="assets/bike-sharing/p21_img09.jpeg" alt="工作日终点接驳量" />
+        <div class="map-label">
+          <span class="lang-en">Weekday · Destination (17d)</span>
+          <span class="lang-zh">工作日 · 终点（17d）</span>
+        </div>
+        <img src="assets/bike-sharing/p21_img09.jpeg" alt="Weekday destination feeder volume" />
       </div>
       <div class="map-item">
-        <div class="map-label">周末 · 起点（19o）</div>
-        <img src="assets/bike-sharing/p21_img10.jpeg" alt="周末起点接驳量" />
+        <div class="map-label">
+          <span class="lang-en">Weekend · Origin (19o)</span>
+          <span class="lang-zh">周末 · 起点（19o）</span>
+        </div>
+        <img src="assets/bike-sharing/p21_img10.jpeg" alt="Weekend origin feeder volume" />
       </div>
       <div class="map-item">
-        <div class="map-label">周末 · 终点（19d）</div>
-        <img src="assets/bike-sharing/p21_img11.jpeg" alt="周末终点接驳量" />
+        <div class="map-label">
+          <span class="lang-en">Weekend · Destination (19d)</span>
+          <span class="lang-zh">周末 · 终点（19d）</span>
+        </div>
+        <img src="assets/bike-sharing/p21_img11.jpeg" alt="Weekend destination feeder volume" />
       </div>
     </div>
-    <p style="font-size:.78rem; color:var(--muted); text-align:center; margin-top:8px; font-style:italic;">图4 天津市各地铁站共享单车接驳量空间分布——气泡大小代表接驳量，颜色深浅表示数量级别</p>
+    <p style="font-size:.78rem; color:var(--muted); text-align:center; margin-top:8px; font-style:italic;">
+      <span class="lang-en">Fig. 4  Spatial distribution of bike-sharing feeder volume at Tianjin metro stations — bubble size represents feeder volume; color depth indicates magnitude</span>
+      <span class="lang-zh">图4 天津市各地铁站共享单车接驳量空间分布——气泡大小代表接驳量，颜色深浅表示数量级别</span>
+    </p>
 
     <div class="callout" style="margin-top:20px;">
-      <strong>工作日：</strong>接驳量更高，热点呈明显放射状（以和平区为核心）；<strong>周末：</strong>接驳量下降，核心范围由和平区扩展至南开、红桥三区，休闲出行特征明显。接驳频率集中在 <strong>250–1000 次/日</strong>，最高单站（营口道）工作日达 <strong>2222 条</strong>。
+      <span class="lang-en"><strong>Weekdays:</strong> higher feeder volume with hotspots in a clear radial pattern centered on Heping District; <strong>Weekends:</strong> volume decreases and the core expands from Heping to Nankai and Hongqiao, reflecting leisure travel characteristics. Feeder frequency concentrates at <strong>250–1,000 trips/day</strong>; the highest single station (Yingkoudao) reaches <strong>2,222 trips</strong> on weekdays.</span>
+      <span class="lang-zh"><strong>工作日：</strong>接驳量更高，热点呈明显放射状（以和平区为核心）；<strong>周末：</strong>接驳量下降，核心范围由和平区扩展至南开、红桥三区，休闲出行特征明显。接驳频率集中在 <strong>250–1000 次/日</strong>，最高单站（营口道）工作日达 <strong>2222 条</strong>。</span>
     </div>
 
-    <div class="sub-h" style="margin-top:32px;">骑行时长与距离特征</div>
+    <div class="sub-h" style="margin-top:32px;">
+      <span class="lang-en">Ride Duration and Distance Characteristics</span>
+      <span class="lang-zh">骑行时长与距离特征</span>
+    </div>
     <div class="g2">
       <div class="card">
         <div class="card-pad" style="padding-bottom:12px;">
-          <h3>骑行时长</h3>
-          <p>工作日与周末骑行时间均集中在 <strong>5–10 分钟</strong>，分布较为均匀。运营范围外围部分站点平均时长偏短（&lt;5 min），个别边缘站点异常偏长。</p>
+          <h3>
+            <span class="lang-en">Ride Duration</span>
+            <span class="lang-zh">骑行时长</span>
+          </h3>
+          <p>
+            <span class="lang-en">Both weekday and weekend ride times concentrate at <strong>5–10 minutes</strong> with fairly uniform distribution. Some peripheral stations outside the service area have shorter average durations (&lt; 5 min); a few edge stations show unusually long rides.</span>
+            <span class="lang-zh">工作日与周末骑行时间均集中在 <strong>5–10 分钟</strong>，分布较为均匀。运营范围外围部分站点平均时长偏短（&lt;5 min），个别边缘站点异常偏长。</span>
+          </p>
         </div>
         <div style="display:flex; gap:0; border-top:1px solid var(--border);">
           <div style="flex:1; padding:14px 16px; text-align:center; border-right:1px solid var(--border);">
-            <div style="font-size:1.5rem; font-weight:900; color:var(--teal);">810 秒</div>
-            <div style="font-size:.75rem; color:var(--muted); margin-top:3px;">工作日平均时长</div>
+            <div style="font-size:1.5rem; font-weight:900; color:var(--teal);">810 s</div>
+            <div style="font-size:.75rem; color:var(--muted); margin-top:3px;"><span class="lang-en">Avg. weekday duration</span><span class="lang-zh">工作日平均时长</span></div>
           </div>
           <div style="flex:1; padding:14px 16px; text-align:center;">
-            <div style="font-size:1.5rem; font-weight:900; color:var(--teal);">835 秒</div>
-            <div style="font-size:.75rem; color:var(--muted); margin-top:3px;">周末平均时长</div>
+            <div style="font-size:1.5rem; font-weight:900; color:var(--teal);">835 s</div>
+            <div style="font-size:.75rem; color:var(--muted); margin-top:3px;"><span class="lang-en">Avg. weekend duration</span><span class="lang-zh">周末平均时长</span></div>
           </div>
         </div>
       </div>
       <div class="card">
         <div class="card-pad" style="padding-bottom:12px;">
-          <h3>骑行距离</h3>
-          <p>工作日与周末骑行距离均集中在 <strong>2 km 以内</strong>，分布均匀。外围站点平均骑行距离偏小（&lt;1 km），工作日骑行距离略大于周末。</p>
+          <h3>
+            <span class="lang-en">Ride Distance</span>
+            <span class="lang-zh">骑行距离</span>
+          </h3>
+          <p>
+            <span class="lang-en">Both weekday and weekend ride distances concentrate within <strong>2 km</strong> with uniform distribution. Peripheral stations show smaller average distances (&lt; 1 km); weekday distances are slightly greater than weekend distances.</span>
+            <span class="lang-zh">工作日与周末骑行距离均集中在 <strong>2 km 以内</strong>，分布均匀。外围站点平均骑行距离偏小（&lt;1 km），工作日骑行距离略大于周末。</span>
+          </p>
         </div>
         <div style="display:flex; gap:0; border-top:1px solid var(--border);">
           <div style="flex:1; padding:14px 16px; text-align:center; border-right:1px solid var(--border);">
             <div style="font-size:1.5rem; font-weight:900; color:var(--teal);">1563 m</div>
-            <div style="font-size:.75rem; color:var(--muted); margin-top:3px;">工作日平均距离</div>
+            <div style="font-size:.75rem; color:var(--muted); margin-top:3px;"><span class="lang-en">Avg. weekday distance</span><span class="lang-zh">工作日平均距离</span></div>
           </div>
           <div style="flex:1; padding:14px 16px; text-align:center;">
             <div style="font-size:1.5rem; font-weight:900; color:var(--teal);">1527 m</div>
-            <div style="font-size:.75rem; color:var(--muted); margin-top:3px;">周末平均距离</div>
+            <div style="font-size:.75rem; color:var(--muted); margin-top:3px;"><span class="lang-en">Avg. weekend distance</span><span class="lang-zh">周末平均距离</span></div>
           </div>
         </div>
       </div>
@@ -390,73 +531,133 @@
   <div id="range">
     <div class="sec-head">
       <p class="sec-eyebrow">04 · Service Area Analysis</p>
-      <h2>接驳服务范围分析</h2>
-      <p>突破传统缓冲区局限，综合运用 HDBSCAN 聚类、核密度分析、等值线划定等方法，精细化识别各站点实际接驳服务范围。</p>
+      <h2>
+        <span class="lang-en">Service Area Analysis</span>
+        <span class="lang-zh">接驳服务范围分析</span>
+      </h2>
+      <p>
+        <span class="lang-en">Breaking through the limitations of traditional buffer zones, combining HDBSCAN clustering, kernel density analysis, and contour delineation to precisely identify the actual feeder service area of each station.</span>
+        <span class="lang-zh">突破传统缓冲区局限，综合运用 HDBSCAN 聚类、核密度分析、等值线划定等方法，精细化识别各站点实际接驳服务范围。</span>
+      </p>
       <div class="sec-rule"></div>
     </div>
 
     <div class="g2" style="align-items:start;">
       <div style="display:flex; flex-direction:column; gap:14px;">
         <figure>
-          <img src="assets/bike-sharing/p24_img04.jpeg" alt="泰森多边形理论服务范围" />
-          <figcaption>图5 泰森多边形划定的理论接驳服务范围——113 个站点全覆盖</figcaption>
+          <img src="assets/bike-sharing/p24_img04.jpeg" alt="Voronoi theoretical service area" />
+          <figcaption>
+            <span class="lang-en">Fig. 5  Theoretical feeder service areas delineated by Voronoi polygons — full coverage of 113 stations</span>
+            <span class="lang-zh">图5 泰森多边形划定的理论接驳服务范围——113 个站点全覆盖</span>
+          </figcaption>
         </figure>
         <figure>
-          <img src="assets/bike-sharing/p25_img12.jpeg" alt="HDBSCAN聚类" />
-          <figcaption>图6 HDBSCAN 聚类结果——红色为正常值，蓝紫色为离散点（轮廓系数 0.64–0.66）</figcaption>
+          <img src="assets/bike-sharing/p25_img12.jpeg" alt="HDBSCAN clustering" />
+          <figcaption>
+            <span class="lang-en">Fig. 6  HDBSCAN clustering results — red: core points; blue-purple: outliers (silhouette coefficient 0.64–0.66)</span>
+            <span class="lang-zh">图6 HDBSCAN 聚类结果——红色为正常值，蓝紫色为离散点（轮廓系数 0.64–0.66）</span>
+          </figcaption>
         </figure>
       </div>
       <div style="display:flex; flex-direction:column; gap:14px;">
         <figure>
-          <img src="assets/bike-sharing/p25_img23.jpeg" alt="核密度与等值线" />
-          <figcaption>图7 核密度分析 + 等值线划定（d=30）+ 10%/90% 分位数确定实际接驳服务范围边界</figcaption>
+          <img src="assets/bike-sharing/p25_img23.jpeg" alt="Kernel density and contours" />
+          <figcaption>
+            <span class="lang-en">Fig. 7  Kernel density analysis + contour delineation (d=30) + 10%/90% quantiles to determine actual service area boundaries</span>
+            <span class="lang-zh">图7 核密度分析 + 等值线划定（d=30）+ 10%/90% 分位数确定实际接驳服务范围边界</span>
+          </figcaption>
         </figure>
         <div class="card card-pad">
-          <h3>分析技术流程</h3>
+          <h3>
+            <span class="lang-en">Analysis Workflow</span>
+            <span class="lang-zh">分析技术流程</span>
+          </h3>
           <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
             <div style="display:flex; gap:10px; align-items:center;">
               <div style="width:28px; height:28px; border-radius:50%; background:var(--teal); color:#fff; font-size:.75rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
-              <span style="font-size:.87rem; color:var(--muted);">按站点分组，计算骑行 OD 点之间欧式距离</span>
+              <span style="font-size:.87rem; color:var(--muted);">
+                <span class="lang-en">Group by station; compute Euclidean distances between cycling OD points</span>
+                <span class="lang-zh">按站点分组，计算骑行 OD 点之间欧式距离</span>
+              </span>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
               <div style="width:28px; height:28px; border-radius:50%; background:var(--teal); color:#fff; font-size:.75rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
-              <span style="font-size:.87rem; color:var(--muted);">HDBSCAN 聚类（min_cluster_size=10）识别离散点并清洗</span>
+              <span style="font-size:.87rem; color:var(--muted);">
+                <span class="lang-en">HDBSCAN clustering (min_cluster_size=10) to identify and remove outliers</span>
+                <span class="lang-zh">HDBSCAN 聚类（min_cluster_size=10）识别离散点并清洗</span>
+              </span>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
               <div style="width:28px; height:28px; border-radius:50%; background:var(--teal); color:#fff; font-size:.75rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
-              <span style="font-size:.87rem; color:var(--muted);">核密度分析 → 等值线划定（d=30）</span>
+              <span style="font-size:.87rem; color:var(--muted);">
+                <span class="lang-en">Kernel density analysis → contour delineation (d=30)</span>
+                <span class="lang-zh">核密度分析 → 等值线划定（d=30）</span>
+              </span>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
               <div style="width:28px; height:28px; border-radius:50%; background:var(--teal); color:#fff; font-size:.75rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</div>
-              <span style="font-size:.87rem; color:var(--muted);">10%/90% 分位数提取确定服务范围边界</span>
+              <span style="font-size:.87rem; color:var(--muted);">
+                <span class="lang-en">Extract 10%/90% quantiles to determine service area boundaries</span>
+                <span class="lang-zh">10%/90% 分位数提取确定服务范围边界</span>
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="sub-h" style="margin-top:32px;">服务范围形态分类——四种类型</div>
+    <div class="sub-h" style="margin-top:32px;">
+      <span class="lang-en">Service Area Morphology — Four Types</span>
+      <span class="lang-zh">服务范围形态分类——四种类型</span>
+    </div>
     <div class="g2" style="align-items:start;">
       <figure>
-        <img src="assets/bike-sharing/p26_img15.jpeg" alt="服务范围类型示意" />
-        <figcaption>图8 接驳服务范围四种形态——放射扩展型（营口道一带核心站）· 偏心扩展型 · 带状扩展型 · 多核心型</figcaption>
+        <img src="assets/bike-sharing/p26_img15.jpeg" alt="Service area type diagram" />
+        <figcaption>
+          <span class="lang-en">Fig. 8  Four service area morphologies — Radial Expansion (core stations around Yingkoudao) · Eccentric Expansion · Linear Expansion · Multi-core</span>
+          <span class="lang-zh">图8 接驳服务范围四种形态——放射扩展型（营口道一带核心站）· 偏心扩展型 · 带状扩展型 · 多核心型</span>
+        </figcaption>
       </figure>
       <div class="g2" style="gap:12px;">
         <div class="card card-pad" style="border-top:4px solid var(--teal-l);">
-          <h3>放射扩展型</h3>
-          <p>以站点为中心，各方向扩散均匀；常见于接驳量最高的核心站点</p>
+          <h3>
+            <span class="lang-en">Radial Expansion</span>
+            <span class="lang-zh">放射扩展型</span>
+          </h3>
+          <p>
+            <span class="lang-en">Spreads uniformly in all directions from the station; common at high-volume core stations.</span>
+            <span class="lang-zh">以站点为中心，各方向扩散均匀；常见于接驳量最高的核心站点</span>
+          </p>
         </div>
         <div class="card card-pad" style="border-top:4px solid var(--orange);">
-          <h3>偏心扩展型</h3>
-          <p>接驳多集中在某一特定方向，受周边大型吸引点影响明显</p>
+          <h3>
+            <span class="lang-en">Eccentric Expansion</span>
+            <span class="lang-zh">偏心扩展型</span>
+          </h3>
+          <p>
+            <span class="lang-en">Feeder trips concentrate in a specific direction, strongly influenced by nearby major attractors.</span>
+            <span class="lang-zh">接驳多集中在某一特定方向，受周边大型吸引点影响明显</span>
+          </p>
         </div>
         <div class="card card-pad" style="border-top:4px solid #7b68ee;">
-          <h3>带状扩展型</h3>
-          <p>沿特定轴线（道路 / 地铁线路）向两端延伸</p>
+          <h3>
+            <span class="lang-en">Linear Expansion</span>
+            <span class="lang-zh">带状扩展型</span>
+          </h3>
+          <p>
+            <span class="lang-en">Extends along a specific axis (road / metro line) in both directions.</span>
+            <span class="lang-zh">沿特定轴线（道路 / 地铁线路）向两端延伸</span>
+          </p>
         </div>
         <div class="card card-pad" style="border-top:4px solid #c0392b;">
-          <h3>多核心型</h3>
-          <p>存在多个骑行高密度区域，多见于混合类站点，接驳形态分散</p>
+          <h3>
+            <span class="lang-en">Multi-core</span>
+            <span class="lang-zh">多核心型</span>
+          </h3>
+          <p>
+            <span class="lang-en">Multiple high-density cycling zones; common at mixed-use stations with dispersed feeder patterns.</span>
+            <span class="lang-zh">存在多个骑行高密度区域，多见于混合类站点，接驳形态分散</span>
+          </p>
         </div>
       </div>
     </div>
@@ -466,8 +667,14 @@
   <div id="classify">
     <div class="sec-head">
       <p class="sec-eyebrow">05 · Station Classification</p>
-      <h2>地铁站点分类与接驳特征比较</h2>
-      <p>依据站点缓冲区内土地利用情况，将 113 个地铁站划分为三类，并计算各站综合接驳能力。</p>
+      <h2>
+        <span class="lang-en">Station Classification and Feeder Characteristic Comparison</span>
+        <span class="lang-zh">地铁站点分类与接驳特征比较</span>
+      </h2>
+      <p>
+        <span class="lang-en">Based on land use within each station's buffer zone, the 113 metro stations are classified into three types, and the composite feeder capability of each station is calculated.</span>
+        <span class="lang-zh">依据站点缓冲区内土地利用情况，将 113 个地铁站划分为三类，并计算各站综合接驳能力。</span>
+      </p>
       <div class="sec-rule"></div>
     </div>
 
@@ -476,52 +683,103 @@
         <div class="type-strip">
           <div class="type-card r">
             <div class="n">45</div>
-            <div class="lbl">居住类站点</div>
-            <div class="rule">居住用地占比 ≥ 40%</div>
+            <div class="lbl">
+              <span class="lang-en">Residential Stations</span>
+              <span class="lang-zh">居住类站点</span>
+            </div>
+            <div class="rule">
+              <span class="lang-en">Residential land ≥ 40%</span>
+              <span class="lang-zh">居住用地占比 ≥ 40%</span>
+            </div>
           </div>
           <div class="type-card c">
             <div class="n">21</div>
-            <div class="lbl">商业类站点</div>
-            <div class="rule">商业商务用地占比 ≥ 15%</div>
+            <div class="lbl">
+              <span class="lang-en">Commercial Stations</span>
+              <span class="lang-zh">商业类站点</span>
+            </div>
+            <div class="rule">
+              <span class="lang-en">Commercial/business land ≥ 15%</span>
+              <span class="lang-zh">商业商务用地占比 ≥ 15%</span>
+            </div>
           </div>
           <div class="type-card m">
             <div class="n">47</div>
-            <div class="lbl">混合类站点</div>
-            <div class="rule">其余站点</div>
+            <div class="lbl">
+              <span class="lang-en">Mixed-use Stations</span>
+              <span class="lang-zh">混合类站点</span>
+            </div>
+            <div class="rule">
+              <span class="lang-en">All other stations</span>
+              <span class="lang-zh">其余站点</span>
+            </div>
           </div>
         </div>
         <div class="callout green" style="margin-top:14px;">
-          <strong>居住类站点接驳需求最高，</strong>且其周末接驳量与平均骑行时间均大于工作日；商业 / 混合类站点均为工作日 &gt; 周末。
+          <span class="lang-en"><strong>Residential stations have the highest feeder demand,</strong> with weekend feeder volume and average ride time exceeding weekdays; commercial and mixed-use stations both show weekday &gt; weekend patterns.</span>
+          <span class="lang-zh"><strong>居住类站点接驳需求最高，</strong>且其周末接驳量与平均骑行时间均大于工作日；商业 / 混合类站点均为工作日 &gt; 周末。</span>
         </div>
         <div class="card" style="margin-top:14px;">
           <table style="width:100%; border-collapse:collapse; font-size:.83rem;">
             <thead>
               <tr style="background:var(--teal-bg);">
-                <th style="padding:10px 14px; text-align:left; color:var(--teal); font-weight:700; border-bottom:2px solid var(--teal-l);">指标</th>
-                <th style="padding:10px 14px; text-align:center; color:#256b3a; border-bottom:2px solid var(--teal-l);">居住类</th>
-                <th style="padding:10px 14px; text-align:center; color:#9b4e08; border-bottom:2px solid var(--teal-l);">商业类</th>
-                <th style="padding:10px 14px; text-align:center; color:#2b48a0; border-bottom:2px solid var(--teal-l);">混合类</th>
+                <th style="padding:10px 14px; text-align:left; color:var(--teal); font-weight:700; border-bottom:2px solid var(--teal-l);"><span class="lang-en">Metric</span><span class="lang-zh">指标</span></th>
+                <th style="padding:10px 14px; text-align:center; color:#256b3a; border-bottom:2px solid var(--teal-l);"><span class="lang-en">Residential</span><span class="lang-zh">居住类</span></th>
+                <th style="padding:10px 14px; text-align:center; color:#9b4e08; border-bottom:2px solid var(--teal-l);"><span class="lang-en">Commercial</span><span class="lang-zh">商业类</span></th>
+                <th style="padding:10px 14px; text-align:center; color:#2b48a0; border-bottom:2px solid var(--teal-l);"><span class="lang-en">Mixed-use</span><span class="lang-zh">混合类</span></th>
               </tr>
             </thead>
             <tbody>
-              <tr><td style="padding:9px 14px; border-bottom:1px solid var(--border); color:var(--muted);">周末接驳比（d）</td><td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border); font-weight:700; color:#256b3a;">44.2%</td><td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">17.8%</td><td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">35.5%</td></tr>
-              <tr><td style="padding:9px 14px; border-bottom:1px solid var(--border); color:var(--muted);">工作日接驳比（o）</td><td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border); font-weight:700; color:#256b3a;">39.8%</td><td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">33.8%</td><td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">26.5%</td></tr>
-              <tr><td style="padding:9px 14px; border-bottom:1px solid var(--border); color:var(--muted);">主导形态类型</td><td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">放射 / 偏心</td><td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">偏心扩展</td><td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">多核心</td></tr>
-              <tr><td style="padding:9px 14px; color:var(--muted);">密度核心集中</td><td style="padding:9px 14px; text-align:center;">居住区 · 学校</td><td style="padding:9px 14px; text-align:center;">商务办公楼</td><td style="padding:9px 14px; text-align:center;">多类型混杂</td></tr>
+              <tr>
+                <td style="padding:9px 14px; border-bottom:1px solid var(--border); color:var(--muted);"><span class="lang-en">Weekend feeder ratio (d)</span><span class="lang-zh">周末接驳比（d）</span></td>
+                <td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border); font-weight:700; color:#256b3a;">44.2%</td>
+                <td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">17.8%</td>
+                <td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">35.5%</td>
+              </tr>
+              <tr>
+                <td style="padding:9px 14px; border-bottom:1px solid var(--border); color:var(--muted);"><span class="lang-en">Weekday feeder ratio (o)</span><span class="lang-zh">工作日接驳比（o）</span></td>
+                <td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border); font-weight:700; color:#256b3a;">39.8%</td>
+                <td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">33.8%</td>
+                <td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);">26.5%</td>
+              </tr>
+              <tr>
+                <td style="padding:9px 14px; border-bottom:1px solid var(--border); color:var(--muted);"><span class="lang-en">Dominant morphology</span><span class="lang-zh">主导形态类型</span></td>
+                <td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);"><span class="lang-en">Radial / Eccentric</span><span class="lang-zh">放射 / 偏心</span></td>
+                <td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);"><span class="lang-en">Eccentric expansion</span><span class="lang-zh">偏心扩展</span></td>
+                <td style="padding:9px 14px; text-align:center; border-bottom:1px solid var(--border);"><span class="lang-en">Multi-core</span><span class="lang-zh">多核心</span></td>
+              </tr>
+              <tr>
+                <td style="padding:9px 14px; color:var(--muted);"><span class="lang-en">Density core concentration</span><span class="lang-zh">密度核心集中</span></td>
+                <td style="padding:9px 14px; text-align:center;"><span class="lang-en">Residential areas · Schools</span><span class="lang-zh">居住区 · 学校</span></td>
+                <td style="padding:9px 14px; text-align:center;"><span class="lang-en">Commercial office buildings</span><span class="lang-zh">商务办公楼</span></td>
+                <td style="padding:9px 14px; text-align:center;"><span class="lang-en">Multiple mixed types</span><span class="lang-zh">多类型混杂</span></td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
       <figure>
-        <img src="assets/bike-sharing/crop_station_map.png" alt="站点分类地图" />
-        <figcaption>图9 天津市地铁站分类分布图（粉色 = 商业类 · 黄色 = 居住类，混合类未标色）</figcaption>
+        <img src="assets/bike-sharing/crop_station_map.png" alt="Station classification map" />
+        <figcaption>
+          <span class="lang-en">Fig. 9  Classification map of Tianjin metro stations (pink = commercial · yellow = residential; mixed-use stations not highlighted)</span>
+          <span class="lang-zh">图9 天津市地铁站分类分布图（粉色 = 商业类 · 黄色 = 居住类，混合类未标色）</span>
+        </figcaption>
       </figure>
     </div>
 
-    <div class="sub-h" style="margin-top:32px;">综合接驳能力计算（TOPSIS 法）</div>
+    <div class="sub-h" style="margin-top:32px;">
+      <span class="lang-en">Composite Feeder Capability (TOPSIS Method)</span>
+      <span class="lang-zh">综合接驳能力计算（TOPSIS 法）</span>
+    </div>
     <div class="formula">
-      <div class="formula-main">综合接驳能力 = <span style="color:var(--orange);">28.89%</span> × 接驳范围面积 ＋ <span style="color:var(--orange);">40.96%</span> × 接驳量 ＋ <span style="color:var(--orange);">30.15%</span> × 交通分担率</div>
-      <div class="formula-sub">交通分担率 = 接驳量 / 地铁进站刷卡量 &nbsp;|&nbsp; 接驳量权重最高（40.96%）</div>
+      <div class="formula-main">
+        <span class="lang-en">Composite Feeder Capability = <span style="color:var(--orange);">28.89%</span> × Service Area ＋ <span style="color:var(--orange);">40.96%</span> × Feeder Volume ＋ <span style="color:var(--orange);">30.15%</span> × Modal Share</span>
+        <span class="lang-zh">综合接驳能力 = <span style="color:var(--orange);">28.89%</span> × 接驳范围面积 ＋ <span style="color:var(--orange);">40.96%</span> × 接驳量 ＋ <span style="color:var(--orange);">30.15%</span> × 交通分担率</span>
+      </div>
+      <div class="formula-sub">
+        <span class="lang-en">Modal Share = Feeder Volume / Metro tap-in count &nbsp;|&nbsp; Feeder volume carries the highest weight (40.96%)</span>
+        <span class="lang-zh">交通分担率 = 接驳量 / 地铁进站刷卡量 &nbsp;|&nbsp; 接驳量权重最高（40.96%）</span>
+      </div>
     </div>
   </div>
 
@@ -529,76 +787,135 @@
   <div id="factor">
     <div class="sec-head">
       <p class="sec-eyebrow">06 · Influencing Factors</p>
-      <h2>共享单车接驳影响因素分析</h2>
-      <p>基于"5D"建成环境框架构建 19 个指标，通过 OLS 回归进行定量分析，并结合站点案例深入定性解读。</p>
+      <h2>
+        <span class="lang-en">Influencing Factors Analysis</span>
+        <span class="lang-zh">共享单车接驳影响因素分析</span>
+      </h2>
+      <p>
+        <span class="lang-en">Based on the "5D" built environment framework with 19 indicators, OLS regression is used for quantitative analysis, supplemented by in-depth qualitative case studies of individual stations.</span>
+        <span class="lang-zh">基于"5D"建成环境框架构建 19 个指标，通过 OLS 回归进行定量分析，并结合站点案例深入定性解读。</span>
+      </p>
       <div class="sec-rule"></div>
     </div>
 
-    <div class="sub-h">定量探究——OLS 回归分析</div>
+    <div class="sub-h">
+      <span class="lang-en">Quantitative Analysis — OLS Regression</span>
+      <span class="lang-zh">定量探究——OLS 回归分析</span>
+    </div>
     <div class="g2" style="align-items:start;">
       <figure>
-        <img src="assets/bike-sharing/crop_ols_table.png" alt="OLS回归结果" />
-        <figcaption>图10 OLS 回归分析结果（模型总体 p=0.043，具备显著性）</figcaption>
+        <img src="assets/bike-sharing/crop_ols_table.png" alt="OLS regression results" />
+        <figcaption>
+          <span class="lang-en">Fig. 10  OLS regression results (overall model p = 0.043, statistically significant)</span>
+          <span class="lang-zh">图10 OLS 回归分析结果（模型总体 p=0.043，具备显著性）</span>
+        </figcaption>
       </figure>
       <div>
         <div class="finding-row" style="grid-template-columns:1fr;">
           <div class="finding pos">
-            <div class="dir">正向显著 ↑</div>
-            <h4>居住人口密度（β = 0.437）</h4>
-            <p>影响强度最大。人口密集区公交接驳需求增加，共享单车设施投放相对集中，形成良性循环。</p>
+            <div class="dir"><span class="lang-en">Positive significant ↑</span><span class="lang-zh">正向显著 ↑</span></div>
+            <h4><span class="lang-en">Residential population density (β = 0.437)</span><span class="lang-zh">居住人口密度（β = 0.437）</span></h4>
+            <p>
+              <span class="lang-en">Strongest influence. Densely populated areas generate higher transit feeder demand; bike-sharing infrastructure tends to concentrate there, creating a virtuous cycle.</span>
+              <span class="lang-zh">影响强度最大。人口密集区公交接驳需求增加，共享单车设施投放相对集中，形成良性循环。</span>
+            </p>
           </div>
           <div class="finding pos" style="margin-top:10px;">
-            <div class="dir">正向显著 ↑</div>
-            <h4>交通用地比例（β = 0.360）</h4>
-            <p>交通用地比例增加，路网密度相对较高，有利于营造良好的慢行骑行环境，构建一体化接驳网络。</p>
+            <div class="dir"><span class="lang-en">Positive significant ↑</span><span class="lang-zh">正向显著 ↑</span></div>
+            <h4><span class="lang-en">Transportation land-use ratio (β = 0.360)</span><span class="lang-zh">交通用地比例（β = 0.360）</span></h4>
+            <p>
+              <span class="lang-en">Higher transportation land ratio correlates with denser road networks, supporting better slow-mobility cycling environments and integrated feeder networks.</span>
+              <span class="lang-zh">交通用地比例增加，路网密度相对较高，有利于营造良好的慢行骑行环境，构建一体化接驳网络。</span>
+            </p>
           </div>
           <div class="finding neg" style="margin-top:10px;">
-            <div class="dir">负向显著 ↓</div>
-            <h4>土地利用混合熵（β = −0.361）</h4>
-            <p>功能过度混合导致区域内交通流向分散、共享单车分布不均、路网过度复杂化，影响接驳整体效率。</p>
+            <div class="dir"><span class="lang-en">Negative significant ↓</span><span class="lang-zh">负向显著 ↓</span></div>
+            <h4><span class="lang-en">Land-use mix entropy (β = −0.361)</span><span class="lang-zh">土地利用混合熵（β = −0.361）</span></h4>
+            <p>
+              <span class="lang-en">Excessive land-use mixing disperses traffic flows, leads to uneven bike-sharing distribution and overly complex road networks, reducing overall feeder efficiency.</span>
+              <span class="lang-zh">功能过度混合导致区域内交通流向分散、共享单车分布不均、路网过度复杂化，影响接驳整体效率。</span>
+            </p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="sub-h" style="margin-top:32px;">定性解读——居住类站点（以西南楼、海光寺为例）</div>
+    <div class="sub-h" style="margin-top:32px;">
+      <span class="lang-en">Qualitative Analysis — Residential Stations (Xinanlou & Haiguangsi)</span>
+      <span class="lang-zh">定性解读——居住类站点（以西南楼、海光寺为例）</span>
+    </div>
     <div class="g2" style="align-items:start;">
       <figure>
-        <img src="assets/bike-sharing/crop_res_case.png" alt="居住类站点案例" />
-        <figcaption>图11 居住类站点接驳形态解读：西南楼（接驳条件良好）vs 海光寺（多吸引点导致分担率偏低）</figcaption>
+        <img src="assets/bike-sharing/crop_res_case.png" alt="Residential station cases" />
+        <figcaption>
+          <span class="lang-en">Fig. 11  Residential station feeder patterns: Xinanlou (good feeder conditions) vs Haiguangsi (multiple attractors lead to lower modal share)</span>
+          <span class="lang-zh">图11 居住类站点接驳形态解读：西南楼（接驳条件良好）vs 海光寺（多吸引点导致分担率偏低）</span>
+        </figcaption>
       </figure>
       <div style="display:flex; flex-direction:column; gap:12px;">
         <div class="callout green">
-          居住类站点中，接驳起讫点较为均匀，整体<strong>沿道路发散至居住区</strong>。学校入口、医院、公园等功能对骑行路径产生局部吸引或排斥作用，但不改变整体形态。
+          <span class="lang-en">At residential stations, feeder origins and destinations are relatively evenly distributed, and the overall pattern <strong>radiates along roads toward residential areas</strong>. School entrances, hospitals, and parks create local attraction or repulsion effects on cycling routes but do not change the overall morphology.</span>
+          <span class="lang-zh">居住类站点中，接驳起讫点较为均匀，整体<strong>沿道路发散至居住区</strong>。学校入口、医院、公园等功能对骑行路径产生局部吸引或排斥作用，但不改变整体形态。</span>
         </div>
         <div class="card card-pad">
-          <h3>西南楼站——接驳条件良好</h3>
-          <p>人口密度和分担率均较高；整体几乎全覆盖泰森多边形范围；天津大剧院、五大道、公园等形成吸引延伸。</p>
+          <h3>
+            <span class="lang-en">Xinanlou Station — Good Feeder Conditions</span>
+            <span class="lang-zh">西南楼站——接驳条件良好</span>
+          </h3>
+          <p>
+            <span class="lang-en">Both population density and modal share are relatively high; service area nearly covers the full Voronoi polygon; the Tianjin Grand Theatre, Italian Style Street, and parks create extended attraction zones.</span>
+            <span class="lang-zh">人口密度和分担率均较高；整体几乎全覆盖泰森多边形范围；天津大剧院、五大道、公园等形成吸引延伸。</span>
+          </p>
         </div>
         <div class="card card-pad">
-          <h3>海光寺站——接驳条件一般</h3>
-          <p>各大医院、学校形成较强吸引，人口密度高但分担率较低；服务范围未全覆盖，骑行环境有待提升。</p>
+          <h3>
+            <span class="lang-en">Haiguangsi Station — Average Feeder Conditions</span>
+            <span class="lang-zh">海光寺站——接驳条件一般</span>
+          </h3>
+          <p>
+            <span class="lang-en">Multiple hospitals and schools generate strong attraction; high population density but relatively low modal share; service area does not fully cover the Voronoi zone; cycling environment needs improvement.</span>
+            <span class="lang-zh">各大医院、学校形成较强吸引，人口密度高但分担率较低；服务范围未全覆盖，骑行环境有待提升。</span>
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="sub-h" style="margin-top:32px;">定性解读——商业类站点（以小白楼、天津站为例）</div>
+    <div class="sub-h" style="margin-top:32px;">
+      <span class="lang-en">Qualitative Analysis — Commercial Stations (Xiaobailou & Tianjin Railway Station)</span>
+      <span class="lang-zh">定性解读——商业类站点（以小白楼、天津站为例）</span>
+    </div>
     <div class="g2" style="align-items:start;">
       <figure>
-        <img src="assets/bike-sharing/crop_com_case.png" alt="商业类站点案例" />
-        <figcaption>图12 商业类站点：密度核心偏向商务办公楼，接驳形态呈偏心扩展</figcaption>
+        <img src="assets/bike-sharing/crop_com_case.png" alt="Commercial station cases" />
+        <figcaption>
+          <span class="lang-en">Fig. 12  Commercial stations: density cores skew toward office buildings; feeder pattern shows eccentric expansion</span>
+          <span class="lang-zh">图12 商业类站点：密度核心偏向商务办公楼，接驳形态呈偏心扩展</span>
+        </figcaption>
       </figure>
       <div style="display:flex; flex-direction:column; gap:12px;">
         <div class="callout">
-          商业类站点密度核心多位于周边<strong>商务办公楼</strong>，接驳形态向强吸引区域偏移，部分密度高值区距地铁出口较远，提示需改善中间骑行路径。
+          <span class="lang-en">The density cores of commercial stations are mostly located in nearby <strong>commercial office buildings</strong>, with feeder patterns skewing toward high-attraction zones. Some high-density areas are far from metro exits, indicating a need to improve intermediate cycling routes.</span>
+          <span class="lang-zh">商业类站点密度核心多位于周边<strong>商务办公楼</strong>，接驳形态向强吸引区域偏移，部分密度高值区距地铁出口较远，提示需改善中间骑行路径。</span>
         </div>
         <div class="card card-pad">
-          <h3>小白楼站</h3>
-          <p>接驳量大、分担率小；形态沿南京路向五大道延伸；周边有海河中学、人民公园等吸引点。</p>
+          <h3>
+            <span class="lang-en">Xiaobailou Station</span>
+            <span class="lang-zh">小白楼站</span>
+          </h3>
+          <p>
+            <span class="lang-en">High feeder volume, low modal share; pattern extends along Nanjing Road toward the Italian Style Street area; Haihe Middle School and People's Park serve as nearby attractors.</span>
+            <span class="lang-zh">接驳量大、分担率小；形态沿南京路向五大道延伸；周边有海河中学、人民公园等吸引点。</span>
+          </p>
         </div>
         <div class="card card-pad">
-          <h3>天津站</h3>
-          <p>接驳量大、分担率较小；接驳形态向北侧居民区延伸；津湾广场作为重要吸引点。</p>
+          <h3>
+            <span class="lang-en">Tianjin Railway Station</span>
+            <span class="lang-zh">天津站</span>
+          </h3>
+          <p>
+            <span class="lang-en">High feeder volume, relatively low modal share; feeder pattern extends northward toward residential areas; Jinwan Plaza is an important attractor.</span>
+            <span class="lang-zh">接驳量大、分担率较小；接驳形态向北侧居民区延伸；津湾广场作为重要吸引点。</span>
+          </p>
         </div>
       </div>
     </div>
@@ -608,40 +925,70 @@
   <div id="guide">
     <div class="sec-head">
       <p class="sec-eyebrow">07 · Optimization Guidelines</p>
-      <h2>优化设计导则</h2>
-      <p>结合出行特征分析与影响因素建模结果，从空间优化、单车调度、政府政策三个层面，针对三类站点提出差异化优化策略。</p>
+      <h2>
+        <span class="lang-en">Optimization Guidelines</span>
+        <span class="lang-zh">优化设计导则</span>
+      </h2>
+      <p>
+        <span class="lang-en">Drawing on travel characteristic analysis and influencing factor modeling, differentiated optimization strategies for all three station types are proposed across three dimensions: spatial optimization, bike dispatch, and government policy.</span>
+        <span class="lang-zh">结合出行特征分析与影响因素建模结果，从空间优化、单车调度、政府政策三个层面，针对三类站点提出差异化优化策略。</span>
+      </p>
       <div class="sec-rule"></div>
     </div>
 
     <div class="g4" style="margin-bottom:24px;">
       <div class="card card-pad" style="border-top:4px solid var(--teal-l);">
-        <h3 style="font-size:.88rem;">🛡️ 安全为先</h3>
-        <p style="font-size:.8rem;">统筹规划连续通行空间，塑造人车分流、无障碍出行环境</p>
+        <h3 style="font-size:.88rem;">🛡️ <span class="lang-en">Safety First</span><span class="lang-zh">安全为先</span></h3>
+        <p style="font-size:.8rem;">
+          <span class="lang-en">Plan continuous, accessible corridors with separated vehicle and pedestrian flows.</span>
+          <span class="lang-zh">统筹规划连续通行空间，塑造人车分流、无障碍出行环境</span>
+        </p>
       </div>
       <div class="card card-pad" style="border-top:4px solid var(--orange);">
-        <h3 style="font-size:.88rem;">⚡ 高效便捷</h3>
-        <p style="font-size:.8rem;">以轨道站点为核心，集约利用立体空间，实现交通与城市生活有机融合</p>
+        <h3 style="font-size:.88rem;">⚡ <span class="lang-en">Efficiency & Convenience</span><span class="lang-zh">高效便捷</span></h3>
+        <p style="font-size:.8rem;">
+          <span class="lang-en">Centered on rail stations, make compact use of vertical space to integrate transit with urban life.</span>
+          <span class="lang-zh">以轨道站点为核心，集约利用立体空间，实现交通与城市生活有机融合</span>
+        </p>
       </div>
       <div class="card card-pad" style="border-top:4px solid var(--green);">
-        <h3 style="font-size:.88rem;">🌿 绿色生态</h3>
-        <p style="font-size:.8rem;">倡导共享单车绿色出行，落实生态修复城市修补，推动绿色发展方式</p>
+        <h3 style="font-size:.88rem;">🌿 <span class="lang-en">Green & Ecological</span><span class="lang-zh">绿色生态</span></h3>
+        <p style="font-size:.8rem;">
+          <span class="lang-en">Promote bike-sharing as green mobility, implement ecological restoration and urban mending, and advance sustainable development.</span>
+          <span class="lang-zh">倡导共享单车绿色出行，落实生态修复城市修补，推动绿色发展方式</span>
+        </p>
       </div>
       <div class="card card-pad" style="border-top:4px solid #7b68ee;">
-        <h3 style="font-size:.88rem;">🤝 共享共治</h3>
-        <p style="font-size:.8rem;">创新空间治理事权，打破条块分割，提高规划实施协同性</p>
+        <h3 style="font-size:.88rem;">🤝 <span class="lang-en">Shared Governance</span><span class="lang-zh">共享共治</span></h3>
+        <p style="font-size:.8rem;">
+          <span class="lang-en">Innovate spatial governance, break down administrative silos, and improve coordination in planning implementation.</span>
+          <span class="lang-zh">创新空间治理事权，打破条块分割，提高规划实施协同性</span>
+        </p>
       </div>
     </div>
 
-    <div class="sub-h">居住类站点优化导则</div>
+    <div class="sub-h">
+      <span class="lang-en">Optimization Guidelines for Residential Stations</span>
+      <span class="lang-zh">居住类站点优化导则</span>
+    </div>
     <figure>
-      <img src="assets/bike-sharing/crop_res_guide.png" alt="居住类站点导则" />
-      <figcaption>图13 居住类站点三步优化策略——识别接驳条件 → 合理投放调度 → 提高骑行舒适度</figcaption>
+      <img src="assets/bike-sharing/crop_res_guide.png" alt="Residential station guidelines" />
+      <figcaption>
+        <span class="lang-en">Fig. 13  Three-step optimization strategy for residential stations — Identify feeder conditions → Rational deployment & dispatch → Improve cycling comfort</span>
+        <span class="lang-zh">图13 居住类站点三步优化策略——识别接驳条件 → 合理投放调度 → 提高骑行舒适度</span>
+      </figcaption>
     </figure>
 
-    <div class="sub-h" style="margin-top:28px;">商业类站点优化导则</div>
+    <div class="sub-h" style="margin-top:28px;">
+      <span class="lang-en">Optimization Guidelines for Commercial Stations</span>
+      <span class="lang-zh">商业类站点优化导则</span>
+    </div>
     <figure>
-      <img src="assets/bike-sharing/crop_com_guide.png" alt="商业类站点导则" />
-      <figcaption>图14 商业类站点：改善周边交通衔接空间 · 非机动车道优化 · 彩色铺装与引导标志规范</figcaption>
+      <img src="assets/bike-sharing/crop_com_guide.png" alt="Commercial station guidelines" />
+      <figcaption>
+        <span class="lang-en">Fig. 14  Commercial stations: improve surrounding transit connection spaces · optimize non-motorized lanes · standardize colored pavement and directional signage</span>
+        <span class="lang-zh">图14 商业类站点：改善周边交通衔接空间 · 非机动车道优化 · 彩色铺装与引导标志规范</span>
+      </figcaption>
     </figure>
   </div>
 
@@ -649,31 +996,96 @@
   <div id="concl">
     <div class="sec-head">
       <p class="sec-eyebrow">08 · Conclusions</p>
-      <h2>研究结论</h2>
-      <p>研究通过精细化分析轨道交通接驳共享单车数据，探索不同类型站点接驳时空特征与影响因素，提出针对性优化策略。</p>
+      <h2>
+        <span class="lang-en">Research Conclusion</span>
+        <span class="lang-zh">研究结论</span>
+      </h2>
+      <p>
+        <span class="lang-en">Through fine-grained analysis of bike-sharing feeder data for rail transit, this study explores the spatiotemporal characteristics and influencing factors for different station types and proposes targeted optimization strategies.</span>
+        <span class="lang-zh">研究通过精细化分析轨道交通接驳共享单车数据，探索不同类型站点接驳时空特征与影响因素，提出针对性优化策略。</span>
+      </p>
       <div class="sec-rule"></div>
     </div>
 
     <div class="concl">
-      <div class="concl-item"><div class="concl-n">1</div><span>工作日接驳量更高；接驳频率集中 250–1000 次/日；骑行时长 5–10 分钟，距离 2 km 以内</span></div>
-      <div class="concl-item"><div class="concl-n">2</div><span>接驳服务范围形态分四类：放射扩展型 · 偏心扩展型 · 带状扩展型 · 多核心型</span></div>
-      <div class="concl-item"><div class="concl-n">3</div><span>居住类站点（45 个）接驳需求最高，周末接驳量大于工作日，体现显著的休闲出行特征</span></div>
-      <div class="concl-item"><div class="concl-n">4</div><span>综合接驳能力 = 28.89% × 接驳范围 ＋ 40.96% × 接驳量 ＋ 30.15% × 交通分担率</span></div>
-      <div class="concl-item"><div class="concl-n">5</div><span>居住人口密度、交通用地比例对综合接驳能力有显著<strong>正向</strong>影响；土地利用混合熵为显著<strong>负向</strong>影响</span></div>
-      <div class="concl-item"><div class="concl-n">6</div><span>分类提出居住 · 商业 · 混合三类站点优化导则，涵盖空间设计、单车调度与政策建议三个层面</span></div>
+      <div class="concl-item">
+        <div class="concl-n">1</div>
+        <span>
+          <span class="lang-en">Weekday feeder volume is higher; feeder frequency concentrates at 250–1,000 trips/day; ride duration 5–10 min, distance within 2 km.</span>
+          <span class="lang-zh">工作日接驳量更高；接驳频率集中 250–1000 次/日；骑行时长 5–10 分钟，距离 2 km 以内</span>
+        </span>
+      </div>
+      <div class="concl-item">
+        <div class="concl-n">2</div>
+        <span>
+          <span class="lang-en">Feeder service area morphology falls into four types: Radial Expansion · Eccentric Expansion · Linear Expansion · Multi-core.</span>
+          <span class="lang-zh">接驳服务范围形态分四类：放射扩展型 · 偏心扩展型 · 带状扩展型 · 多核心型</span>
+        </span>
+      </div>
+      <div class="concl-item">
+        <div class="concl-n">3</div>
+        <span>
+          <span class="lang-en">Residential stations (45) have the highest feeder demand; weekend feeder volume exceeds weekday, reflecting significant leisure travel characteristics.</span>
+          <span class="lang-zh">居住类站点（45 个）接驳需求最高，周末接驳量大于工作日，体现显著的休闲出行特征</span>
+        </span>
+      </div>
+      <div class="concl-item">
+        <div class="concl-n">4</div>
+        <span>
+          <span class="lang-en">Composite Feeder Capability = 28.89% × Service Area + 40.96% × Feeder Volume + 30.15% × Modal Share.</span>
+          <span class="lang-zh">综合接驳能力 = 28.89% × 接驳范围 ＋ 40.96% × 接驳量 ＋ 30.15% × 交通分担率</span>
+        </span>
+      </div>
+      <div class="concl-item">
+        <div class="concl-n">5</div>
+        <span>
+          <span class="lang-en">Residential population density and transportation land ratio have significant <strong>positive</strong> effects; land-use mix entropy has a significant <strong>negative</strong> effect on composite feeder capability.</span>
+          <span class="lang-zh">居住人口密度、交通用地比例对综合接驳能力有显著<strong>正向</strong>影响；土地利用混合熵为显著<strong>负向</strong>影响</span>
+        </span>
+      </div>
+      <div class="concl-item">
+        <div class="concl-n">6</div>
+        <span>
+          <span class="lang-en">Differentiated optimization guidelines are proposed for residential, commercial, and mixed-use stations, covering spatial design, bike dispatch, and policy recommendations.</span>
+          <span class="lang-zh">分类提出居住 · 商业 · 混合三类站点优化导则，涵盖空间设计、单车调度与政策建议三个层面</span>
+        </span>
+      </div>
     </div>
 
     <div class="callout" style="margin-top:24px;">
-      <strong>未来展望：</strong>① 深化不同类型站点规律挖掘，补充周内 / 日内双维度描述；② 细化优化导则，从导则落实到具体空间设计，通过建成环境微改造提升接驳体验。
+      <span class="lang-en"><strong>Future Work:</strong> ① Deepen pattern mining for different station types and add both intra-week and intra-day temporal dimensions; ② Refine guidelines from principles to concrete spatial design, improving feeder experience through micro-scale built environment improvements.</span>
+      <span class="lang-zh"><strong>未来展望：</strong>① 深化不同类型站点规律挖掘，补充周内 / 日内双维度描述；② 细化优化导则，从导则落实到具体空间设计，通过建成环境微改造提升接驳体验。</span>
     </div>
   </div>
 
 </div><!-- /wrap -->
 
 <footer>
-  <strong>共享单车接驳轨道交通的时空特征与影响因素研究——以天津市为例</strong><br>
-  <span style="margin-top:6px; display:block;">苏琪 · 郭函祎 · 郭雅洁 · 崔馨元 &nbsp;|&nbsp; 指导教师：任利剑 &nbsp;|&nbsp; 天津大学建筑学院 · 设计课题研究</span>
+  <strong>
+    <span class="lang-en">Spatiotemporal Characteristics and Influencing Factors of Bike-Sharing Integration with Rail Transit — A Case Study of Tianjin</span>
+    <span class="lang-zh">共享单车接驳轨道交通的时空特征与影响因素研究——以天津市为例</span>
+  </strong><br>
+  <span style="margin-top:6px; display:block;">
+    苏琪 · 郭函祎 · 郭雅洁 · 崔馨元 &nbsp;|&nbsp;
+    <span class="lang-en">Advisor: Prof. Ren Lijian &nbsp;|&nbsp; School of Architecture, Tianjin University · Urban Design Research</span>
+    <span class="lang-zh">指导教师：任利剑 &nbsp;|&nbsp; 天津大学建筑学院 · 设计课题研究</span>
+  </span>
 </footer>
+
+<script>
+let currentLang = localStorage.getItem('cc-lang') || 'en';
+function applyLang(lang) {
+  const html = document.documentElement;
+  html.classList.remove('lang-en-active','lang-zh-active');
+  html.classList.add('lang-'+lang+'-active');
+  html.lang = lang==='zh' ? 'zh-CN' : 'en';
+  const btn = document.getElementById('langToggle');
+  if(btn){ btn.textContent = lang==='en' ? '中文' : 'EN'; btn.classList.toggle('active-zh', lang==='zh'); }
+  localStorage.setItem('cc-lang', lang);
+}
+function toggleLang(){ currentLang = currentLang==='en' ? 'zh' : 'en'; applyLang(currentLang); }
+applyLang(currentLang);
+</script>
 
 </body>
 </html>

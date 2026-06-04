@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>城市情绪时空分析 | 微博打卡 × 百度指数</title>
+  <title>Urban Sentiment Analysis · Christine Cui / 城市情绪时空分析 · 崔馨元</title>
   <style>
     /* ── Reset & base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,6 +33,10 @@
       --muted:   #94a3b8;
       --rule:    rgba(96,165,250,.25);
     }
+
+    /* ── Bilingual toggle ── */
+    html:not(.lang-zh-active) .lang-zh { display: none; }
+    html.lang-zh-active .lang-en { display: none; }
 
     /* ── Navigation ── */
     nav {
@@ -361,21 +365,28 @@
     .footer-nav { display: flex; gap: 2rem; justify-content: center; margin-top: 1rem; }
     .footer-nav a { color: var(--muted); text-decoration: none; font-size: .8rem; }
     .footer-nav a:hover { color: var(--text); }
+
+    /* ── Language toggle button ── */
+    .lang-btn { font-size: 11px; padding: 5px 12px; border: 1px solid rgba(96,165,250,.4); background: transparent; color: rgba(96,165,250,.8); cursor: pointer; border-radius: 4px; transition: all .18s; letter-spacing: .05em; }
+    .lang-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+    .lang-btn.active-zh { border-color: var(--cyan); color: var(--cyan); background: rgba(6,182,212,.1); }
   </style>
+  <script>(function(){document.documentElement.classList.add('lang-'+(localStorage.getItem('cc-lang')||'en')+'-active');})();</script>
 </head>
 <body>
 
 <!-- ── Navigation ── -->
 <nav>
-  <a class="nav-brand" href="index.html">← 返回项目总览</a>
+  <a class="nav-brand" href="index.html">← <span class="lang-en">Portfolio</span><span class="lang-zh">作品集</span></a>
   <ul>
-    <li><a href="#overview">概述</a></li>
-    <li><a href="#methodology">研究路线</a></li>
-    <li><a href="#beijing">北京</a></li>
-    <li><a href="#tianjin">天津</a></li>
-    <li><a href="#keywords">关键词分析</a></li>
-    <li><a href="#findings">研究结论</a></li>
+    <li><a href="#overview"><span class="lang-en">Overview</span><span class="lang-zh">概述</span></a></li>
+    <li><a href="#methodology"><span class="lang-en">Methodology</span><span class="lang-zh">研究路线</span></a></li>
+    <li><a href="#beijing"><span class="lang-en">Beijing</span><span class="lang-zh">北京</span></a></li>
+    <li><a href="#tianjin"><span class="lang-en">Tianjin</span><span class="lang-zh">天津</span></a></li>
+    <li><a href="#keywords"><span class="lang-en">Keywords</span><span class="lang-zh">关键词分析</span></a></li>
+    <li><a href="#findings"><span class="lang-en">Findings</span><span class="lang-zh">研究结论</span></a></li>
   </ul>
+  <button class="lang-btn" id="langToggle" onclick="toggleLang()">中文</button>
 </nav>
 
 <!-- ── Hero ── -->
@@ -383,31 +394,56 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">城市规划 · 大数据分析 · 情绪地理学</p>
-    <h1>城市情绪时空分析</h1>
-    <p class="hero-sub">基于微博打卡留言数据与百度指数时间序列，从<strong>空间</strong>与<strong>时间</strong>双视角解析北京、天津、上海、重庆四座城市的情绪分布规律。</p>
+    <p class="hero-eyebrow">
+      <span class="lang-en">Urban Planning · Big Data Analysis · Emotion Geography</span>
+      <span class="lang-zh">城市规划 · 大数据分析 · 情绪地理学</span>
+    </p>
+    <h1>
+      <span class="lang-en">Urban Sentiment Spatio-temporal Analysis</span>
+      <span class="lang-zh">城市情绪时空分析</span>
+    </h1>
+    <p class="hero-sub">
+      <span class="lang-en">Using <strong>Weibo check-in message data</strong> and <strong>Baidu Search Index time series</strong>, this research explores the spatial and temporal patterns of emotional expression across four municipalities — Beijing, Tianjin, Shanghai, and Chongqing — from both <strong>spatial</strong> and <strong>temporal</strong> perspectives.</span>
+      <span class="lang-zh">基于微博打卡留言数据与百度指数时间序列，从<strong>空间</strong>与<strong>时间</strong>双视角解析北京、天津、上海、重庆四座城市的情绪分布规律。</span>
+    </p>
     <div class="hero-tags">
-      <span class="tag tag-cyan">微博打卡数据</span>
-      <span class="tag tag-purple">百度指数时序</span>
-      <span class="tag tag-blue">ArcGIS空间可视化</span>
-      <span class="tag tag-green">NLP情感分类</span>
-      <span class="tag tag-cyan">STL分解 · 相关性分析</span>
+      <span class="tag tag-cyan"><span class="lang-en">Weibo Check-in Data</span><span class="lang-zh">微博打卡数据</span></span>
+      <span class="tag tag-purple"><span class="lang-en">Baidu Index Time Series</span><span class="lang-zh">百度指数时序</span></span>
+      <span class="tag tag-blue"><span class="lang-en">ArcGIS Spatial Visualization</span><span class="lang-zh">ArcGIS空间可视化</span></span>
+      <span class="tag tag-green"><span class="lang-en">NLP Sentiment Classification</span><span class="lang-zh">NLP情感分类</span></span>
+      <span class="tag tag-cyan"><span class="lang-en">STL Decomposition · Correlation Analysis</span><span class="lang-zh">STL分解 · 相关性分析</span></span>
     </div>
   </div>
 </header>
 
 <!-- ── Overview ── -->
 <section id="overview">
-  <p class="sec-label">研究概述</p>
-  <h2>项目背景与目标</h2>
+  <p class="sec-label">
+    <span class="lang-en">Research Overview</span>
+    <span class="lang-zh">研究概述</span>
+  </p>
+  <h2>
+    <span class="lang-en">Project Background &amp; Objectives</span>
+    <span class="lang-zh">项目背景与目标</span>
+  </h2>
 
   <div class="overview-grid">
     <div class="overview-text">
-      <p>随着社交媒体的普及，城市居民在微博等平台上留下海量带有地理标签的情绪表达。本研究以<strong>微博打卡留言</strong>为空间数据源，以<strong>百度指数关键词搜索量</strong>为时间数据源，对四个直辖市进行情绪时空分析。</p>
-      <p>研究将情绪分为<strong>乐、怒、哀、恶、惧</strong>五类，借助ArcGIS生成各区县情绪分布图，结合词频统计与词云可视化揭示各城市的情绪特征，并通过时间序列分析探索情绪波动的周期性规律。</p>
-      <p>研究发现：<strong>北部郊区整体情绪较积极，核心城区消极情绪偏高</strong>；工作压力、疫情影响与城市基础设施问题是情绪波动的主要驱动力。</p>
+      <p>
+        <span class="lang-en">With the widespread adoption of social media, urban residents leave vast amounts of geo-tagged emotional expressions on platforms like Weibo. This study uses <strong>Weibo check-in messages</strong> as its spatial data source and <strong>Baidu Search Index keyword volumes</strong> as its temporal data source to conduct a spatio-temporal sentiment analysis across four municipalities.</span>
+        <span class="lang-zh">随着社交媒体的普及，城市居民在微博等平台上留下海量带有地理标签的情绪表达。本研究以<strong>微博打卡留言</strong>为空间数据源，以<strong>百度指数关键词搜索量</strong>为时间数据源，对四个直辖市进行情绪时空分析。</span>
+      </p>
+      <p>
+        <span class="lang-en">Emotions are classified into five categories — <strong>Joy, Anger, Sadness, Disgust, and Fear</strong>. ArcGIS is used to generate district-level sentiment distribution maps, while word frequency statistics and word cloud visualizations reveal emotional characteristics of each city. Time series analysis further explores the periodic patterns of emotional fluctuation.</span>
+        <span class="lang-zh">研究将情绪分为<strong>乐、怒、哀、恶、惧</strong>五类，借助ArcGIS生成各区县情绪分布图，结合词频统计与词云可视化揭示各城市的情绪特征，并通过时间序列分析探索情绪波动的周期性规律。</span>
+      </p>
+      <p>
+        <span class="lang-en">Key findings: <strong>Northern suburban areas show generally more positive emotions, while core urban districts exhibit higher levels of negative sentiment.</strong> Work pressure, pandemic impacts, and urban infrastructure issues are the primary drivers of emotional fluctuation.</span>
+        <span class="lang-zh">研究发现：<strong>北部郊区整体情绪较积极，核心城区消极情绪偏高</strong>；工作压力、疫情影响与城市基础设施问题是情绪波动的主要驱动力。</span>
+      </p>
       <div class="callout green">
-        <strong>核心问题：</strong>城市不同地区的情绪是否存在空间分布规律？情绪关键词的时间序列呈现怎样的周期性特征？
+        <span class="lang-en"><strong>Core Research Questions:</strong> Do emotions exhibit spatial distribution patterns across different urban areas? What periodic characteristics do emotional keyword time series display?</span>
+        <span class="lang-zh"><strong>核心问题：</strong>城市不同地区的情绪是否存在空间分布规律？情绪关键词的时间序列呈现怎样的周期性特征？</span>
       </div>
     </div>
 
@@ -415,23 +451,23 @@
       <div class="stat-strip" style="margin-bottom:1.5rem;">
         <div class="stat">
           <div class="stat-num">4</div>
-          <div class="stat-lbl">分析城市</div>
+          <div class="stat-lbl"><span class="lang-en">Cities Analyzed</span><span class="lang-zh">分析城市</span></div>
         </div>
         <div class="stat">
           <div class="stat-num">5</div>
-          <div class="stat-lbl">情绪类别</div>
+          <div class="stat-lbl"><span class="lang-en">Emotion Categories</span><span class="lang-zh">情绪类别</span></div>
         </div>
         <div class="stat">
           <div class="stat-num">128</div>
-          <div class="stat-lbl">百度指数关键词</div>
+          <div class="stat-lbl"><span class="lang-en">Baidu Index Keywords</span><span class="lang-zh">百度指数关键词</span></div>
         </div>
         <div class="stat">
           <div class="stat-num">2</div>
-          <div class="stat-lbl">数据维度</div>
+          <div class="stat-lbl"><span class="lang-en">Data Dimensions</span><span class="lang-zh">数据维度</span></div>
         </div>
       </div>
       <div class="team-card">
-        <h3>研究团队</h3>
+        <h3><span class="lang-en">Research Team</span><span class="lang-zh">研究团队</span></h3>
         <div class="team-row">
           <span class="member-chip">叶薪悦</span>
           <span class="member-chip">陈萌</span>
@@ -440,10 +476,10 @@
           <span class="member-chip">李澍堉</span>
         </div>
         <div class="advisor-row">
-          <strong>指导老师：</strong>张天洁 &nbsp;·&nbsp; 崔博庶 &nbsp;·&nbsp; 张孝贤
+          <strong><span class="lang-en">Advisors:</span><span class="lang-zh">指导老师：</span></strong> 张天洁 &nbsp;·&nbsp; 崔博庶 &nbsp;·&nbsp; 张孝贤
         </div>
         <div class="advisor-row" style="margin-top:.4rem;">
-          <strong>机构：</strong>天津大学
+          <strong><span class="lang-en">Institution:</span><span class="lang-zh">机构：</span></strong> <span class="lang-en">Tianjin University</span><span class="lang-zh">天津大学</span>
         </div>
       </div>
     </div>
@@ -452,32 +488,39 @@
 
 <!-- ── Emotion Legend ── -->
 <section style="padding-top:0;">
-  <p class="sec-label">情绪分类体系</p>
-  <h2>五维情绪框架</h2>
+  <p class="sec-label">
+    <span class="lang-en">Emotion Classification System</span>
+    <span class="lang-zh">情绪分类体系</span>
+  </p>
+  <h2>
+    <span class="lang-en">Five-Dimensional Emotion Framework</span>
+    <span class="lang-zh">五维情绪框架</span>
+  </h2>
   <div class="emotion-legend">
     <div class="emo">
       <div class="emo-dot" style="background:var(--joy)"></div>
-      <span>乐</span>&nbsp;<small>(Joy)</small>
+      <span><span class="lang-en">Joy</span><span class="lang-zh">乐</span></span>&nbsp;<small>(Joy / 乐)</small>
     </div>
     <div class="emo">
       <div class="emo-dot" style="background:var(--anger)"></div>
-      <span>怒</span>&nbsp;<small>(Anger)</small>
+      <span><span class="lang-en">Anger</span><span class="lang-zh">怒</span></span>&nbsp;<small>(Anger / 怒)</small>
     </div>
     <div class="emo">
       <div class="emo-dot" style="background:var(--sadness)"></div>
-      <span>哀</span>&nbsp;<small>(Sadness)</small>
+      <span><span class="lang-en">Sadness</span><span class="lang-zh">哀</span></span>&nbsp;<small>(Sadness / 哀)</small>
     </div>
     <div class="emo">
       <div class="emo-dot" style="background:var(--disgust)"></div>
-      <span>恶</span>&nbsp;<small>(Disgust)</small>
+      <span><span class="lang-en">Disgust</span><span class="lang-zh">恶</span></span>&nbsp;<small>(Disgust / 恶)</small>
     </div>
     <div class="emo">
       <div class="emo-dot" style="background:var(--fear)"></div>
-      <span>惧</span>&nbsp;<small>(Fear)</small>
+      <span><span class="lang-en">Fear</span><span class="lang-zh">惧</span></span>&nbsp;<small>(Fear / 惧)</small>
     </div>
   </div>
   <p style="color:var(--muted);font-size:.88rem;max-width:680px;">
-    通过预训练的 ChatGPT 模型，对微博文本进行五情绪分类，提取各城市各区县的情绪占比，并导入 ArcGIS 进行空间等级可视化。百度指数端则通过相关性检验确定各关键词的主导情绪类型。
+    <span class="lang-en">Using a pre-trained ChatGPT model, Weibo texts are classified into five emotion categories. The emotion proportions for each district are extracted and imported into ArcGIS for spatial-level visualization. For the Baidu Index data, correlation tests are used to identify the dominant emotion type for each keyword.</span>
+    <span class="lang-zh">通过预训练的 ChatGPT 模型，对微博文本进行五情绪分类，提取各城市各区县的情绪占比，并导入 ArcGIS 进行空间等级可视化。百度指数端则通过相关性检验确定各关键词的主导情绪类型。</span>
   </p>
 </section>
 
@@ -485,74 +528,149 @@
 
 <!-- ── Methodology ── -->
 <section id="methodology">
-  <p class="sec-label">研究设计</p>
-  <h2>技术路线</h2>
+  <p class="sec-label">
+    <span class="lang-en">Research Design</span>
+    <span class="lang-zh">研究设计</span>
+  </p>
+  <h2>
+    <span class="lang-en">Technical Methodology</span>
+    <span class="lang-zh">技术路线</span>
+  </h2>
 
   <figure style="margin-bottom:2.5rem;">
     <img src="assets/weibo-emotion/roadmap.png" alt="技术路线图">
     <figcaption>
-      <strong>双轨并行架构：</strong>左侧微博打卡数据流（空间角度）→ 数据爬取 · 情绪标注 · ArcGIS可视化 · 词云；右侧百度指数时间序列流（时间角度）→ 关键词库构建 · 统计分析 · STL分解 · 相关性检验
+      <span class="lang-en"><strong>Dual-track parallel architecture:</strong> Left — Weibo check-in data stream (spatial perspective) → data crawling · emotion annotation · ArcGIS visualization · word clouds; Right — Baidu Index time series stream (temporal perspective) → keyword library construction · statistical analysis · STL decomposition · correlation testing.</span>
+      <span class="lang-zh"><strong>双轨并行架构：</strong>左侧微博打卡数据流（空间角度）→ 数据爬取 · 情绪标注 · ArcGIS可视化 · 词云；右侧百度指数时间序列流（时间角度）→ 关键词库构建 · 统计分析 · STL分解 · 相关性检验</span>
     </figcaption>
   </figure>
 
   <div class="pipeline-grid">
     <div class="pipeline-card">
-      <div class="pipeline-tag tag-spatial">空间维度 · 微博打卡</div>
-      <h3>微博数据处理流程</h3>
+      <div class="pipeline-tag tag-spatial">
+        <span class="lang-en">Spatial Dimension · Weibo Check-in</span>
+        <span class="lang-zh">空间维度 · 微博打卡</span>
+      </div>
+      <h3><span class="lang-en">Weibo Data Processing Pipeline</span><span class="lang-zh">微博数据处理流程</span></h3>
       <ul class="pipeline-steps">
-        <li><div class="step-num">1</div><div><strong>数据爬取：</strong>抓取天津各区打卡坐标及留言文本</div></li>
-        <li><div class="step-num">2</div><div><strong>清洗去重：</strong>去除重复条目，对应打卡坐标</div></li>
-        <li><div class="step-num">3</div><div><strong>情绪判别：</strong>ChatGPT模型输出 joy / sadness / anger / love / fear 标签</div></li>
-        <li><div class="step-num">4</div><div><strong>空间聚合：</strong>按区县统计情绪比例，导入ArcGIS</div></li>
-        <li><div class="step-num">5</div><div><strong>文本聚类：</strong>文本分词 → 提取主题 → 词云可视化</div></li>
+        <li><div class="step-num">1</div><div>
+          <strong><span class="lang-en">Data Crawling:</span><span class="lang-zh">数据爬取：</span></strong>
+          <span class="lang-en">Scrape check-in coordinates and message texts from Tianjin districts</span>
+          <span class="lang-zh">抓取天津各区打卡坐标及留言文本</span>
+        </div></li>
+        <li><div class="step-num">2</div><div>
+          <strong><span class="lang-en">Cleaning &amp; Deduplication:</span><span class="lang-zh">清洗去重：</span></strong>
+          <span class="lang-en">Remove duplicate entries and align with check-in coordinates</span>
+          <span class="lang-zh">去除重复条目，对应打卡坐标</span>
+        </div></li>
+        <li><div class="step-num">3</div><div>
+          <strong><span class="lang-en">Emotion Classification:</span><span class="lang-zh">情绪判别：</span></strong>
+          <span class="lang-en">ChatGPT model outputs joy / sadness / anger / love / fear labels</span>
+          <span class="lang-zh">ChatGPT模型输出 joy / sadness / anger / love / fear 标签</span>
+        </div></li>
+        <li><div class="step-num">4</div><div>
+          <strong><span class="lang-en">Spatial Aggregation:</span><span class="lang-zh">空间聚合：</span></strong>
+          <span class="lang-en">Calculate emotion ratios by district and import into ArcGIS</span>
+          <span class="lang-zh">按区县统计情绪比例，导入ArcGIS</span>
+        </div></li>
+        <li><div class="step-num">5</div><div>
+          <strong><span class="lang-en">Text Clustering:</span><span class="lang-zh">文本聚类：</span></strong>
+          <span class="lang-en">Text segmentation → theme extraction → word cloud visualization</span>
+          <span class="lang-zh">文本分词 → 提取主题 → 词云可视化</span>
+        </div></li>
       </ul>
     </div>
 
     <div class="pipeline-card">
-      <div class="pipeline-tag tag-temporal">时间维度 · 百度指数</div>
-      <h3>时序分析流程</h3>
+      <div class="pipeline-tag tag-temporal">
+        <span class="lang-en">Temporal Dimension · Baidu Index</span>
+        <span class="lang-zh">时间维度 · 百度指数</span>
+      </div>
+      <h3><span class="lang-en">Time Series Analysis Pipeline</span><span class="lang-zh">时序分析流程</span></h3>
       <ul class="pipeline-steps">
-        <li><div class="step-num">1</div><div><strong>关键词库：</strong>构建128项情绪关键词，覆盖四城市</div></li>
-        <li><div class="step-num">2</div><div><strong>基础统计：</strong>最大值、均值、偏度、峰度、标准差等七项指标</div></li>
-        <li><div class="step-num">3</div><div><strong>平稳性检验：</strong>判断加法/乘法模型选择</div></li>
-        <li><div class="step-num">4</div><div><strong>STL分解：</strong>季节性 · 趋势 · 残差成分拆解</div></li>
-        <li><div class="step-num">5</div><div><strong>相关性检验：</strong>自相关图、正态分布检验，关联人民网投诉数据</div></li>
+        <li><div class="step-num">1</div><div>
+          <strong><span class="lang-en">Keyword Library:</span><span class="lang-zh">关键词库：</span></strong>
+          <span class="lang-en">Build 128 emotion keywords covering all four cities</span>
+          <span class="lang-zh">构建128项情绪关键词，覆盖四城市</span>
+        </div></li>
+        <li><div class="step-num">2</div><div>
+          <strong><span class="lang-en">Descriptive Statistics:</span><span class="lang-zh">基础统计：</span></strong>
+          <span class="lang-en">Seven metrics including max, mean, skewness, kurtosis, and std. deviation</span>
+          <span class="lang-zh">最大值、均值、偏度、峰度、标准差等七项指标</span>
+        </div></li>
+        <li><div class="step-num">3</div><div>
+          <strong><span class="lang-en">Stationarity Testing:</span><span class="lang-zh">平稳性检验：</span></strong>
+          <span class="lang-en">Determine additive vs. multiplicative model selection</span>
+          <span class="lang-zh">判断加法/乘法模型选择</span>
+        </div></li>
+        <li><div class="step-num">4</div><div>
+          <strong><span class="lang-en">STL Decomposition:</span><span class="lang-zh">STL分解：</span></strong>
+          <span class="lang-en">Seasonal · Trend · Residual component decomposition</span>
+          <span class="lang-zh">季节性 · 趋势 · 残差成分拆解</span>
+        </div></li>
+        <li><div class="step-num">5</div><div>
+          <strong><span class="lang-en">Correlation Testing:</span><span class="lang-zh">相关性检验：</span></strong>
+          <span class="lang-en">Autocorrelation plots, normality tests, linking to People's Daily complaint data</span>
+          <span class="lang-zh">自相关图、正态分布检验，关联人民网投诉数据</span>
+        </div></li>
       </ul>
     </div>
   </div>
 
   <div class="callout">
-    <strong>代表性关键词选取：</strong>由于情绪词数量多、重复性高，最终选取三个代表性词汇进行深度分析——
-    <strong>度假</strong>（单一情绪·乐）、<strong>安眠药</strong>（两种情绪·惧+哀 0.7/0.6）、<strong>创业</strong>（三种情绪·乐+惧+恶 各0.6/0.6/0.4）
+    <span class="lang-en"><strong>Representative Keyword Selection:</strong> Due to the large and overlapping number of emotion words, three representative keywords were selected for in-depth analysis — <strong>Vacation</strong> (single emotion · joy), <strong>Sleeping Pills</strong> (two emotions · fear + sadness 0.7/0.6), <strong>Entrepreneurship</strong> (three emotions · joy + fear + disgust 0.6/0.6/0.4).</span>
+    <span class="lang-zh"><strong>代表性关键词选取：</strong>由于情绪词数量多、重复性高，最终选取三个代表性词汇进行深度分析——
+    <strong>度假</strong>（单一情绪·乐）、<strong>安眠药</strong>（两种情绪·惧+哀 0.7/0.6）、<strong>创业</strong>（三种情绪·乐+惧+恶 各0.6/0.6/0.4）</span>
   </div>
 </section>
 
 <!-- ── City Selection ── -->
 <section style="padding-top:0;">
-  <p class="sec-label">研究范围</p>
-  <h2>四城市选取</h2>
+  <p class="sec-label">
+    <span class="lang-en">Research Scope</span>
+    <span class="lang-zh">研究范围</span>
+  </p>
+  <h2>
+    <span class="lang-en">Four City Selection</span>
+    <span class="lang-zh">四城市选取</span>
+  </h2>
 
   <figure style="margin-bottom:2rem;">
     <img src="assets/weibo-emotion/city_selection.png" alt="四城市选取说明">
-    <figcaption>选取25城市中四个直辖市作为代表，兼顾<strong>共性</strong>（相同行政地位、区域经济中心）与<strong>个性</strong>（社会结构差异、文化底蕴差异、地理位置分异、人群组成不同）</figcaption>
+    <figcaption>
+      <span class="lang-en">Four municipalities selected from 25 cities as representatives, balancing <strong>commonalities</strong> (same administrative status, regional economic centers) and <strong>distinctions</strong> (differences in social structure, cultural heritage, geographic location, and population composition).</span>
+      <span class="lang-zh">选取25城市中四个直辖市作为代表，兼顾<strong>共性</strong>（相同行政地位、区域经济中心）与<strong>个性</strong>（社会结构差异、文化底蕴差异、地理位置分异、人群组成不同）</span>
+    </figcaption>
   </figure>
 
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;">
     <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:10px;padding:1.2rem;text-align:center;">
-      <div style="font-size:1.4rem;font-weight:700;color:var(--blue-lt);margin-bottom:.3rem;">北京</div>
-      <div style="font-size:.75rem;color:var(--muted);">"帝都"<br>全国政治中心 · 文化中心<br>国际交往中心 · 科技创新中心</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--blue-lt);margin-bottom:.3rem;"><span class="lang-en">Beijing</span><span class="lang-zh">北京</span></div>
+      <div style="font-size:.75rem;color:var(--muted);">
+        <span class="lang-en">"Imperial Capital"<br>National political &amp; cultural center<br>Int'l communication &amp; tech innovation hub</span>
+        <span class="lang-zh">"帝都"<br>全国政治中心 · 文化中心<br>国际交往中心 · 科技创新中心</span>
+      </div>
     </div>
     <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:10px;padding:1.2rem;text-align:center;">
-      <div style="font-size:1.4rem;font-weight:700;color:var(--cyan);margin-bottom:.3rem;">天津</div>
-      <div style="font-size:.75rem;color:var(--muted);">"哏都"<br>先进制造中心 · 国际港口城市<br>北方经济中心 · 生态城市</div>
+      <div style="font-size:1.4rem;font-weight:700;color:var(--cyan);margin-bottom:.3rem;"><span class="lang-en">Tianjin</span><span class="lang-zh">天津</span></div>
+      <div style="font-size:.75rem;color:var(--muted);">
+        <span class="lang-en">"Humor Capital"<br>Advanced manufacturing &amp; int'l port city<br>Northern economic center &amp; eco-city</span>
+        <span class="lang-zh">"哏都"<br>先进制造中心 · 国际港口城市<br>北方经济中心 · 生态城市</span>
+      </div>
     </div>
     <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:10px;padding:1.2rem;text-align:center;">
-      <div style="font-size:1.4rem;font-weight:700;color:#a78bfa;margin-bottom:.3rem;">上海</div>
-      <div style="font-size:.75rem;color:var(--muted);">"魔都"<br>国际经济中心 · 金融中心<br>国际贸易中心 · 航运中心</div>
+      <div style="font-size:1.4rem;font-weight:700;color:#a78bfa;margin-bottom:.3rem;"><span class="lang-en">Shanghai</span><span class="lang-zh">上海</span></div>
+      <div style="font-size:.75rem;color:var(--muted);">
+        <span class="lang-en">"Magic City"<br>Int'l economic &amp; financial center<br>Int'l trade &amp; shipping hub</span>
+        <span class="lang-zh">"魔都"<br>国际经济中心 · 金融中心<br>国际贸易中心 · 航运中心</span>
+      </div>
     </div>
     <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:10px;padding:1.2rem;text-align:center;">
-      <div style="font-size:1.4rem;font-weight:700;color:#fb923c;margin-bottom:.3rem;">重庆</div>
-      <div style="font-size:.75rem;color:var(--muted);">"山城"<br>西部金融枢纽 · 西部国际综合<br>交通枢纽 · 国际门户枢纽</div>
+      <div style="font-size:1.4rem;font-weight:700;color:#fb923c;margin-bottom:.3rem;"><span class="lang-en">Chongqing</span><span class="lang-zh">重庆</span></div>
+      <div style="font-size:.75rem;color:var(--muted);">
+        <span class="lang-en">"Mountain City"<br>Western financial hub &amp; int'l gateway<br>Western comprehensive transport hub</span>
+        <span class="lang-zh">"山城"<br>西部金融枢纽 · 西部国际综合<br>交通枢纽 · 国际门户枢纽</span>
+      </div>
     </div>
   </div>
 </section>
@@ -567,13 +685,19 @@
     <img class="bg" src="assets/weibo-emotion/beijing_intro.png" alt="北京">
     <div class="city-banner-overlay"></div>
     <div class="city-banner-text">
-      <h2>北京</h2>
-      <p>城市情绪时空分析</p>
+      <h2><span class="lang-en">Beijing</span><span class="lang-zh">北京</span></h2>
+      <p><span class="lang-en">Urban Sentiment Spatio-temporal Analysis</span><span class="lang-zh">城市情绪时空分析</span></p>
     </div>
   </div>
 
-  <p class="sec-label">空间分析 · 北京</p>
-  <h2>微博情绪空间分布</h2>
+  <p class="sec-label">
+    <span class="lang-en">Spatial Analysis · Beijing</span>
+    <span class="lang-zh">空间分析 · 北京</span>
+  </p>
+  <h2>
+    <span class="lang-en">Weibo Sentiment Spatial Distribution</span>
+    <span class="lang-zh">微博情绪空间分布</span>
+  </h2>
 
   <div class="map-grid">
     <div class="map-card">
@@ -601,61 +725,77 @@
   <div class="two-col" style="margin-bottom:2.5rem;">
     <div>
       <div class="callout red">
-        <strong>怒·空间规律：</strong>anger占总情绪比例较高的地区主要分布于北京市城区中心，以朝阳区的比例最高。市中心的工作学习及旅游等人群交流活动的发生机会更多且聚集。
+        <span class="lang-en"><strong>Anger · Spatial Pattern:</strong> Districts with a high proportion of anger are mainly concentrated in central Beijing, with Chaoyang District showing the highest ratio. More opportunities for social interaction — work, study, and tourism — are concentrated in the city center.</span>
+        <span class="lang-zh"><strong>怒·空间规律：</strong>anger占总情绪比例较高的地区主要分布于北京市城区中心，以朝阳区的比例最高。市中心的工作学习及旅游等人群交流活动的发生机会更多且聚集。</span>
       </div>
       <div class="callout purple">
-        <strong>惧·空间规律：</strong>fear占总情绪比例较高的地区主要是顺义区与东城区，丰台区。而比例较低的地区集中在北京西北部。
+        <span class="lang-en"><strong>Fear · Spatial Pattern:</strong> Districts with higher proportions of fear are mainly Shunyi, Dongcheng, and Fengtai. Districts with lower fear proportions are concentrated in northwest Beijing.</span>
+        <span class="lang-zh"><strong>惧·空间规律：</strong>fear占总情绪比例较高的地区主要是顺义区与东城区，丰台区。而比例较低的地区集中在北京西北部。</span>
       </div>
     </div>
     <div>
       <div class="callout green">
-        <strong>乐·空间规律：</strong>joy主要集中分布于北部的延庆区、怀柔区、密云区、平谷区的聚集区，而偏南部的丰台区及大兴等区joy占总情绪比例较低。
+        <span class="lang-en"><strong>Joy · Spatial Pattern:</strong> Joy is mainly concentrated in northern districts including Yanqing, Huairou, Miyun, and Pinggu, while southern districts like Fengtai and Daxing show lower joy ratios.</span>
+        <span class="lang-zh"><strong>乐·空间规律：</strong>joy主要集中分布于北部的延庆区、怀柔区、密云区、平谷区的聚集区，而偏南部的丰台区及大兴等区joy占总情绪比例较低。</span>
       </div>
       <div class="callout" style="border-color:#f9a8d4;background:rgba(249,168,212,.07);">
-        <strong>整体特征：</strong>延庆区与怀柔等北部地区的整体情绪较为开心，消极情绪较少；而作为市区核心的朝阳、东城、西城等区的消极情绪明显高于北部地区。
+        <span class="lang-en"><strong>Overall Characteristics:</strong> Northern areas like Yanqing and Huairou show generally positive sentiment with less negative emotion; in contrast, core urban districts like Chaoyang, Dongcheng, and Xicheng exhibit significantly higher negative sentiment than northern areas.</span>
+        <span class="lang-zh"><strong>整体特征：</strong>延庆区与怀柔等北部地区的整体情绪较为开心，消极情绪较少；而作为市区核心的朝阳、东城、西城等区的消极情绪明显高于北部地区。</span>
       </div>
     </div>
   </div>
 
   <figure style="margin-bottom:2.5rem;">
     <img src="assets/weibo-emotion/beijing_pies.png" alt="北京各区县情绪饼图">
-    <figcaption><strong>北京各区县情绪比例饼图：</strong>各区县情绪构成一览，可直观对比核心城区与郊区的情绪差异——北部延庆、怀柔等郊区积极情绪占比明显高于南部城区。</figcaption>
+    <figcaption>
+      <span class="lang-en"><strong>Beijing District Emotion Proportion Pie Charts:</strong> A breakdown of emotion composition by district, directly comparing the emotional differences between core urban areas and suburban areas — northern suburbs like Yanqing and Huairou show noticeably higher positive emotion proportions than southern urban districts.</span>
+      <span class="lang-zh"><strong>北京各区县情绪比例饼图：</strong>各区县情绪构成一览，可直观对比核心城区与郊区的情绪差异——北部延庆、怀柔等郊区积极情绪占比明显高于南部城区。</span>
+    </figcaption>
   </figure>
 
-  <p class="sec-label">文本分析 · 北京</p>
-  <h2>微博关键词与词云</h2>
+  <p class="sec-label">
+    <span class="lang-en">Text Analysis · Beijing</span>
+    <span class="lang-zh">文本分析 · 北京</span>
+  </p>
+  <h2>
+    <span class="lang-en">Weibo Keywords &amp; Word Clouds</span>
+    <span class="lang-zh">微博关键词与词云</span>
+  </h2>
 
   <div class="two-col" style="margin-bottom:2rem;">
     <figure>
       <img src="assets/weibo-emotion/beijing_wordcloud.png" alt="北京微博文本聚类关键词词云">
-      <figcaption><strong>北京综合词云：</strong>生活品质、北京、环球影城等词汇高频出现，整体情绪分类较为丰富，且较能代表北京的城市特色。</figcaption>
+      <figcaption>
+        <span class="lang-en"><strong>Beijing Overall Word Cloud:</strong> High-frequency words include quality of life, Beijing, Universal Studios, etc. The overall emotion categories are diverse and representative of Beijing's urban character.</span>
+        <span class="lang-zh"><strong>北京综合词云：</strong>生活品质、北京、环球影城等词汇高频出现，整体情绪分类较为丰富，且较能代表北京的城市特色。</span>
+      </figcaption>
     </figure>
     <div>
-      <h3 style="margin-bottom:1rem;">六大主题分类</h3>
+      <h3 style="margin-bottom:1rem;"><span class="lang-en">Six Major Theme Categories</span><span class="lang-zh">六大主题分类</span></h3>
       <div style="display:flex;flex-direction:column;gap:.8rem;">
         <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1.2rem;">
-          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);">旅游景点·历史景点</div>
-          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">胡同、展览、天安门、圆明园、故宫、雍和宫</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);"><span class="lang-en">Tourism · Historical Sites</span><span class="lang-zh">旅游景点·历史景点</span></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;"><span class="lang-en">Hutong, Exhibition, Tiananmen, Yuanmingyuan, Forbidden City, Yonghe Temple</span><span class="lang-zh">胡同、展览、天安门、圆明园、故宫、雍和宫</span></div>
         </div>
         <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1.2rem;">
-          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);">旅游景点·环球影城</div>
-          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">霍格沃兹、童话、花车、魔法、麻瓜</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);"><span class="lang-en">Tourism · Universal Studios Beijing</span><span class="lang-zh">旅游景点·环球影城</span></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;"><span class="lang-en">Hogwarts, fairy tale, float parade, magic, Muggle</span><span class="lang-zh">霍格沃兹、童话、花车、魔法、麻瓜</span></div>
         </div>
         <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1.2rem;">
-          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);">美食·特色</div>
-          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">豆汁、烤鸭、牛肉烧饼、炸酱面</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);"><span class="lang-en">Food · Local Specialties</span><span class="lang-zh">美食·特色</span></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;"><span class="lang-en">Douzhir, Peking duck, beef shaobing, zhajiang noodles</span><span class="lang-zh">豆汁、烤鸭、牛肉烧饼、炸酱面</span></div>
         </div>
         <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1.2rem;">
-          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);">日常生活·分享</div>
-          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">落日、健身、幸福、咖啡机、运动</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);"><span class="lang-en">Daily Life · Sharing</span><span class="lang-zh">日常生活·分享</span></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;"><span class="lang-en">Sunset, fitness, happiness, coffee machine, exercise</span><span class="lang-zh">落日、健身、幸福、咖啡机、运动</span></div>
         </div>
         <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1.2rem;">
-          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);">交通·地铁站</div>
-          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">旅客、候车、拥堵、安检、延误</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);"><span class="lang-en">Transport · Subway Stations</span><span class="lang-zh">交通·地铁站</span></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;"><span class="lang-en">Passengers, waiting, congestion, security check, delays</span><span class="lang-zh">旅客、候车、拥堵、安检、延误</span></div>
         </div>
         <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1.2rem;">
-          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);">北京暴雨·预警</div>
-          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">降雨、台风、列车影响、停运、等待</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--cyan);"><span class="lang-en">Beijing Rainstorm · Weather Alert</span><span class="lang-zh">北京暴雨·预警</span></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;"><span class="lang-en">Rainfall, typhoon, train disruption, suspension, waiting</span><span class="lang-zh">降雨、台风、列车影响、停运、等待</span></div>
         </div>
       </div>
     </div>
@@ -664,42 +804,66 @@
   <div class="wc-showcase">
     <figure>
       <img src="assets/weibo-emotion/beijing_wc_tourist.png" alt="北京旅游景点词云">
-      <figcaption><strong>旅游景点主题：</strong>左—环球影城（童话魔法）；右—历史景点（胡同、天安门、圆明园）</figcaption>
+      <figcaption>
+        <span class="lang-en"><strong>Tourism Theme:</strong> Left — Universal Studios (fairy tales, magic); Right — Historical sites (hutong, Tiananmen, Yuanmingyuan)</span>
+        <span class="lang-zh"><strong>旅游景点主题：</strong>左—环球影城（童话魔法）；右—历史景点（胡同、天安门、圆明园）</span>
+      </figcaption>
     </figure>
     <figure>
       <img src="assets/weibo-emotion/beijing_wc_food.png" alt="北京美食与日常词云">
-      <figcaption><strong>美食与日常生活主题：</strong>左—特色美食（烤鸭、炸酱面、豆汁）；右—日常分享（落日、健身、咖啡机）</figcaption>
+      <figcaption>
+        <span class="lang-en"><strong>Food &amp; Daily Life Theme:</strong> Left — Local specialties (Peking duck, zhajiang noodles, douzhir); Right — Daily sharing (sunset, fitness, coffee machine)</span>
+        <span class="lang-zh"><strong>美食与日常生活主题：</strong>左—特色美食（烤鸭、炸酱面、豆汁）；右—日常分享（落日、健身、咖啡机）</span>
+      </figcaption>
     </figure>
     <figure>
       <img src="assets/weibo-emotion/beijing_wc_transport.png" alt="北京交通与天气词云">
-      <figcaption><strong>交通与暴雨事件：</strong>左—地铁交通（机场、南站、延误）；右—北京暴雨（强降水、刹车、等待）</figcaption>
+      <figcaption>
+        <span class="lang-en"><strong>Transport &amp; Rainstorm Events:</strong> Left — Subway transport (airport, south station, delays); Right — Beijing rainstorm (heavy rainfall, braking, waiting)</span>
+        <span class="lang-zh"><strong>交通与暴雨事件：</strong>左—地铁交通（机场、南站、延误）；右—北京暴雨（强降水、刹车、等待）</span>
+      </figcaption>
     </figure>
   </div>
 
-  <p class="sec-label">时间分析 · 北京</p>
-  <h2>百度情绪时间序列</h2>
+  <p class="sec-label">
+    <span class="lang-en">Temporal Analysis · Beijing</span>
+    <span class="lang-zh">时间分析 · 北京</span>
+  </p>
+  <h2>
+    <span class="lang-en">Baidu Sentiment Time Series</span>
+    <span class="lang-zh">百度情绪时间序列</span>
+  </h2>
 
   <div class="two-col" style="margin-bottom:2rem;">
     <div>
       <div class="callout">
-        <strong>"乐"是北京情绪表达的长期主题</strong>，情绪变化主要来自工作生活，消极情绪占比相对较小。
+        <span class="lang-en"><strong>"Joy" is the long-term dominant theme of emotional expression in Beijing.</strong> Emotional changes mainly stem from work and daily life, with relatively small proportions of negative emotions.</span>
+        <span class="lang-zh"><strong>"乐"是北京情绪表达的长期主题</strong>，情绪变化主要来自工作生活，消极情绪占比相对较小。</span>
       </div>
       <div class="callout purple">
-        <strong>安眠药</strong>（两种情绪·惧+哀）作为代表词，情绪表达较为复杂丰富，其在百度指数中的需求量更容易被使用，说明该词对于情绪的代表性更强。
+        <span class="lang-en"><strong>Sleeping Pills</strong> (two emotions · fear + sadness) serves as a representative keyword with complex and rich emotional expression. Its higher search volume in Baidu Index indicates stronger representativeness for emotional signaling.</span>
+        <span class="lang-zh"><strong>安眠药</strong>（两种情绪·惧+哀）作为代表词，情绪表达较为复杂丰富，其在百度指数中的需求量更容易被使用，说明该词对于情绪的代表性更强。</span>
       </div>
       <div class="callout red" style="margin-bottom:0;">
-        <strong>人民网投诉高峰</strong>出现在2022年8—9月，主要问题为路口交通、噪音扰民、培训退款；工资拖欠问题在2023年明显增加；房屋产权纠纷在2022年5月—2023年3月为主要峰值。
+        <span class="lang-en"><strong>People's Daily complaint peaks</strong> occurred in August–September 2022, primarily for intersection traffic, noise disturbance, and training refunds. Wage arrears complaints significantly increased in 2023. Housing property disputes peaked from May 2022 to March 2023.</span>
+        <span class="lang-zh"><strong>人民网投诉高峰</strong>出现在2022年8—9月，主要问题为路口交通、噪音扰民、培训退款；工资拖欠问题在2023年明显增加；房屋产权纠纷在2022年5月—2023年3月为主要峰值。</span>
       </div>
     </div>
     <figure>
       <img src="assets/weibo-emotion/beijing_timeseries.png" alt="北京时间序列分析图">
-      <figcaption><strong>代表性关键词时序：</strong>单一情绪·度假 / 两种情绪·安眠药 / 三种情绪·创业，展示不同情绪复杂度的搜索量时间变化</figcaption>
+      <figcaption>
+        <span class="lang-en"><strong>Representative Keyword Time Series:</strong> Single emotion · Vacation / Two emotions · Sleeping Pills / Three emotions · Entrepreneurship — showing search volume changes over time across different emotion complexity levels.</span>
+        <span class="lang-zh"><strong>代表性关键词时序：</strong>单一情绪·度假 / 两种情绪·安眠药 / 三种情绪·创业，展示不同情绪复杂度的搜索量时间变化</span>
+      </figcaption>
     </figure>
   </div>
 
   <figure style="margin-bottom:2rem;">
     <img src="assets/weibo-emotion/beijing_complaints.png" alt="北京人民网投诉时间序列">
-    <figcaption><strong>人民网城市病时间序列（北京）：</strong>各类城市投诉问题的月度趋势——路口交通、噪音扰民、培训退款在2022年8-9月达到峰值，工资拖欠在2023年显著增加。</figcaption>
+    <figcaption>
+      <span class="lang-en"><strong>People's Daily Urban Issues Time Series (Beijing):</strong> Monthly trends of various urban complaint categories — intersection traffic, noise disturbance, and training refunds peaked in August–September 2022, while wage arrears increased significantly in 2023.</span>
+      <span class="lang-zh"><strong>人民网城市病时间序列（北京）：</strong>各类城市投诉问题的月度趋势——路口交通、噪音扰民、培训退款在2022年8-9月达到峰值，工资拖欠在2023年显著增加。</span>
+    </figcaption>
   </figure>
 </section>
 
@@ -713,13 +877,19 @@
     <img class="bg" src="assets/weibo-emotion/tianjin_intro.png" alt="天津">
     <div class="city-banner-overlay"></div>
     <div class="city-banner-text">
-      <h2>天津</h2>
-      <p>城市情绪时空分析</p>
+      <h2><span class="lang-en">Tianjin</span><span class="lang-zh">天津</span></h2>
+      <p><span class="lang-en">Urban Sentiment Spatio-temporal Analysis</span><span class="lang-zh">城市情绪时空分析</span></p>
     </div>
   </div>
 
-  <p class="sec-label">空间分析 · 天津</p>
-  <h2>微博情绪空间分布</h2>
+  <p class="sec-label">
+    <span class="lang-en">Spatial Analysis · Tianjin</span>
+    <span class="lang-zh">空间分析 · 天津</span>
+  </p>
+  <h2>
+    <span class="lang-en">Weibo Sentiment Spatial Distribution</span>
+    <span class="lang-zh">微博情绪空间分布</span>
+  </h2>
 
   <div class="map-grid">
     <div class="map-card">
@@ -747,53 +917,69 @@
   <div class="two-col" style="margin-bottom:2.5rem;">
     <div>
       <div class="callout red">
-        <strong>怒·空间规律：</strong>anger占总情绪比例较高的地区主要分布于天津的边缘地区，而市北部的情绪相对较好。武清区、静海区、河东区占比最高。
+        <span class="lang-en"><strong>Anger · Spatial Pattern:</strong> Districts with higher anger proportions are mainly on the periphery of Tianjin, while the northern districts show relatively better emotions. Wuqing, Jinghai, and Hedong districts have the highest proportions.</span>
+        <span class="lang-zh"><strong>怒·空间规律：</strong>anger占总情绪比例较高的地区主要分布于天津的边缘地区，而市北部的情绪相对较好。武清区、静海区、河东区占比最高。</span>
       </div>
       <div class="callout purple">
-        <strong>惧·空间规律：</strong>整体上只有东丽区的fear情绪比例较高，而总比例较低的地区集中在天津北部。
+        <span class="lang-en"><strong>Fear · Spatial Pattern:</strong> Overall, only Dongli District shows a notably higher fear proportion, while districts with lower fear proportions are concentrated in northern Tianjin.</span>
+        <span class="lang-zh"><strong>惧·空间规律：</strong>整体上只有东丽区的fear情绪比例较高，而总比例较低的地区集中在天津北部。</span>
       </div>
     </div>
     <div>
       <div class="callout green">
-        <strong>乐·空间规律：</strong>joy的高比例区主要集中中西部的武清、北辰及西青等区的聚集区域，而东南部的滨海新区及静海、东疆等区joy占总情绪比例较低。
+        <span class="lang-en"><strong>Joy · Spatial Pattern:</strong> High joy proportions are mainly concentrated in central-western districts including Wuqing, Beichen, and Xiqing, while southeastern areas like Binhai New Area, Jinghai, and Dongjian have lower joy ratios.</span>
+        <span class="lang-zh"><strong>乐·空间规律：</strong>joy的高比例区主要集中中西部的武清、北辰及西青等区的聚集区域，而东南部的滨海新区及静海、东疆等区joy占总情绪比例较低。</span>
       </div>
       <div class="callout" style="border-color:var(--sadness);background:rgba(59,130,246,.07);">
-        <strong>哀·空间规律：</strong>sadness的高比例地区集中分布于滨海新区、宁河区及宝坻区三区，整体而言天津的sadness与其他城市相比占比较大。
+        <span class="lang-en"><strong>Sadness · Spatial Pattern:</strong> High sadness proportions are concentrated in Binhai New Area, Ninghe, and Baodi districts. Overall, Tianjin's sadness proportion is higher compared to other cities.</span>
+        <span class="lang-zh"><strong>哀·空间规律：</strong>sadness的高比例地区集中分布于滨海新区、宁河区及宝坻区三区，整体而言天津的sadness与其他城市相比占比较大。</span>
       </div>
     </div>
   </div>
 
   <figure style="margin-bottom:2.5rem;">
     <img src="assets/weibo-emotion/tianjin_pies.png" alt="天津各区县情绪饼图">
-    <figcaption><strong>天津各区县情绪比例饼图：</strong>天津整体还是以joy等积极情绪为主，消极情绪较少。但是静海区、滨海新区及宝坻区三区中的joy情绪占比明显低于其他区域，sadness情绪比例也高于其他地区。</figcaption>
+    <figcaption>
+      <span class="lang-en"><strong>Tianjin District Emotion Proportion Pie Charts:</strong> Overall, Tianjin is still dominated by positive emotions like joy. However, Jinghai, Binhai New Area, and Baodi districts show notably lower joy proportions than other areas, and higher sadness proportions.</span>
+      <span class="lang-zh"><strong>天津各区县情绪比例饼图：</strong>天津整体还是以joy等积极情绪为主，消极情绪较少。但是静海区、滨海新区及宝坻区三区中的joy情绪占比明显低于其他区域，sadness情绪比例也高于其他地区。</span>
+    </figcaption>
   </figure>
 
-  <p class="sec-label">文本分析 · 天津</p>
-  <h2>微博关键词与词云</h2>
+  <p class="sec-label">
+    <span class="lang-en">Text Analysis · Tianjin</span>
+    <span class="lang-zh">文本分析 · 天津</span>
+  </p>
+  <h2>
+    <span class="lang-en">Weibo Keywords &amp; Word Clouds</span>
+    <span class="lang-zh">微博关键词与词云</span>
+  </h2>
 
   <div class="two-col" style="margin-bottom:2rem;">
     <figure>
       <img src="assets/weibo-emotion/tianjin_wordcloud.png" alt="天津微博词云">
-      <figcaption><strong>天津综合词云：</strong>海河、天津、吃、周末等词高频出现，整体情绪分类较为丰富，且较能代表天津悠闲的生活特色。最终筛选六个主题：旅游景点、天津高校、美食、日常生活、交通状况及演唱会。</figcaption>
+      <figcaption>
+        <span class="lang-en"><strong>Tianjin Overall Word Cloud:</strong> High-frequency words include Haihe River, Tianjin, eat, weekend, etc. The emotion categories are diverse and representative of Tianjin's leisurely lifestyle. Six themes were identified: tourist attractions, universities, food, daily life, transportation, and concerts.</span>
+        <span class="lang-zh"><strong>天津综合词云：</strong>海河、天津、吃、周末等词高频出现，整体情绪分类较为丰富，且较能代表天津悠闲的生活特色。最终筛选六个主题：旅游景点、天津高校、美食、日常生活、交通状况及演唱会。</span>
+      </figcaption>
     </figure>
     <div>
-      <h3 style="margin-bottom:1rem;">六大主题分类</h3>
+      <h3 style="margin-bottom:1rem;"><span class="lang-en">Six Major Theme Categories</span><span class="lang-zh">六大主题分类</span></h3>
       <div style="display:flex;flex-direction:column;gap:.8rem;">
         <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1.2rem;">
-          <div style="font-size:.8rem;font-weight:700;color:#06b6d4;">旅游景点·历史景点</div>
-          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">天津之眼、海洋博物馆、海河、望海楼</div>
+          <div style="font-size:.8rem;font-weight:700;color:#06b6d4;"><span class="lang-en">Tourism · Historical Sites</span><span class="lang-zh">旅游景点·历史景点</span></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;"><span class="lang-en">Tianjin Eye, Ocean Museum, Haihe River, Wanghai Tower</span><span class="lang-zh">天津之眼、海洋博物馆、海河、望海楼</span></div>
         </div>
         <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1.2rem;">
-          <div style="font-size:.8rem;font-weight:700;color:#06b6d4;">天津高校·学习</div>
-          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">图书馆、天津大学、南开大学、青春</div>
+          <div style="font-size:.8rem;font-weight:700;color:#06b6d4;"><span class="lang-en">Tianjin Universities · Study</span><span class="lang-zh">天津高校·学习</span></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;"><span class="lang-en">Library, Tianjin University, Nankai University, youth</span><span class="lang-zh">图书馆、天津大学、南开大学、青春</span></div>
         </div>
         <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1.2rem;">
-          <div style="font-size:.8rem;font-weight:700;color:#06b6d4;">美食·特色</div>
-          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">煎饼果子、嘎巴菜、面茶、熟梨糕、牛肉烧饼</div>
+          <div style="font-size:.8rem;font-weight:700;color:#06b6d4;"><span class="lang-en">Food · Local Specialties</span><span class="lang-zh">美食·特色</span></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;"><span class="lang-en">Jianbing guozi, gaba cai, mian cha, cooked pear cake, beef shaobing</span><span class="lang-zh">煎饼果子、嘎巴菜、面茶、熟梨糕、牛肉烧饼</span></div>
         </div>
         <div style="background:var(--navy2);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1.2rem;">
-          <div style="font-size:.8rem;font-weight:700;color:#06b6d4;">交通·机场站</div>
-          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;">滨海机场、交警、延误、停车、航班延误</div>
+          <div style="font-size:.8rem;font-weight:700;color:#06b6d4;"><span class="lang-en">Transport · Airport &amp; Stations</span><span class="lang-zh">交通·机场站</span></div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;"><span class="lang-en">Binhai Airport, traffic police, delays, parking, flight delays</span><span class="lang-zh">滨海机场、交警、延误、停车、航班延误</span></div>
         </div>
       </div>
     </div>
@@ -802,11 +988,17 @@
   <div class="wc-showcase">
     <figure>
       <img src="assets/weibo-emotion/tianjin_wc_university.png" alt="天津高校与交通词云">
-      <figcaption><strong>高校与交通主题：</strong>左—天津高校（考研、毕业、图书馆、南开大学）；右—交通（机场、高速运营、航班延误）</figcaption>
+      <figcaption>
+        <span class="lang-en"><strong>University &amp; Transport Theme:</strong> Left — Tianjin universities (graduate entrance exams, graduation, library, Nankai University); Right — Transport (airport, highway operations, flight delays)</span>
+        <span class="lang-zh"><strong>高校与交通主题：</strong>左—天津高校（考研、毕业、图书馆、南开大学）；右—交通（机场、高速运营、航班延误）</span>
+      </figcaption>
     </figure>
     <figure>
       <img src="assets/weibo-emotion/tianjin_wc_tourist.png" alt="天津旅游与美食词云">
-      <figcaption><strong>旅游与美食主题：</strong>左—历史景点（天津之眼、海洋博物馆、海河、望海楼）；右—特色美食（煎饼果子、嘎巴菜、牛肉烧饼、熟梨糕）</figcaption>
+      <figcaption>
+        <span class="lang-en"><strong>Tourism &amp; Food Theme:</strong> Left — Historical attractions (Tianjin Eye, Ocean Museum, Haihe River, Wanghai Tower); Right — Local food (jianbing guozi, gaba cai, beef shaobing, cooked pear cake)</span>
+        <span class="lang-zh"><strong>旅游与美食主题：</strong>左—历史景点（天津之眼、海洋博物馆、海河、望海楼）；右—特色美食（煎饼果子、嘎巴菜、牛肉烧饼、熟梨糕）</span>
+      </figcaption>
     </figure>
   </div>
 </section>
@@ -815,36 +1007,52 @@
 
 <!-- ── Keyword Analysis ── -->
 <section id="keywords">
-  <p class="sec-label">情绪词典</p>
-  <h2>代表性关键词深度解析</h2>
+  <p class="sec-label">
+    <span class="lang-en">Emotion Lexicon</span>
+    <span class="lang-zh">情绪词典</span>
+  </p>
+  <h2>
+    <span class="lang-en">Representative Keyword In-depth Analysis</span>
+    <span class="lang-zh">代表性关键词深度解析</span>
+  </h2>
   <p style="color:var(--muted);margin-bottom:2rem;font-size:.9rem;">
-    从128个关键词中，依据情绪复杂度选取三个代表性词汇进行完整时序分析，分别代表<strong>单一情绪</strong>、<strong>两种情绪</strong>、<strong>三种情绪</strong>三类。
+    <span class="lang-en">From 128 keywords, three representative words were selected based on emotional complexity for complete time series analysis, representing <strong>single emotion</strong>, <strong>two emotions</strong>, and <strong>three emotions</strong> respectively.</span>
+    <span class="lang-zh">从128个关键词中，依据情绪复杂度选取三个代表性词汇进行完整时序分析，分别代表<strong>单一情绪</strong>、<strong>两种情绪</strong>、<strong>三种情绪</strong>三类。</span>
   </p>
 
   <div class="keyword-cards">
     <div class="kw-card">
-      <div class="kw-word" style="color:#4ade80;">度假</div>
+      <div class="kw-word" style="color:#4ade80;"><span class="lang-en">Vacation</span><span class="lang-zh">度假</span></div>
       <div class="kw-emotions">
-        <span class="emo-badge joy">乐 1.0</span>
+        <span class="emo-badge joy"><span class="lang-en">Joy</span><span class="lang-zh">乐</span> 1.0</span>
       </div>
-      <p>代表<strong>单一情绪</strong>关键词。度假在百度指数中呈现强烈的季节性规律，节假日前后搜索量显著飙升，STL趋势成分总体平稳。情绪表达直接明确，代表正向生活需求。</p>
+      <p>
+        <span class="lang-en">Representative <strong>single-emotion</strong> keyword. "Vacation" shows strong seasonal patterns in Baidu Index, with search volumes spiking significantly around public holidays. The STL trend component is generally stable. Emotional expression is direct and positive, representing a positive lifestyle need.</span>
+        <span class="lang-zh">代表<strong>单一情绪</strong>关键词。度假在百度指数中呈现强烈的季节性规律，节假日前后搜索量显著飙升，STL趋势成分总体平稳。情绪表达直接明确，代表正向生活需求。</span>
+      </p>
     </div>
     <div class="kw-card">
-      <div class="kw-word" style="color:#d8b4fe;">安眠药</div>
+      <div class="kw-word" style="color:#d8b4fe;"><span class="lang-en">Sleeping Pills</span><span class="lang-zh">安眠药</span></div>
       <div class="kw-emotions">
-        <span class="emo-badge fear">惧 0.7</span>
-        <span class="emo-badge sadness">哀 0.6</span>
+        <span class="emo-badge fear"><span class="lang-en">Fear</span><span class="lang-zh">惧</span> 0.7</span>
+        <span class="emo-badge sadness"><span class="lang-en">Sadness</span><span class="lang-zh">哀</span> 0.6</span>
       </div>
-      <p>代表<strong>两种情绪</strong>关键词。时序分析显示出较高的波动性，其情绪表达复杂丰富，在百度指数中的检索频率较高，说明该词对于情绪传递具有更强代表性，常在心理健康事件期后出现峰值。</p>
+      <p>
+        <span class="lang-en">Representative <strong>dual-emotion</strong> keyword. Time series analysis shows higher volatility; emotional expression is complex and rich. Its higher search frequency in Baidu Index demonstrates stronger representativeness for emotional conveyance, often spiking following mental health events.</span>
+        <span class="lang-zh">代表<strong>两种情绪</strong>关键词。时序分析显示出较高的波动性，其情绪表达复杂丰富，在百度指数中的检索频率较高，说明该词对于情绪传递具有更强代表性，常在心理健康事件期后出现峰值。</span>
+      </p>
     </div>
     <div class="kw-card">
-      <div class="kw-word" style="color:#fbbf24;">创业</div>
+      <div class="kw-word" style="color:#fbbf24;"><span class="lang-en">Entrepreneurship</span><span class="lang-zh">创业</span></div>
       <div class="kw-emotions">
-        <span class="emo-badge joy">乐 0.6</span>
-        <span class="emo-badge fear">惧 0.6</span>
-        <span class="emo-badge disgust">恶 0.4</span>
+        <span class="emo-badge joy"><span class="lang-en">Joy</span><span class="lang-zh">乐</span> 0.6</span>
+        <span class="emo-badge fear"><span class="lang-en">Fear</span><span class="lang-zh">惧</span> 0.6</span>
+        <span class="emo-badge disgust"><span class="lang-en">Disgust</span><span class="lang-zh">恶</span> 0.4</span>
       </div>
-      <p>代表<strong>三种情绪</strong>关键词。创业词汇折射出对未来的期许（乐）与风险担忧（惧），以及对现状的不满（恶）。时序上与经济形势高度相关，疫情期间搜索量明显变化。</p>
+      <p>
+        <span class="lang-en">Representative <strong>triple-emotion</strong> keyword. "Entrepreneurship" reflects hope for the future (joy) alongside risk anxiety (fear) and dissatisfaction with the status quo (disgust). The time series is highly correlated with economic conditions, with notable search volume changes during the pandemic.</span>
+        <span class="lang-zh">代表<strong>三种情绪</strong>关键词。创业词汇折射出对未来的期许（乐）与风险担忧（惧），以及对现状的不满（恶）。时序上与经济形势高度相关，疫情期间搜索量明显变化。</span>
+      </p>
     </div>
   </div>
 </section>
@@ -853,52 +1061,59 @@
 
 <!-- ── Findings ── -->
 <section id="findings">
-  <p class="sec-label">研究结论</p>
-  <h2>主要发现与城市情绪画像</h2>
+  <p class="sec-label">
+    <span class="lang-en">Research Conclusions</span>
+    <span class="lang-zh">研究结论</span>
+  </p>
+  <h2>
+    <span class="lang-en">Key Findings &amp; Urban Emotional Profiles</span>
+    <span class="lang-zh">主要发现与城市情绪画像</span>
+  </h2>
 
   <div class="callout" style="margin-bottom:2.5rem;font-size:1rem;">
-    <strong>"城里的人想出去，城外的人想进来。"</strong> ——北京情绪综合画像的核心命题：核心城区消极情绪偏高，而北部郊区整体情绪较为积极开朗。
+    <span class="lang-en"><strong>"Those inside the city want to leave; those outside want in."</strong> — The core thesis of Beijing's composite emotional profile: core urban districts show higher negative sentiment, while northern suburban areas are generally more positive and optimistic.</span>
+    <span class="lang-zh"><strong>"城里的人想出去，城外的人想进来。"</strong> ——北京情绪综合画像的核心命题：核心城区消极情绪偏高，而北部郊区整体情绪较为积极开朗。</span>
   </div>
 
   <div class="summary-grid">
     <div class="summary-card">
-      <h3>空间规律（微博维度）</h3>
+      <h3><span class="lang-en">Spatial Patterns (Weibo Dimension)</span><span class="lang-zh">空间规律（微博维度）</span></h3>
       <ul>
-        <li>北部郊区（延庆、怀柔、密云等）整体情绪积极，消极情绪占比低</li>
-        <li>核心城区（朝阳、东城、西城）消极情绪明显高于郊区</li>
-        <li>城市边缘区如丰台区积极情绪比其他区整体较低</li>
-        <li>天津静海、滨海新区的sadness占比显著高于其他区</li>
-        <li>四城市均以积极情绪（乐+爱）为主导，消极情绪较少</li>
+        <li><span class="lang-en">Northern suburbs (Yanqing, Huairou, Miyun, etc.) show generally positive emotions with low negative proportions</span><span class="lang-zh">北部郊区（延庆、怀柔、密云等）整体情绪积极，消极情绪占比低</span></li>
+        <li><span class="lang-en">Core urban districts (Chaoyang, Dongcheng, Xicheng) show significantly higher negative sentiment than suburbs</span><span class="lang-zh">核心城区（朝阳、东城、西城）消极情绪明显高于郊区</span></li>
+        <li><span class="lang-en">Urban fringe areas like Fengtai show overall lower positive emotions than other districts</span><span class="lang-zh">城市边缘区如丰台区积极情绪比其他区整体较低</span></li>
+        <li><span class="lang-en">Tianjin's Jinghai and Binhai New Area show significantly higher sadness proportions than other districts</span><span class="lang-zh">天津静海、滨海新区的sadness占比显著高于其他区</span></li>
+        <li><span class="lang-en">All four cities are dominated by positive emotions (joy + love), with fewer negative emotions</span><span class="lang-zh">四城市均以积极情绪（乐+爱）为主导，消极情绪较少</span></li>
       </ul>
     </div>
     <div class="summary-card">
-      <h3>时间规律（百度维度）</h3>
+      <h3><span class="lang-en">Temporal Patterns (Baidu Dimension)</span><span class="lang-zh">时间规律（百度维度）</span></h3>
       <ul>
-        <li>情绪关键词搜索量呈现明显季节性周期，节假日前后波动显著</li>
-        <li>"乐"是四城市情绪表达的长期主导主题</li>
-        <li>疫情期间（2020—2022）多类关键词出现异常峰值</li>
-        <li>工作类词汇（996、加班、工资）与经济形势高度相关</li>
-        <li>情绪复杂度越高的关键词，其时间序列波动性越强</li>
+        <li><span class="lang-en">Emotion keyword search volumes show clear seasonal cycles, with significant fluctuations around public holidays</span><span class="lang-zh">情绪关键词搜索量呈现明显季节性周期，节假日前后波动显著</span></li>
+        <li><span class="lang-en">"Joy" is the long-term dominant emotional theme across all four cities</span><span class="lang-zh">"乐"是四城市情绪表达的长期主导主题</span></li>
+        <li><span class="lang-en">During the pandemic (2020–2022), multiple keyword categories showed abnormal spikes</span><span class="lang-zh">疫情期间（2020—2022）多类关键词出现异常峰值</span></li>
+        <li><span class="lang-en">Work-related words (996, overtime, wages) are highly correlated with economic conditions</span><span class="lang-zh">工作类词汇（996、加班、工资）与经济形势高度相关</span></li>
+        <li><span class="lang-en">Keywords with higher emotional complexity show stronger time series volatility</span><span class="lang-zh">情绪复杂度越高的关键词，其时间序列波动性越强</span></li>
       </ul>
     </div>
     <div class="summary-card">
-      <h3>城市主导关注点</h3>
+      <h3><span class="lang-en">City-Specific Focus Areas</span><span class="lang-zh">城市主导关注点</span></h3>
       <ul>
-        <li><strong>北京：</strong>环球影城、历史景点、北京暴雨事件</li>
-        <li><strong>天津：</strong>海河旅游、高校文化、特色美食</li>
-        <li><strong>上海：</strong>迪士尼、演唱会、国际活动</li>
-        <li><strong>重庆：</strong>山城景色、火锅美食、生活享乐</li>
-        <li>各城市均表现出旅游、美食、交通三大核心话题</li>
+        <li><span class="lang-en"><strong>Beijing:</strong> Universal Studios, historical sites, Beijing rainstorm events</span><span class="lang-zh"><strong>北京：</strong>环球影城、历史景点、北京暴雨事件</span></li>
+        <li><span class="lang-en"><strong>Tianjin:</strong> Haihe River tourism, university culture, local cuisine</span><span class="lang-zh"><strong>天津：</strong>海河旅游、高校文化、特色美食</span></li>
+        <li><span class="lang-en"><strong>Shanghai:</strong> Disneyland, concerts, international events</span><span class="lang-zh"><strong>上海：</strong>迪士尼、演唱会、国际活动</span></li>
+        <li><span class="lang-en"><strong>Chongqing:</strong> Mountain city scenery, hotpot cuisine, leisure lifestyle</span><span class="lang-zh"><strong>重庆：</strong>山城景色、火锅美食、生活享乐</span></li>
+        <li><span class="lang-en">All cities show tourism, food, and transportation as three core topics</span><span class="lang-zh">各城市均表现出旅游、美食、交通三大核心话题</span></li>
       </ul>
     </div>
     <div class="summary-card">
-      <h3>城市病关联分析</h3>
+      <h3><span class="lang-en">Urban Issues Correlation Analysis</span><span class="lang-zh">城市病关联分析</span></h3>
       <ul>
-        <li>人民网投诉数据与情绪关键词具有时序相关性</li>
-        <li>路口交通、噪音扰民在夏季（8—9月）投诉量最高</li>
-        <li>培训退款、工资拖欠与经济波动周期吻合</li>
-        <li>房屋产权纠纷在2022年5月至2023年3月为主要峰值</li>
-        <li>城市设施完善程度与情绪空间分布存在正相关</li>
+        <li><span class="lang-en">People's Daily complaint data shows temporal correlation with emotion keywords</span><span class="lang-zh">人民网投诉数据与情绪关键词具有时序相关性</span></li>
+        <li><span class="lang-en">Intersection traffic and noise complaints peak in summer (August–September)</span><span class="lang-zh">路口交通、噪音扰民在夏季（8—9月）投诉量最高</span></li>
+        <li><span class="lang-en">Training refund and wage arrear complaints align with economic fluctuation cycles</span><span class="lang-zh">培训退款、工资拖欠与经济波动周期吻合</span></li>
+        <li><span class="lang-en">Housing property disputes peaked from May 2022 to March 2023</span><span class="lang-zh">房屋产权纠纷在2022年5月至2023年3月为主要峰值</span></li>
+        <li><span class="lang-en">Level of urban infrastructure development shows positive correlation with spatial emotion distribution</span><span class="lang-zh">城市设施完善程度与情绪空间分布存在正相关</span></li>
       </ul>
     </div>
   </div>
@@ -906,14 +1121,29 @@
 
 <!-- ── Footer ── -->
 <footer>
-  <strong>城市情绪时空分析</strong><br>
-  基于微博打卡留言数据和百度指数时间序列<br>
-  <div style="margin-top:.4rem;color:#64748b;">叶薪悦 · 陈萌 · 柳心怡 · 崔馨元 · 李澍堉 &nbsp;|&nbsp; 天津大学</div>
+  <strong><span class="lang-en">Urban Sentiment Spatio-temporal Analysis</span><span class="lang-zh">城市情绪时空分析</span></strong><br>
+  <span class="lang-en">Based on Weibo check-in message data and Baidu Search Index time series</span>
+  <span class="lang-zh">基于微博打卡留言数据和百度指数时间序列</span><br>
+  <div style="margin-top:.4rem;color:#64748b;">叶薪悦 · 陈萌 · 柳心怡 · 崔馨元 · 李澍堉 &nbsp;|&nbsp; <span class="lang-en">Tianjin University</span><span class="lang-zh">天津大学</span></div>
   <div class="footer-nav">
-    <a href="index.html">← 返回总览</a>
-    <a href="project-bike-sharing.html">共享单车研究</a>
+    <a href="index.html">← <span class="lang-en">Portfolio</span><span class="lang-zh">返回总览</span></a>
+    <a href="project-bike-sharing.html"><span class="lang-en">Bike-Sharing Research</span><span class="lang-zh">共享单车研究</span></a>
   </div>
 </footer>
 
+<script>
+let currentLang = localStorage.getItem('cc-lang') || 'en';
+function applyLang(lang) {
+  const html = document.documentElement;
+  html.classList.remove('lang-en-active','lang-zh-active');
+  html.classList.add('lang-'+lang+'-active');
+  html.lang = lang==='zh' ? 'zh-CN' : 'en';
+  const btn = document.getElementById('langToggle');
+  if(btn){ btn.textContent = lang==='en' ? '中文' : 'EN'; btn.classList.toggle('active-zh', lang==='zh'); }
+  localStorage.setItem('cc-lang', lang);
+}
+function toggleLang(){ currentLang = currentLang==='en' ? 'zh' : 'en'; applyLang(currentLang); }
+applyLang(currentLang);
+</script>
 </body>
 </html>

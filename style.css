@@ -639,3 +639,25 @@ footer {
 @media (max-width: 560px) {
   .proj-grid { grid-template-columns: 1fr; }
 }
+
+/* =============================================
+   LANGUAGE TOGGLE
+   ============================================= */
+html:not(.lang-zh-active) .lang-zh { display: none; }
+html.lang-zh-active .lang-en { display: none; }
+
+.lang-btn {
+  font-family: "DM Mono", monospace;
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 5px 13px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.18s;
+  margin-left: 0.6rem;
+  line-height: 1;
+}
+.lang-btn:hover { border-color: var(--rust); color: var(--rust); }
+.lang-btn.active-zh { border-color: var(--sage); color: var(--sage); background: var(--sage-lt); }

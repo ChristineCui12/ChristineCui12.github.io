@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generative AI for Cloud Removal · Christine Cui</title>
+  <script>(function(){document.documentElement.classList.add('lang-'+(localStorage.getItem('cc-lang')||'en')+'-active');})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:  #f4ede0;
+      --cream2: #ece4d4;
+      --rust:   #c05a30;
+      --sage:   #5c7a60;
+      --ink:    #1e1a14;
+      --ink2:   #3a3228;
+      --muted:  #7a6e5e;
+      --border: rgba(30,26,20,.11);
+      --white:  #faf6ef;
+      --rust-lt:rgba(192,90,48,.1);
+      --sage-lt:rgba(92,122,96,.12);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;font-weight:300;overflow-x:hidden;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(244,237,224,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .nav-back{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s;}
+    .nav-back:hover{color:var(--rust);}
+    .nav-right{display:flex;align-items:center;gap:1.5rem;}
+    .nav-title{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:600;color:var(--ink);}
+    .lang-btn{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:1px solid var(--border);color:var(--muted);padding:5px 13px;cursor:pointer;border-radius:2px;transition:all .18s;line-height:1;}
+    .lang-btn:hover{border-color:var(--rust);color:var(--rust);}
+    .lang-btn.active-zh{border-color:var(--sage);color:var(--sage);background:var(--sage-lt);}
+    html:not(.lang-zh-active) .lang-zh{display:none;}
+    html.lang-zh-active .lang-en{display:none;}
+
+    /* HERO */
+    .hero{min-height:72vh;background:linear-gradient(120deg,#0e1f0e 0%,#183520 60%,#1a2e28 100%);position:relative;display:flex;align-items:flex-end;padding:0;overflow:hidden;}
+    .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(92,160,100,.28) 1px,transparent 1px);background-size:18px 18px;}
+    .hero-glow{position:absolute;bottom:-10%;right:-5%;width:500px;height:500px;background:radial-gradient(ellipse,rgba(92,122,96,.18) 0%,transparent 70%);pointer-events:none;}
+    .hero-body{position:relative;z-index:2;padding:6rem 3rem 3.5rem;max-width:900px;}
+    .hero-kicker{display:inline-flex;align-items:center;gap:8px;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(92,160,100,.8);margin-bottom:1.2rem;}
+    .hero-kicker::before{content:"";width:24px;height:1px;background:rgba(92,160,100,.6);}
+    .hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:300;line-height:1.05;letter-spacing:-.02em;color:#fff;margin-bottom:1rem;}
+    .hero h1 em{font-style:italic;color:#8fbc94;}
+    .hero-sub{font-size:.92rem;color:rgba(255,255,255,.55);max-width:640px;line-height:1.75;margin-bottom:1.6rem;}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.4rem;}
+    .hero-chip{font-family:"DM Mono",monospace;font-size:10px;padding:4px 12px;border-radius:2px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.75);letter-spacing:.05em;}
+    .hero-team{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.35);}
+
+    /* SECTIONS */
+    section{padding:4.5rem 3rem;}
+    .container{max-width:1000px;margin:0 auto;}
+    .sec-eyebrow{display:flex;align-items:center;gap:1rem;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+    .sec-eyebrow::before{content:"";width:24px;height:1px;background:var(--rust);}
+    h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;letter-spacing:-.02em;line-height:1.1;color:var(--ink);margin-bottom:2.5rem;}
+    h2 em{font-style:italic;color:var(--rust);}
+    h2 .gr{color:var(--sage);}
+    h3{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--ink);margin-bottom:.8rem;line-height:1.25;}
+    p{color:var(--muted);line-height:1.85;font-size:.97rem;margin-bottom:1rem;}
+    p strong{color:var(--ink);font-weight:500;}
+    a{color:var(--sage);text-decoration:underline;text-decoration-color:rgba(92,122,96,.3);text-underline-offset:3px;transition:text-decoration-color .2s;}
+    a:hover{text-decoration-color:var(--sage);}
+
+    /* OVERVIEW STRIP */
+    .overview-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin:2.5rem 0;}
+    .ov-item{background:var(--white);padding:1.4rem 1.2rem;}
+    .ov-label{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+    .ov-value{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;color:var(--ink);line-height:1.1;}
+    .ov-sub{font-size:11px;color:var(--muted);margin-top:.2rem;}
+
+    /* CARDS */
+    .card{background:var(--white);border:1px solid var(--border);border-radius:3px;padding:1.6rem 1.8rem;margin-bottom:1rem;}
+    .card.rust-accent{border-left:3px solid var(--rust);}
+    .card.sage-accent{border-left:3px solid var(--sage);}
+
+    /* CALLOUT */
+    .callout{background:rgba(192,90,48,.06);border:1px solid rgba(192,90,48,.2);border-radius:3px;padding:1.2rem 1.5rem;margin:1.5rem 0;font-size:.93rem;color:var(--ink2);line-height:1.75;}
+    .callout.sage{background:rgba(92,122,96,.08);border-color:rgba(92,122,96,.25);color:#2a4030;}
+    .callout strong{color:inherit;}
+
+    /* GRID */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+    .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem;}
+    @media(max-width:780px){.g2,.g3{grid-template-columns:1fr;}.overview-strip{grid-template-columns:1fr 1fr;}}
+
+    /* METHOD CARDS */
+    .method-card{background:var(--white);border:1px solid var(--border);border-radius:3px;overflow:hidden;}
+    .method-head{padding:1rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.8rem;}
+    .method-num{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.15em;color:var(--muted);}
+    .method-name{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:600;color:var(--ink);}
+    .method-tag{margin-left:auto;font-family:"DM Mono",monospace;font-size:9px;padding:2px 8px;border-radius:2px;letter-spacing:.06em;}
+    .tag-baseline{background:rgba(30,26,20,.08);color:var(--muted);}
+    .tag-best{background:rgba(92,122,96,.15);color:var(--sage);}
+    .tag-comp{background:rgba(192,90,48,.1);color:var(--rust);}
+    .method-body{padding:1.2rem 1.4rem;}
+    .method-body p{font-size:.89rem;margin-bottom:.6rem;}
+    .method-spec{display:flex;flex-direction:column;gap:.3rem;margin-top:.8rem;}
+    .spec-row{display:flex;gap:.5rem;align-items:baseline;font-size:12px;}
+    .spec-key{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.1em;color:var(--muted);min-width:80px;text-transform:uppercase;}
+    .spec-val{color:var(--ink2);}
+
+    /* RESULTS TABLE */
+    .results-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.9rem;}
+    .results-table th{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:.7rem 1rem;border-bottom:2px solid var(--border);text-align:left;font-weight:400;}
+    .results-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border);color:var(--ink2);}
+    .results-table tr:last-child td{border-bottom:none;}
+    .results-table tr.best-row td{background:rgba(92,122,96,.06);font-weight:500;}
+    .results-table tr.best-row td:nth-child(2),.results-table tr.best-row td:nth-child(3){color:var(--sage);}
+    .results-table .method-label{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:600;}
+    .metric-good{color:var(--sage)!important;font-weight:500;}
+    .metric-bad{color:var(--rust)!important;}
+
+    /* COVERAGE BARS */
+    .coverage-block{margin:1.5rem 0;}
+    .cov-row{display:flex;align-items:center;gap:1rem;margin-bottom:.7rem;}
+    .cov-label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.1em;color:var(--muted);min-width:60px;}
+    .cov-bar-wrap{flex:1;background:rgba(30,26,20,.07);border-radius:2px;height:6px;overflow:hidden;}
+    .cov-bar{height:100%;border-radius:2px;background:var(--sage);}
+    .cov-note{font-size:11px;color:var(--muted);min-width:140px;}
+
+    /* INSIGHT GRID */
+    .insight-item{display:flex;gap:.8rem;padding:1rem 0;border-bottom:1px solid var(--border);}
+    .insight-item:last-child{border-bottom:none;}
+    .insight-num{font-family:"DM Mono",monospace;font-size:10px;color:var(--rust);min-width:24px;margin-top:.1rem;}
+    .insight-text{font-size:.91rem;color:var(--muted);line-height:1.75;}
+    .insight-text strong{color:var(--ink);}
+
+    /* SECTION BG */
+    #methods{background:var(--white);}
+    #results{background:var(--cream2);}
+    #insights{background:var(--white);}
+    #future{background:var(--cream2);}
+
+    /* FOOTER */
+    footer{background:#131008;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;}
+    .ft{font-family:"DM Mono",monospace;font-size:10px;color:rgba(244,237,224,.18);letter-spacing:.08em;}
+    .ft a{color:rgba(92,160,100,.5);text-decoration:none;transition:color .2s;}
+    .ft a:hover{color:#8fbc94;}
+
+    /* BACK BUTTON */
+    .back-btn{display:inline-flex;align-items:center;gap:6px;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);text-decoration:none;border:1px solid rgba(92,122,96,.4);padding:7px 16px;border-radius:2px;transition:all .18s;margin-top:1.5rem;}
+    .back-btn:hover{background:var(--sage);color:#fff;border-color:var(--sage);text-decoration:none;}
+
+    @media(max-width:780px){
+      nav{padding:1rem 1.5rem;}
+      section{padding:3rem 1.5rem;}
+      .hero-body{padding:5rem 1.5rem 2.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-back">← <span class="lang-en">Portfolio</span><span class="lang-zh">返回作品集</span></a>
+  <div class="nav-right">
+    <span class="nav-title">
+      <span class="lang-en">Cloud Removal</span>
+      <span class="lang-zh">卫星云去除</span>
+    </span>
+    <button class="lang-btn" id="langToggle" onclick="toggleLang()">中文</button>
+  </div>
+</nav>
+
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-body">
+    <div class="hero-kicker">
+      <span class="lang-en">Machine Learning · Remote Sensing · Deep Learning</span>
+      <span class="lang-zh">机器学习 · 遥感 · 深度学习</span>
+    </div>
+    <h1>
+      <span class="lang-en">Generative AI<br>for Satellite <em>Cloud Removal</em></span>
+      <span class="lang-zh">生成式AI<br>用于卫星影像<em>云去除</em></span>
+    </h1>
+    <p class="hero-sub">
+      <span class="lang-en">A benchmarking study comparing GAN, Diffusion, and multi-temporal compositing approaches on 15,000 Sentinel-2 patches across five cloud coverage levels.</span>
+      <span class="lang-zh">在五种云覆盖率等级的15,000张Sentinel-2卫星图像上，对GAN、扩散模型与多时相合成方法进行系统性基准测试研究。</span>
+    </p>
+    <div class="hero-meta">
+      <span class="hero-chip">GAN / U-Net</span>
+      <span class="hero-chip">Diffusion / DDPM</span>
+      <span class="hero-chip">Multi-temporal Fusion</span>
+      <span class="hero-chip">Sentinel-2</span>
+      <span class="hero-chip">PyTorch</span>
+      <span class="hero-chip">Google Earth Engine</span>
+    </div>
+    <div class="hero-team">
+      <span class="lang-en">Chuan Zou · Demi Yang · Christine Cui &nbsp;·&nbsp; Penn Engineering &nbsp;·&nbsp; April 2026</span>
+      <span class="lang-zh">邹传 · 杨德米 · 崔馨元 &nbsp;·&nbsp; 宾夕法尼亚大学工程学院 &nbsp;·&nbsp; 2026年4月</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── SECTION 01: OVERVIEW ── -->
+<section id="overview">
+  <div class="container">
+    <div class="sec-eyebrow">
+      <span class="lang-en">01 · Overview</span>
+      <span class="lang-zh">01 · 项目概述</span>
+    </div>
+    <h2>
+      <span class="lang-en">The <em>Problem</em> with Clouds</span>
+      <span class="lang-zh">云层的<em>挑战</em></span>
+    </h2>
+
+    <div class="g2" style="align-items:start;gap:2.5rem;">
+      <div>
+        <div class="lang-en">
+          <p>Cloud-free satellite imagery is essential for land-cover mapping, vegetation monitoring (NDVI), urban expansion analysis, and disaster response. Yet in humid regions — particularly southern China — <strong>the majority of Sentinel-2 acquisitions are partially or fully occluded by clouds</strong>.</p>
+          <p>This project asks: can cloud-covered image patches be reconstructed reliably enough to support downstream visual inspection and vegetation-sensitive analysis when a fully cloud-free scene isn't available?</p>
+          <p>We benchmark three approaches across five cloud coverage levels (5%, 10%, 30%, 50%, 70%), evaluating reconstruction quality via PSNR, SSIM, cloud-region L1 error, and NDVI MAE.</p>
+        </div>
+        <div class="lang-zh">
+          <p>云层无关的卫星影像对土地覆盖制图、植被监测（NDVI）、城市扩张分析和灾害响应至关重要。然而在湿润地区——尤其是中国南方——<strong>大多数Sentinel-2影像都受到不同程度的云层遮挡</strong>。</p>
+          <p>本研究探讨：当完全无云影像无法获取时，能否可靠地重建被云层遮挡的图像块，以支持下游的目视解译和植被分析？</p>
+          <p>我们在五种云覆盖率等级（5%、10%、30%、50%、70%）上对三种方法进行基准测试，通过PSNR、SSIM、云区L1误差和NDVI MAE评估重建质量。</p>
+        </div>
+      </div>
+      <div>
+        <div class="callout">
+          <strong class="lang-en">Key Finding</strong><strong class="lang-zh">核心发现</strong><br>
+          <span class="lang-en">Deep learning methods substantially outperform temporal fusion once cloud coverage exceeds 30%. Below that threshold, multi-temporal compositing is nearly perfect. The conditional GAN consistently outperforms diffusion across all metrics.</span>
+          <span class="lang-zh">当云覆盖率超过30%，深度学习方法大幅优于时序融合方法。低于该阈值时，多时相合成接近完美。条件GAN在所有指标上均优于扩散模型。</span>
+        </div>
+        <div class="overview-strip">
+          <div class="ov-item">
+            <div class="ov-label"><span class="lang-en">Base Patches</span><span class="lang-zh">基础图块</span></div>
+            <div class="ov-value">3,000</div>
+            <div class="ov-sub"><span class="lang-en">cloud-free images</span><span class="lang-zh">无云影像</span></div>
+          </div>
+          <div class="ov-item">
+            <div class="ov-label"><span class="lang-en">Total Samples</span><span class="lang-zh">总样本量</span></div>
+            <div class="ov-value">15,000</div>
+            <div class="ov-sub"><span class="lang-en">across 5 levels</span><span class="lang-zh">五个覆盖率等级</span></div>
+          </div>
+          <div class="ov-item">
+            <div class="ov-label"><span class="lang-en">Patch Size</span><span class="lang-zh">图块尺寸</span></div>
+            <div class="ov-value">128²</div>
+            <div class="ov-sub"><span class="lang-en">10m resolution</span><span class="lang-zh">10米分辨率</span></div>
+          </div>
+          <div class="ov-item">
+            <div class="ov-label"><span class="lang-en">Methods</span><span class="lang-zh">方法数量</span></div>
+            <div class="ov-value">3</div>
+            <div class="ov-sub"><span class="lang-en">benchmarked</span><span class="lang-zh">对比测试</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION 02: DATA ── -->
+<section id="data" style="background:var(--white);">
+  <div class="container">
+    <div class="sec-eyebrow">
+      <span class="lang-en">02 · Dataset</span>
+      <span class="lang-zh">02 · 数据集</span>
+    </div>
+    <h2>
+      <span class="lang-en">Sentinel-2 over <em>Beijing</em></span>
+      <span class="lang-zh">北京地区<em>Sentinel-2</em>影像</span>
+    </h2>
+
+    <div class="g2" style="align-items:start;gap:2.5rem;">
+      <div>
+        <div class="lang-en">
+          <p>We pull <strong>COPERNICUS/S2_SR_HARMONIZED</strong> (Level-2A surface reflectance) from Google Earth Engine, covering Beijing and its urban-rural fringe during the growing season (April–October 2023). This window captures vegetated periods most sensitive to NDVI accuracy.</p>
+          <p>Each 128×128 pixel patch captures <strong>four spectral bands</strong>: Red (B4), Green (B3), Blue (B2), and NIR (B8) at 10m native resolution. Synthetic clouds are generated via Gaussian-filtered noise thresholded to exact coverage targets, ensuring ground-truth availability at all occlusion levels.</p>
+          <p>Dataset split is done <strong>at the base-image level</strong> before cloud augmentation to prevent train-test leakage (70% train / 10% val / 20% test).</p>
+        </div>
+        <div class="lang-zh">
+          <p>我们通过Google Earth Engine获取<strong>COPERNICUS/S2_SR_HARMONIZED</strong>（L2A地表反射率）影像，覆盖北京市及其城乡交错带，时间窗口为生长季（2023年4月–10月）。该时段的植被状况对NDVI精度最为敏感。</p>
+          <p>每个128×128像素图块包含<strong>四个光谱波段</strong>：红光（B4）、绿光（B3）、蓝光（B2）和近红外（B8），原始分辨率10米。合成云通过高斯滤波噪声阈值化生成，确保所有遮挡等级均有对应的真实参考值。</p>
+          <p>数据集划分在云层增强前以<strong>基础影像为单元</strong>进行，有效防止训练-测试数据泄露（70%训练 / 10%验证 / 20%测试）。</p>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3 style="font-size:1rem;margin-bottom:1rem;">
+            <span class="lang-en">Coverage Distribution</span>
+            <span class="lang-zh">云覆盖率分布</span>
+          </h3>
+          <div class="coverage-block">
+            <div class="cov-row">
+              <span class="cov-label">5%</span>
+              <div class="cov-bar-wrap"><div class="cov-bar" style="width:80%;background:var(--sage);"></div></div>
+              <span class="cov-note" style="font-size:11px;color:var(--muted);">3,000 <span class="lang-en">patches</span><span class="lang-zh">图块</span></span>
+            </div>
+            <div class="cov-row">
+              <span class="cov-label">10%</span>
+              <div class="cov-bar-wrap"><div class="cov-bar" style="width:80%;background:var(--sage);"></div></div>
+              <span class="cov-note" style="font-size:11px;color:var(--muted);">3,000 <span class="lang-en">patches</span><span class="lang-zh">图块</span></span>
+            </div>
+            <div class="cov-row">
+              <span class="cov-label">30%</span>
+              <div class="cov-bar-wrap"><div class="cov-bar" style="width:80%;background:var(--rust);opacity:.7;"></div></div>
+              <span class="cov-note" style="font-size:11px;color:var(--muted);">3,000 <span class="lang-en">patches</span><span class="lang-zh">图块</span></span>
+            </div>
+            <div class="cov-row">
+              <span class="cov-label">50%</span>
+              <div class="cov-bar-wrap"><div class="cov-bar" style="width:80%;background:var(--rust);opacity:.8;"></div></div>
+              <span class="cov-note" style="font-size:11px;color:var(--muted);">3,000 <span class="lang-en">patches</span><span class="lang-zh">图块</span></span>
+            </div>
+            <div class="cov-row">
+              <span class="cov-label">70%</span>
+              <div class="cov-bar-wrap"><div class="cov-bar" style="width:80%;background:var(--rust);"></div></div>
+              <span class="cov-note" style="font-size:11px;color:var(--muted);">3,000 <span class="lang-en">patches</span><span class="lang-zh">图块</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="callout sage" style="margin-top:1rem;">
+          <span class="lang-en"><strong>Why synthetic clouds?</strong> Synthetic masking ensures known ground truth at every coverage level — allowing rigorous controlled comparison that real-world cloudy images cannot provide.</span>
+          <span class="lang-zh"><strong>为何使用合成云？</strong>合成遮罩确保每种覆盖率等级均有已知真实参考值，从而实现真实云层影像无法提供的严格对照实验。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION 03: METHODS ── -->
+<section id="methods">
+  <div class="container">
+    <div class="sec-eyebrow">
+      <span class="lang-en">03 · Methods</span>
+      <span class="lang-zh">03 · 方法</span>
+    </div>
+    <h2>
+      <span class="lang-en">Three <em>Approaches</em> Benchmarked</span>
+      <span class="lang-zh">三种<em>方法</em>对比测试</span>
+    </h2>
+
+    <div class="g3">
+
+      <!-- Method 1: Multi-temporal -->
+      <div class="method-card">
+        <div class="method-head">
+          <div>
+            <div class="method-num">M-01</div>
+            <div class="method-name">
+              <span class="lang-en">Multi-temporal Baseline</span>
+              <span class="lang-zh">多时相基准方法</span>
+            </div>
+          </div>
+          <span class="method-tag tag-baseline">
+            <span class="lang-en">Baseline</span>
+            <span class="lang-zh">基准</span>
+          </span>
+        </div>
+        <div class="method-body">
+          <p>
+            <span class="lang-en">Averages cloud-free pixels across 4 temporal observations (original + 3 neighbors). Falls back to cloudy value when all frames are masked.</span>
+            <span class="lang-zh">在4次时序观测中（原图+3个相邻时相）取无云像素的平均值。当所有时相均被遮挡时，回退使用含云像素值。</span>
+          </p>
+          <p style="font-size:.84rem;">
+            <span class="lang-en">Failure probability at 70% coverage: 0.7⁴ = <strong>24% of pixels</strong> have no clean alternative.</span>
+            <span class="lang-zh">70%覆盖率下失效概率：0.7⁴ = <strong>24%的像素</strong>无法找到无云替代值。</span>
+          </p>
+          <div class="method-spec">
+            <div class="spec-row">
+              <span class="spec-key"><span class="lang-en">Params</span><span class="lang-zh">参数量</span></span>
+              <span class="spec-val"><span class="lang-en">None (non-learned)</span><span class="lang-zh">无（非学习方法）</span></span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key"><span class="lang-en">Training</span><span class="lang-zh">训练</span></span>
+              <span class="spec-val"><span class="lang-en">Not required</span><span class="lang-zh">无需训练</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Method 2: GAN -->
+      <div class="method-card" style="border-color:rgba(92,122,96,.3);">
+        <div class="method-head" style="background:rgba(92,122,96,.04);">
+          <div>
+            <div class="method-num">M-02</div>
+            <div class="method-name">
+              <span class="lang-en">Conditional GAN</span>
+              <span class="lang-zh">条件生成对抗网络</span>
+            </div>
+          </div>
+          <span class="method-tag tag-best">
+            <span class="lang-en">Best Result</span>
+            <span class="lang-zh">最优</span>
+          </span>
+        </div>
+        <div class="method-body">
+          <p>
+            <span class="lang-en">U-Net generator (5-channel input: 4-band image + mask) paired with PatchGAN discriminator. Adversarial loss + 100× L1 loss trains a constrained image translator, not a free-form generator.</span>
+            <span class="lang-zh">U-Net生成器（5通道输入：4波段影像+掩膜）配合PatchGAN判别器。对抗损失+100×L1损失训练受约束的图像翻译器，而非无条件生成模型。</span>
+          </p>
+          <div class="method-spec">
+            <div class="spec-row">
+              <span class="spec-key"><span class="lang-en">Generator</span><span class="lang-zh">生成器</span></span>
+              <span class="spec-val">468,484 <span class="lang-en">params</span><span class="lang-zh">参数</span></span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key"><span class="lang-en">Discriminator</span><span class="lang-zh">判别器</span></span>
+              <span class="spec-val">170,209 <span class="lang-en">params</span><span class="lang-zh">参数</span></span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key"><span class="lang-en">Training</span><span class="lang-zh">训练</span></span>
+              <span class="spec-val">8 <span class="lang-en">epochs, lr 5e-5</span><span class="lang-zh">轮次，学习率5e-5</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Method 3: Diffusion -->
+      <div class="method-card">
+        <div class="method-head">
+          <div>
+            <div class="method-num">M-03</div>
+            <div class="method-name">
+              <span class="lang-en">Diffusion Inpainting</span>
+              <span class="lang-zh">扩散模型修复</span>
+            </div>
+          </div>
+          <span class="method-tag tag-comp">
+            <span class="lang-en">Comparator</span>
+            <span class="lang-zh">对照</span>
+          </span>
+        </div>
+        <div class="method-body">
+          <p>
+            <span class="lang-en">DDPM-style 100-step denoising with U-Net denoiser (6-channel: conditioned image + mask + timestep). Re-imposes known clean pixels at each reverse step to constrain generation.</span>
+            <span class="lang-zh">采用100步DDPM去噪过程，U-Net去噪器（6通道：条件影像+掩膜+时步编码）。每个反向步骤中重新施加已知无云像素以约束生成过程。</span>
+          </p>
+          <div class="method-spec">
+            <div class="spec-row">
+              <span class="spec-key"><span class="lang-en">Denoiser</span><span class="lang-zh">去噪器</span></span>
+              <span class="spec-val">468,772 <span class="lang-en">params</span><span class="lang-zh">参数</span></span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key"><span class="lang-en">Timesteps</span><span class="lang-zh">时步数</span></span>
+              <span class="spec-val">100 (DDPM, β: 1e-4→0.02)</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key"><span class="lang-en">Training</span><span class="lang-zh">训练</span></span>
+              <span class="spec-val">50 <span class="lang-en">epochs</span><span class="lang-zh">轮次</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION 04: RESULTS ── -->
+<section id="results">
+  <div class="container">
+    <div class="sec-eyebrow">
+      <span class="lang-en">04 · Results</span>
+      <span class="lang-zh">04 · 结果</span>
+    </div>
+    <h2>
+      <span class="lang-en">Performance <em>Across</em> Coverage Levels</span>
+      <span class="lang-zh">各覆盖率等级下的<em>性能表现</em></span>
+    </h2>
+
+    <div class="callout" style="margin-bottom:1.5rem;">
+      <span class="lang-en"><strong>Note:</strong> At 5–10% coverage, multi-temporal compositing is nearly perfect (PSNR ≈ 163 dB, SSIM ≈ 0.98) because the probability of all four temporal frames being simultaneously clouded is negligible (0.05⁴ ≈ 0.006%). The table below focuses on the challenging ≥30% regime.</span>
+      <span class="lang-zh"><strong>说明：</strong>在5–10%覆盖率下，多时相合成方法接近完美（PSNR≈163 dB，SSIM≈0.98），因为四个时相同时被云遮挡的概率可忽略不计（0.05⁴≈0.006%）。下表重点展示具有挑战性的≥30%覆盖率情形。</span>
+    </div>
+
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th><span class="lang-en">Method</span><span class="lang-zh">方法</span></th>
+          <th>PSNR (dB) ↑</th>
+          <th>SSIM ↑</th>
+          <th>L1 Cloud ↓</th>
+          <th>NDVI MAE ↓</th>
+          <th><span class="lang-en">Avg. Coverage</span><span class="lang-zh">平均覆盖率</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="method-label"><span class="lang-en">Multi-temporal</span><span class="lang-zh">多时相</span></span></td>
+          <td class="metric-bad">15.09</td>
+          <td class="metric-bad">0.142</td>
+          <td class="metric-bad">0.1453</td>
+          <td>0.0877</td>
+          <td>30–70%</td>
+        </tr>
+        <tr class="best-row">
+          <td><span class="method-label"><span class="lang-en">GAN (ours)</span><span class="lang-zh">GAN（本文）</span></span></td>
+          <td class="metric-good">32.76</td>
+          <td class="metric-good">0.850</td>
+          <td class="metric-good">0.0243</td>
+          <td class="metric-good">0.1127</td>
+          <td>30–70%</td>
+        </tr>
+        <tr>
+          <td><span class="method-label"><span class="lang-en">Diffusion</span><span class="lang-zh">扩散模型</span></span></td>
+          <td>29.20</td>
+          <td>0.711</td>
+          <td>0.0375</td>
+          <td class="metric-bad">0.1850</td>
+          <td>30–70%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:.82rem;color:var(--muted);margin-top:-.5rem;margin-bottom:2rem;">
+      <span class="lang-en">Metrics averaged over 30%, 50%, and 70% coverage levels. ↑ = higher is better · ↓ = lower is better.</span>
+      <span class="lang-zh">指标为30%、50%、70%覆盖率等级的平均值。↑ = 越高越好 · ↓ = 越低越好。</span>
+    </p>
+
+    <h3 style="font-size:1.2rem;margin-bottom:1rem;">
+      <span class="lang-en">GAN improvement over temporal baseline by coverage level</span>
+      <span class="lang-zh">GAN相较于时序基准方法在各覆盖率下的PSNR提升</span>
+    </h3>
+
+    <div class="coverage-block">
+      <div class="cov-row">
+        <span class="cov-label">30%</span>
+        <div class="cov-bar-wrap" style="height:10px;">
+          <div class="cov-bar" style="width:46%;height:100%;"></div>
+        </div>
+        <span class="cov-note">+10.6 dB PSNR</span>
+      </div>
+      <div class="cov-row">
+        <span class="cov-label">50%</span>
+        <div class="cov-bar-wrap" style="height:10px;">
+          <div class="cov-bar" style="width:67%;height:100%;"></div>
+        </div>
+        <span class="cov-note">+19.2 dB PSNR</span>
+      </div>
+      <div class="cov-row">
+        <span class="cov-label">70%</span>
+        <div class="cov-bar-wrap" style="height:10px;">
+          <div class="cov-bar" style="width:100%;height:100%;"></div>
+        </div>
+        <span class="cov-note">+23.2 dB PSNR</span>
+      </div>
+    </div>
+
+    <div class="callout sage" style="margin-top:1.5rem;">
+      <span class="lang-en"><strong>Why does diffusion underperform on NDVI MAE?</strong> Diffusion's NDVI MAE is 1.5–1.7× worse than GAN across all levels, indicating that while RGB reconstruction may appear plausible, the NIR band (B8) — critical for NDVI — is reconstructed less faithfully. This is a key downstream implication for vegetation monitoring applications.</span>
+      <span class="lang-zh"><strong>扩散模型为何在NDVI MAE上表现较差？</strong>扩散模型的NDVI MAE在各覆盖率等级下均比GAN高1.5–1.7倍，说明尽管RGB重建视觉上尚可，但NDVI计算的关键波段——近红外（B8）——的重建保真度更低。这对植被监测应用具有重要意义。</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION 05: INSIGHTS ── -->
+<section id="insights">
+  <div class="container">
+    <div class="sec-eyebrow">
+      <span class="lang-en">05 · Insights &amp; Limitations</span>
+      <span class="lang-zh">05 · 洞察与局限性</span>
+    </div>
+    <h2>
+      <span class="lang-en">What We <em>Learned</em></span>
+      <span class="lang-zh">我们学到了<em>什么</em></span>
+    </h2>
+
+    <div class="g2" style="gap:3rem;align-items:start;">
+      <div>
+        <h3>
+          <span class="lang-en">Key Technical Insights</span>
+          <span class="lang-zh">核心技术洞察</span>
+        </h3>
+        <div>
+          <div class="insight-item">
+            <span class="insight-num">01</span>
+            <p class="insight-text">
+              <span class="lang-en"><strong>The 30% coverage threshold is a phase transition.</strong> Below it, temporal compositing is near-perfect because simultaneous cloud probability across 4 frames is 0.3⁴ ≈ 0.8%. Above it, the probability of catastrophic failure spikes — and GAN's context-based reconstruction pulls ahead.</span>
+              <span class="lang-zh"><strong>30%覆盖率是性能分水岭。</strong>低于此值时，时序合成方法接近完美（4帧同时被遮挡的概率仅0.3⁴≈0.8%）。高于此值后，灾难性失败概率急剧上升，基于上下文重建的GAN优势凸显。</span>
+            </p>
+          </div>
+          <div class="insight-item">
+            <span class="insight-num">02</span>
+            <p class="insight-text">
+              <span class="lang-en"><strong>GAN wins because it is constrained, not because it is generative.</strong> The conditioned U-Net translates cloudy-to-clean images as a supervised regression, not free-form generation. This makes it more reliable and spectrally consistent than diffusion under limited training budgets.</span>
+              <span class="lang-zh"><strong>GAN胜出是因为其受约束性，而非生成性。</strong>条件U-Net将含云影像翻译为无云影像，本质是有监督回归而非无条件生成。这使其在有限训练资源下比扩散模型更稳定、光谱一致性更好。</span>
+            </p>
+          </div>
+          <div class="insight-item">
+            <span class="insight-num">03</span>
+            <p class="insight-text">
+              <span class="lang-en"><strong>PSNR and cloud-region L1 can tell different stories at 30%.</strong> The squared error in PSNR amplifies the ~133 pixels per patch with zero temporal options, causing a large PSNR drop. Cloud-region L1 dilutes the same pixels, showing a smaller change. GAN avoids this spike entirely by learning from spatial context.</span>
+              <span class="lang-zh"><strong>30%覆盖率下PSNR与云区L1可能呈现不同规律。</strong>PSNR的平方误差放大了每个图块约133个无时序可替代像素的影响，导致PSNR大幅下降；云区L1则因稀释效应变化较小。GAN通过学习空间上下文完全规避了这一问题。</span>
+            </p>
+          </div>
+          <div class="insight-item">
+            <span class="insight-num">04</span>
+            <p class="insight-text">
+              <span class="lang-en"><strong>Diffusion initialization matters.</strong> Using the mean of clean-region pixels (rather than the cloudy proxy) as the diffusion starting point was critical. Linear final activation (not sigmoid) was also required to avoid output range collapse in the denoised patches.</span>
+              <span class="lang-zh"><strong>扩散模型的初始化至关重要。</strong>以无云区域像素均值（而非含云影像像素）作为扩散起始点至关重要。同时，最终激活函数必须是线性的（而非sigmoid），否则去噪图块的输出值域会发生坍塌。</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>
+          <span class="lang-en">Limitations &amp; Honest Assessment</span>
+          <span class="lang-zh">局限性与客观评估</span>
+        </h3>
+        <div class="card rust-accent" style="margin-bottom:1rem;">
+          <h3 style="font-size:.95rem;margin-bottom:.6rem;">
+            <span class="lang-en">Synthetic vs. Real Clouds</span>
+            <span class="lang-zh">合成云与真实云的差距</span>
+          </h3>
+          <p style="font-size:.87rem;">
+            <span class="lang-en">Our synthetic masks use Gaussian-filtered noise, not real atmospheric scattering patterns. Results may not transfer directly to optically thin cloud types or cloud shadows.</span>
+            <span class="lang-zh">合成掩膜采用高斯滤波噪声，而非真实大气散射模式。结果可能不能直接迁移到薄云类型或云阴影情形。</span>
+          </p>
+        </div>
+        <div class="card rust-accent" style="margin-bottom:1rem;">
+          <h3 style="font-size:.95rem;margin-bottom:.6rem;">
+            <span class="lang-en">Geographic Generalization</span>
+            <span class="lang-zh">地理泛化能力</span>
+          </h3>
+          <p style="font-size:.87rem;">
+            <span class="lang-en">All training data comes from Beijing (April–October 2023). The motivating application — cloud removal for humid southern China (e.g., Yunnan) — has not been validated.</span>
+            <span class="lang-zh">所有训练数据来自北京（2023年4–10月）。初始动机——面向中国南方湿润地区（如云南）的云去除应用——尚未经过验证。</span>
+          </p>
+        </div>
+        <div class="card rust-accent" style="margin-bottom:1rem;">
+          <h3 style="font-size:.95rem;margin-bottom:.6rem;">
+            <span class="lang-en">Diffusion Budget Constraint</span>
+            <span class="lang-zh">扩散模型资源约束</span>
+          </h3>
+          <p style="font-size:.87rem;">
+            <span class="lang-en">The diffusion result represents a limited-capacity, limited-training-budget baseline. With 100+ epochs, a larger backbone, and cloud-region-weighted objectives, diffusion may substantially close the gap.</span>
+            <span class="lang-zh">扩散模型的结果仅代表有限容量和训练资源下的基准水平。若扩展至100+轮训练、更大网络和云区加权损失，性能差距可能显著缩小。</span>
+          </p>
+        </div>
+        <div class="card rust-accent">
+          <h3 style="font-size:.95rem;margin-bottom:.6rem;">
+            <span class="lang-en">No Downstream Task Validation</span>
+            <span class="lang-zh">缺乏下游任务验证</span>
+          </h3>
+          <p style="font-size:.87rem;">
+            <span class="lang-en">Evaluation is image-centric. The benefit of cloud removal for actual land-cover classification or vegetation monitoring workflows has not been directly measured.</span>
+            <span class="lang-zh">评估以图像质量为中心。云去除对实际土地覆盖分类或植被监测工作流程的实际效益尚未直接测量。</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION 06: FUTURE WORK ── -->
+<section id="future">
+  <div class="container">
+    <div class="sec-eyebrow">
+      <span class="lang-en">06 · Future Work</span>
+      <span class="lang-zh">06 · 未来方向</span>
+    </div>
+    <h2>
+      <span class="lang-en">Next <em>Steps</em></span>
+      <span class="lang-zh">下一步<em>研究方向</em></span>
+    </h2>
+
+    <div class="g2" style="gap:1.2rem;">
+      <div class="card sage-accent">
+        <h3 style="font-size:1rem;color:var(--sage);">
+          <span class="lang-en">Multi-regional Validation</span>
+          <span class="lang-zh">多地区验证</span>
+        </h3>
+        <p style="font-size:.89rem;">
+          <span class="lang-en">Expand to Yunnan province and other cloud-prone regions in southern China to test geographic transferability of the GAN model.</span>
+          <span class="lang-zh">扩展至云南省及中国南方其他云层密集地区，测试GAN模型的地理迁移能力。</span>
+        </p>
+      </div>
+      <div class="card sage-accent">
+        <h3 style="font-size:1rem;color:var(--sage);">
+          <span class="lang-en">Enhanced Diffusion Training</span>
+          <span class="lang-zh">增强扩散模型训练</span>
+        </h3>
+        <p style="font-size:.89rem;">
+          <span class="lang-en">Provide more data, extended training budget (100+ epochs), larger backbone, and cloud-region-weighted objectives to reveal diffusion's true potential.</span>
+          <span class="lang-zh">扩充数据量，增加训练轮次（100+），使用更大网络和云区加权损失，充分挖掘扩散模型的性能上限。</span>
+        </p>
+      </div>
+      <div class="card sage-accent">
+        <h3 style="font-size:1rem;color:var(--sage);">
+          <span class="lang-en">Downstream Task Integration</span>
+          <span class="lang-zh">下游任务集成</span>
+        </h3>
+        <p style="font-size:.89rem;">
+          <span class="lang-en">Validate the effect of cloud removal directly on land-cover classification accuracy and vegetation index (NDVI/EVI) computation in real-world monitoring pipelines.</span>
+          <span class="lang-zh">在真实监测流程中直接验证云去除对土地覆盖分类精度和植被指数（NDVI/EVI）计算的影响。</span>
+        </p>
+      </div>
+      <div class="card sage-accent">
+        <h3 style="font-size:1rem;color:var(--sage);">
+          <span class="lang-en">Real Atmospheric Clouds</span>
+          <span class="lang-zh">真实大气云层测试</span>
+        </h3>
+        <p style="font-size:.89rem;">
+          <span class="lang-en">Incorporate optically-derived cloud masks from Sentinel-2 QA bands and evaluate whether synthetic-trained models generalize to real cloud morphology.</span>
+          <span class="lang-zh">引入Sentinel-2 QA波段的光学云掩膜，评估合成训练模型对真实云形态的泛化能力。</span>
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+      <a href="https://github.com/chuanzou/Geo-Evaluate" target="_blank" class="back-btn">GitHub Repository ↗</a>
+      <a href="index.html" class="back-btn">← <span class="lang-en">Back to Portfolio</span><span class="lang-zh">返回作品集</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="ft">© 2026 Xinyuan (Christine) Cui · 崔馨元</span>
+  <span class="ft">
+    <a href="index.html"><span class="lang-en">Portfolio</span><span class="lang-zh">作品集</span> ↗</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:cui12@upenn.edu">cui12@upenn.edu</a>
+  </span>
+</footer>
+
+<script>
+let currentLang = localStorage.getItem('cc-lang') || 'en';
+
+function applyLang(lang) {
+  const html = document.documentElement;
+  html.classList.remove('lang-en-active', 'lang-zh-active');
+  html.classList.add('lang-' + lang + '-active');
+  html.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  const btn = document.getElementById('langToggle');
+  if (btn) {
+    btn.textContent = lang === 'en' ? '中文' : 'EN';
+    btn.classList.toggle('active-zh', lang === 'zh');
+  }
+  localStorage.setItem('cc-lang', lang);
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'zh' : 'en';
+  applyLang(currentLang);
+}
+
+applyLang(currentLang);
+</script>
+</body>
+</html>
